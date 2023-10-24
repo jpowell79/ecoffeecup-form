@@ -12,6 +12,13 @@
 <body>
 
   <h1>
+          <div class="search-header">
+          <!-- Search for Job ID-->
+          <label for="searchJobId">Search for Job ID:</label>
+          <input type="number" id="searchJobId" name="searchJobId" min="1" step="1" required>
+          <button type="button" id="searchDatabase">Search Database</button>
+
+
     Ecoffee Cup Project Request Form
     <img src="logo.png" alt="Logo" id="logo">
   </h1>
@@ -34,7 +41,7 @@
 
       <!-- Job ID Field -->
       <label for="jobId">Job ID:</label>
-      <input type="number" id="jobId" name="jobId" min="1" step="1" required><br><br>
+      <input type="number" id="jobId" name="jobId" min=1 step=1 required><br><br>
 
       <!-- Date Selector -->
       <label for="todaysDate">Date of Brief:</label>
@@ -62,10 +69,6 @@
       <!-- Project Name -->
       <label for="projectName">Project Name:</label>
       <input type="text" id="projectName" name="projectName" required><br><br>
-
-      <!-- Job Number Field
-      <label for="jobNumber">Job Number:</label>
-      <input type="number" id="jobNumber" name="jobNumber" min="1" step="1" required><br><br> -->
     
   </div>
 
@@ -76,10 +79,10 @@
     <!-- New or Repeat Project radio button -->
     <!-- value of "new" will be the default -->
     <h4>New or Repeat Project:</h4>
-    <input type="radio" id="new" name="newOrRepeat" value="New" checked>
-    <label for="new">New</label><br>
-    <input type="radio" id="repeat" name="newOrRepeat" value="Repeat">
-    <label for="repeat">Repeat</label><br><br>
+    <input type="radio" id="newProject" name="newOrRepeat" value="New" checked>
+    <label for="newProject">New</label><br>
+    <input type="radio" id="repeatProject" name="newOrRepeat" value="Repeat">
+    <label for="repeatProject">Repeat</label><br><br>
 
     <!-- Product Code -->
     <label for="productCode">Product Code:</label>
@@ -104,31 +107,18 @@
     <label for="sampleRequiredDate">Sample Required Date:</label>
     <input type="date" id="sampleRequiredDate" name="sampleRequiredDate"><br><br>
 
-    <!-- Email Field -->
-    <!-- <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br> -->
-
-    <!-- Contact Number Field -->
-    <!-- <label for="contactNumber">Contact Number:</label>
-    <input type="tel" id="contactNumber" name="contactNumber" required><br><br> -->
-
   </div>
   </div>
 
 
     <!-- End of Project Details Section -->
 
-
     <!-- Product Details Section -->
   <div class="header">
   <h2>Product Details</h2>
   </div>
 
-
-
-    <!-- Cup Details -->
-
-    
+    <!-- Cup Details -->    
 
   <div class="details-section">
 
@@ -170,21 +160,13 @@
     <label for="cupPantoneReference">Cup Pantone Reference:</label><br>
     <input type="text" id="cupPantoneReference" name="cupPantoneReference" required><br><br>
 
-        <!-- New or Repeat Project radio button
-    value of "new" will be the default
-    <h4>New or Repeat Project:</h4> -->
-    <!-- <input type="radio" id="new" name="newOrRepeat" value="new" checked>
-    <label for="new">New</label><br>
-    <input type="radio" id="repeat" name="newOrRepeat" value="repeat">
-    <label for="repeat">Repeat</label><br><br>  -->
-
-<!-- Coated (C) or Uncoated (U) radio button options -->
-<!-- value of "coated" will be the default -->
-<h4>Coated (C) or Uncoated (U) ?:</h4>
-<input type="radio" id="cupCoated" name="cupCoatedOrUncoated" value="Coated" checked>
-<label for="cupCoated">Coated (C)</label><br>
-<input type="radio" id="cupUncoated" name="cupCoatedOrUncoated" value="Uncoated">
-<label for="cupUncoated">Uncoated (U)</label><br><br>
+    <!-- Coated (C) or Uncoated (U) radio button options -->
+    <!-- value of "coated" will be the default -->
+    <h4>Coated (C) or Uncoated (U) ?:</h4>
+    <input type="radio" id="cupCoated" name="cupCoatedOrUncoated" value="Coated (C)" checked>
+    <label for="cupCoated">Coated (C)</label><br>
+    <input type="radio" id="cupUncoated" name="cupCoatedOrUncoated" value="Uncoated (U)">
+    <label for="cupUncoated">Uncoated (U)</label><br><br>
 
     <!-- Cup Decoration option-->
     <label for="cupDecorationOptions">Cup Decoration:</label>
@@ -239,6 +221,9 @@
     <input type="radio" id="sleeveRequiredNo" name="sleeveRequired" value="No" checked>
     <label for="sleeveRequiredNo">No</label><br><br>
 
+    <!-- disable the remaining sleeve options if "No" is selected-->
+    <fieldset id="sleeve-section" disabled>
+
     <!--Sleeve Size radio option-->
     <!-- Includes options of "6oz" or "other" -->
     <!-- value of "6oz" will be the default -->
@@ -246,7 +231,7 @@
     <input type="radio" id="sleeve6oz" name="sleeveSize" value="6oz" checked>
     <label for="sleeve6oz">6oz</label><br>
     <input type="radio" id="sleeveOther" name="sleeveSize" value="Other">
-    <label for="sleeveOther">Other (please select below)</label><br><br>
+    <label for="sleeveOther">Other</label><br><br>
 
     <!-- Sleeve Size dropdown option-->
     <label for="sleeveSizeOptions">Sleeve Size options:</label>
@@ -270,9 +255,9 @@
     <!-- Sleeve Coated (C) or Uncoated (U) radio button options -->
     <!-- value of "coated" will be the default -->
     <h4>Coated (C) or Uncoated (U) ?:</h4>
-    <input type="radio" id="sleeveCoated" name="sleeveCoatedOrUncoated" value="Coated" checked>
-    <label for="sleeveCoated">Coated (C)"</label><br>
-    <input type="radio" id="sleeveUncoated" name="sleeveCoatedOrUncoated" value="Uncoated">
+    <input type="radio" id="sleeveCoated" name="sleeveCoatedOrUncoated" value="Coated (C)" checked>
+    <label for="sleeveCoated">Coated (C)</label><br>
+    <input type="radio" id="sleeveUncoated" name="sleeveCoatedOrUncoated" value="Uncoated (U)">
     <label for="sleeveUncoated">Uncoated (U)</label><br><br>
 
     <!-- Sleeve Artwork radio option-->
@@ -319,12 +304,11 @@
     <!-- Sleeve Overprint details (if applicable) -->
     <label for="sleeveOverprintDetails">Overprint Details:</label><br>
     <input type="text" id="sleeveOverprintDetails" name="sleeveOverprintDetails"><br><br>
+
+  </fieldset>
     
 
     </div>
-
-
-      
 
          <!-- Lid Details -->
 
@@ -344,6 +328,9 @@
     <label for="lidRequiredYes">Yes</label><br>
     <input type="radio" id="lidRequiredNo" name="lidRequired" value="No" checked>
     <label for="lidRequiredNo">No</label><br><br>
+
+    <!-- disable the remaining lid options if "No" is selected-->
+    <fieldset id="lid-section" disabled>
 
     <!--Lid Size radio option-->
     <!-- Includes options of "6oz" or "other" -->
@@ -375,9 +362,9 @@
     <!-- Lid Coated (C) or Uncoated (U) radio button options -->
     <!-- value of "coated" will be the default -->
     <h4>Coated (C) or Uncoated (U) ?:</h4>
-    <input type="radio" id="lidCoated" name="lidCoatedOrUncoated" value="Coated" checked>
-    <label for="lidCoated">Coated (C)"</label><br>
-    <input type="radio" id="lidUncoated" name="lidCoatedOrUncoated" value="Uncoated">
+    <input type="radio" id="lidCoated" name="lidCoatedOrUncoated" value="Coated (C)" checked>
+    <label for="lidCoated">Coated (C)</label><br>
+    <input type="radio" id="lidUncoated" name="lidCoatedOrUncoated" value="Uncoated (U)">
     <label for="lidUncoated">Uncoated (U)</label><br><br>
 
 
@@ -393,7 +380,9 @@
     <label for="lidMouldOther">If Other, please specify:</label><br>
     <input type="text" id="lidMouldOther" name="lidMouldOther" required><br><br>
 
-  
+    <br>
+
+  </fieldset>
 
     <!-- Packaging Details -->
 
@@ -443,9 +432,9 @@
     <!-- Packaging Colour Coated (C) or Uncoated (U) radio button options -->
     <!-- value of "coated" will be the default -->
     <h4>If Pantone, then Coated (C) or Uncoated (U) ?:</h4>
-    <input type="radio" id="packagingCoated" name="packagingPrintTypeCoatedOrUncoated" value="Coated" checked>
-    <label for="packagingCoated">Coated (C)"</label><br>
-    <input type="radio" id="packagingUncoated" name="packagingPrintTypeCoatedOrUncoated" value="Uncoated">
+    <input type="radio" id="packagingCoated" name="packagingPrintTypeCoatedOrUncoated" value="Coated (C)" checked>
+    <label for="packagingCoated">Coated (C)</label><br>
+    <input type="radio" id="packagingUncoated" name="packagingPrintTypeCoatedOrUncoated" value="Uncoated (U)">
     <label for="packagingUncoated">Uncoated (U)</label><br><br>
 
     
@@ -502,6 +491,8 @@
       <!-- End of Product Details Section -->
 
     <!-- Extra Notes - set number of text rows -->
+
+    <br><br>
     
     <label class="extraNotes" for="extraNotes">Extra Notes: (Optional)</label>
     <div class="extraNotes">
@@ -512,22 +503,24 @@
 
     <!-- Save Form and update Database--> 
     <br><br>
+
+    <br><br>
+
+    <div class="button-section">
+
+      <button type="button" id="saveAsPDF" style="background-color: green; color: white;">Save Current Form as a PDF</button>
+
+      <br><br><br>
     
     <button type="button" id="saveToDatabase">Save Form to Database</button>
     <button type="button" id="updateDatabase">Update Form on Database</button>
     <button type="button" id="deleteFromDatabase">Delete Current Form from Database</button>
 
-    <br><br>
-
-    <button type="button" id="saveAsPDF">Save Form as PDF</button>
+    <h4>Refresh the page or press F5 on your Keyboard to create a new Job</h4>
 
     <br><br>
-    
-    <!-- Search for Job ID-->
-    <label for="searchJobId">Search for Job ID:</label>
-    <input type="number" id="searchJobId" name="searchJobId" min="1" step="1" required>
-    <button type="button" id="searchDatabase">Search Database</button>
 
+    <div>
 
   </form>
 
