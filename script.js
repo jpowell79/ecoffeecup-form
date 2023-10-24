@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const packagingPrintTypeDetails = document.getElementById(
     "packagingPrintTypeDetails"
   ).value;
-  const packaagingPrintTypeCoatedOrUncoated = document.querySelector(
+  const packagingPrintTypeCoatedOrUncoated = document.querySelector(
     'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
   ).value;
 
@@ -187,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const extraNotes = document.getElementById("extraNotes").value;
 });
 
+import { pack } from "html2canvas/dist/types/css/types/color";
 // connect to firebase ///////////////////////////////////////////////////////////////////////////
 
 // Import the functions you need from the SDKs you need
@@ -310,7 +311,7 @@ function createForm() {
       'input[name="packagingPrintType"]:checked'
     ).value,
     PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
-    PackaagingPrintTypeCoatedOrUncoated: document.querySelector(
+    PackagingPrintTypeCoatedOrUncoated: document.querySelector(
       'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
     ).value,
     PackagingPaperStock: packagingPaperStock.value,
@@ -362,7 +363,7 @@ function updateForm() {
 
   if (confirmed) {
     // Proceed with updating the form
-    set(ref(db, "Jobs/" + jobId.value), {
+    update(ref(db, "Jobs/" + jobId.value), {
       // Job ID
       JobId: jobId.value,
       TodaysDate: todaysDate.value,
@@ -447,7 +448,7 @@ function updateForm() {
         'input[name="packagingPrintType"]:checked'
       ).value,
       PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
-      PackaagingPrintTypeCoatedOrUncoated: document.querySelector(
+      PackagingPrintTypeCoatedOrUncoated: document.querySelector(
         'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
       ).value,
       PackagingPaperStock: packagingPaperStock.value,
@@ -528,6 +529,21 @@ function readForm() {
   const dbRef = ref(db);
   let idToSearch = document.getElementById("searchJobId").value;
 
+  // Function to correctly set the value of a radio button
+  function setRadioValue(radioGroupName, value) {
+    const radioButtons = document.querySelectorAll(
+      `input[name="${radioGroupName}"]`
+    );
+
+    radioButtons.forEach((radioButton) => {
+      if (radioButton.value === value) {
+        radioButton.checked = true;
+      } else {
+        radioButton.checked = false;
+      }
+    });
+  }
+
   get(child(dbRef, "Jobs/" + idToSearch)) // searchJobId is the form ID entered by the user
     .then((snapshot) => {
       if (snapshot.exists()) {
@@ -547,8 +563,7 @@ function readForm() {
         projectName.value = snapshot.val().ProjectName;
         projectProductOther.value = snapshot.val().ProjectProductOther;
         projectName.value = snapshot.val().ProjectName;
-        document.querySelector('input[name="newOrRepeat"]:checked').value =
-          snapshot.val().NewOrRepeat;
+        setRadioValue("newOrRepeat", snapshot.val().NewOrRepeat);
         productCode.value = snapshot.val().ProductCode;
         samplesRequired.value = snapshot.val().SamplesRequired;
         sampleRequiredDate.value = snapshot.val().SampleRequiredDate;
@@ -560,52 +575,34 @@ function readForm() {
         cupSizeOptions.value = snapshot.val().CupSizeOptions;
         cupBaseColour.value = snapshot.val().CupBaseColour;
         cupPantoneReference.value = snapshot.val().CupPantoneReference;
-        document.querySelector(
-          'input[name="cupCoatedOrUncoated"]:checked'
-        ).value = snapshot.val().CupCoatedOrUncoated;
+        setRadioValue("cupCoatedOrUncoated", snapshot.val().CupCoatedOrUncoated);
         cupDecorationOptions.value = snapshot.val().CupDecorationOptions;
         cupDecoration.value = snapshot.val().CupDecoration;
-        document.querySelector(
-          'input[name="cupArtworkCompletedBy"]:checked'
-        ).value = snapshot.val().CupArtworkCompletedBy;
+        setRadioValue("cupArtworkCompletedBy", snapshot.val().CupArtworkCompletedBy);
         cupMouldBaseOptions.value = snapshot.val().CupMouldBaseOptions;
         cupMouldBaseOther.value = snapshot.val().CupMouldBaseOther;
 
         // Sleeve details
-        document.querySelector('input[name="sleeveRequired"]:checked').value =
-          snapshot.val().SleeveRequired;
-        document.querySelector('input[name="sleeveSize"]:checked').value =
-          snapshot.val().SleeveSize;
+        setRadioValue("sleeveRequired", snapshot.val().SleeveRequired);
+        setRadioValue("sleeveSize", snapshot.val().SleeveSize);
         sleeveSizeOptions.value = snapshot.val().SleeveSizeOptions;
         sleeveBaseColour.value = snapshot.val().SleeveBaseColour;
         sleevePantoneReference.value = snapshot.val().SleevePantoneReference;
-        document.querySelector(
-          'input[name="sleeveCoatedOrUncoated"]:checked'
-        ).value = snapshot.val().SleeveCoatedOrUncoated;
-        document.querySelector(
-          'input[name="sleeveArtworkCompletedBy"]:checked'
-        ).value = snapshot.val().SleeveArtworkCompletedBy;
-        snapshot.val().SleeveArtworkCompletedBy;
+        setRadioValue("sleeveCoatedOrUncoated", snapshot.val().SleeveCoatedOrUncoated);
+        setRadioValue("sleeveArtworkCompletedBy", snapshot.val().SleeveArtworkCompletedBy);
         sleeveMouldOptions.value = snapshot.val().SleeveMouldOptions;
         sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
-        document.querySelector('input[name="sleeveEmbossing"]:checked').value =
-          snapshot.val().SleeveEmbossing;
-
-        document.querySelector('input[name="sleeveOverprint"]:checked').value =
-          snapshot.val().SleeveOverprint;
+        setRadioValue("sleeveEmbossing", snapshot.val().SleeveEmbossing);
+        setRadioValue("sleeveOverprint", snapshot.val().SleeveOverprint);
         sleeveOverprintDetails.value = snapshot.val().SleeveOverprintDetails;
 
         // Lid details
-        document.querySelector('input[name="lidRequired"]:checked').value =
-          snapshot.val().LidRequired;
-        document.querySelector('input[name="lidSize"]:checked').value =
-          snapshot.val().LidSize;
+        setRadioValue("lidRequired", snapshot.val().LidRequired);
+        setRadioValue("lidSize", snapshot.val().LidSize);
         lidSizeOptions.value = snapshot.val().LidSizeOptions;
         lidBaseColour.value = snapshot.val().LidBaseColour;
         lidPantoneReference.value = snapshot.val().LidPantoneReference;
-        document.querySelector(
-          'input[name="lidCoatedOrUncoated"]:checked'
-        ).value = snapshot.val().LidCoatedOrUncoated;
+        setRadioValue("lidCoatedOrUncoated", snapshot.val().LidCoatedOrUncoated);
         lidMouldOptions.value = snapshot.val().LidMouldOptions;
         lidMouldOther.value = snapshot.val().LidMouldOther;
 
@@ -613,33 +610,23 @@ function readForm() {
 
         packagingTypeOptions.value = snapshot.val().PackagingTypeOptions;
         packagingTypeOther.value = snapshot.val().PackagingTypeOther;
-        document.querySelector(
-          'input[name="packagingCutterGuide"]:checked'
-        ).value = snapshot.val().PackagingCutterGuide;
+        setRadioValue("packagingCutterGuide", snapshot.val().PackagingCutterGuide);
         packagingCutterGuideOther.value =
           snapshot.val().PackagingCutterGuideOther;
-        document.querySelector(
-          'input[name="packagingPrintType"]:checked'
-        ).value = snapshot.val().PackagingPrintType;
+        setRadioValue("packagingPrintType", snapshot.val().PackagingPrintType);
         packagingPrintTypeDetails.value =
           snapshot.val().PackagingPrintTypeDetails;
-        document.querySelector(
-          'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
-        ).value = snapshot.val().PackaagingPrintTypeCoatedOrUncoated;
-        snapshot.val().PackaagingPrintTypeCoatedOrUncoated;
+        setRadioValue("packagingPrintTypeCoatedOrUncoated",
+          snapshot.val().PackagingPrintTypeCoatedOrUncoated);
         packagingPaperStock.value = snapshot.val().PackagingPaperStock;
         packagingPaperStockOther.value =
           snapshot.val().PackagingPaperStockOther;
-        document.querySelector(
-          'input[name="packagingArtworkCompletedBy"]:checked'
-        ).value = snapshot.val().PackagingArtworkCompletedBy;
-        snapshot.val().PackagingArtworkCompletedBy;
+        setRadioValue("packagingArtworkCompletedBy",
+          snapshot.val().PackagingArtworkCompletedBy);
         packagingOuterCartonMarkings.value =
           snapshot.val().PackagingOuterCartonMarkings;
-        document.querySelector(
-          'input[name="packagingBarcodeRequired"]:checked'
-        ).value = snapshot.val().PackagingBarcodeRequired;
-        snapshot.val().PackagingBarcodeRequired;
+        setRadioValue("packagingBarcodeRequired",
+          snapshot.val().PackagingBarcodeRequired);
         packagingBarcodeDetails.value = snapshot.val().PackagingBarcodeDetails;
 
         // Extra notes (optional)
@@ -877,7 +864,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
   const packagingPrintTypeDetails = document.getElementById(
     "packagingPrintTypeDetails"
   ).value;
-  const packaagingPrintTypeCoatedOrUncoated = document.querySelector(
+  const packagingPrintTypeCoatedOrUncoated = document.querySelector(
     'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
   ).value;
 
@@ -1209,7 +1196,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
     startY + lineHeight * 32
   );
   doc.text(
-    `Packaging Print Type Coated or Uncoated: ${packaagingPrintTypeCoatedOrUncoated}`,
+    `Packaging Print Type Coated or Uncoated: ${packagingPrintTypeCoatedOrUncoated}`,
     column3X,
     startY + lineHeight * 33
   );
