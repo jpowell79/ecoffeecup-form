@@ -21,9 +21,14 @@ body {
 .extraNotes {
   display: flex;
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 80px;
   margin-bottom: 20px;
 
+}
+
+.button-section {
+  margin-left: 80px;
+  margin-bottom: 50px;
 }
 
 /* Define the CSS class for the wider textarea */
@@ -33,7 +38,7 @@ body {
 
 .column {
   flex: 1; /* Adjust the flex value to control the width of the columns */
-  margin-right: 1px; /* Adjust the margin as needed to create space between columns */
+  margin-right: 70px; /* Adjust the margin as needed to create space between columns */
 }
 
 /* Clear the right margin of the last column in each details-section */
@@ -44,16 +49,43 @@ body {
 /* Header styles */
 h1 {
   text-align: center;
-  background-color: darkblue; /* Dark blue background color */
+  background-color: #1f153a; /* Dark blue background color */
   color: #fff; /* White text color */
   padding: 10px;
   position: relative; /* Enable positioning of child elements */
 }
 
+.search-header {
+  text-align: left;
+  background-color: #1f153a; /* Dark blue background color */
+  color: #fff; /* White text color */
+  padding: 10px; /* Reduce padding to make the section smaller vertically */
+  position: relative; /* Enable positioning of child elements */
+}
+
+/* Style for label and input */
+label {
+  font-size: 14px; /* Adjust font size for the label */
+}
+
+input[type="number"] {
+  font-size: 14px; /* Adjust font size for the input field */
+  padding: 5px; /* Add padding to the input field for better spacing */
+  width: 80px; /* Adjust the width of the input field as needed */
+}
+
+/* Style for the button (if needed) */
+button {
+  font-size: 14px; /* Adjust font size for the button */
+  padding: 2px 2px; /* Adjust padding as needed */
+}
+
 /* Header styles */
 h2 {
-  text-align: center;
-  background-color: darkblue; /* Dark blue background color */
+  text-align: left;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #1f153a; /* Dark blue background color */
   color: #fff; /* White text color */
   padding: 3px;
   position: relative; /* Enable positioning of child elements */
@@ -74,18 +106,30 @@ label {
 }
 
 /* Header section styles */
-.header {
-  background-color: #333;
+.header h2 {
+  margin-top: 0; /* Remove top margin */
+  margin-bottom: 10px; /* Adjust the bottom margin as needed */
+  padding-top: 5px; /* Adjust the top padding as needed */
+  padding-bottom: 5px; /* Adjust the bottom padding as needed */
+  background-color: #1f153a;
   color: #fff;
-  padding: 10px;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
 
 /* Small header section styles */
 .smallHeader {
-  background-color: gray; /* Use the same background color as h1 */
+  background-color: #1f153a; /* Use the same background color as h1 */
+  font-size: 16px;
   color: #fff; /* White text color */
   padding: 2px;
   text-align: center; /* Center-align the text */
-  width: calc(75% - 5px); /* Adjust the width to make it narrower */
+  width: calc(100% - 50px); /* Adjust the width to make it narrower */
   margin: 19px 0px; /* Add margin for spacing */
+}
+
+/* Style for disabled fieldset */
+fieldset:disabled {
+  color: #d9d9d9; /* Light grey text color */
+  pointer-events: none; /* Disable pointer events (no interaction) */
 }
