@@ -12,13 +12,28 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 80px;
+  font-size: 12px;
 }
 
-/* Styles for each column */
+.extraNotes {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-bottom: 20px;
+
+}
+
+/* Define the CSS class for the wider textarea */
+.wider-textarea {
+  width: 30%; /* Adjust the width as needed */
+}
+
 .column {
-  flex: 1;
-  margin-right: 10px; /* Adjust the margin as needed to create space between columns */
+  flex: 1; /* Adjust the flex value to control the width of the columns */
+  margin-right: 1px; /* Adjust the margin as needed to create space between columns */
 }
 
 /* Clear the right margin of the last column in each details-section */
@@ -71,6 +86,6 @@ label {
   color: #fff; /* White text color */
   padding: 2px;
   text-align: center; /* Center-align the text */
-  width: calc(50% - 5px); /* Adjust the width to make it narrower */
-  margin: 2px 0; /* Add margin for spacing */
+  width: calc(75% - 5px); /* Adjust the width to make it narrower */
+  margin: 19px 0px; /* Add margin for spacing */
 }
