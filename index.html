@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js"></script>
+  <script type="module" src="script.js"></script>
   <link rel="stylesheet" href="style.css"> <!-- Link to your style.css file -->
 
-  <title>My Form</title>
+  <title>Ecoffee Cup Project Request Form</title>
 </head>
 <body>
 
   <h1>
-    Product Request Form
-    <img src="logo.webp" alt="Logo" id="logo">
+    Ecoffee Cup Project Request Form
+    <img src="logo.png" alt="Logo" id="logo">
   </h1>
 
 
@@ -31,31 +32,40 @@
       <!-- Column 1 -->
     <div class="column">
 
+      <!-- Job ID Field -->
+      <label for="jobId">Job ID:</label>
+      <input type="number" id="jobId" name="jobId" min="1" step="1" required><br><br>
+
       <!-- Date Selector -->
-      <label for="date">Date of Brief:</label>
-      <input type="date" id="date" name="date"><br><br>
+      <label for="todaysDate">Date of Brief:</label>
+      <input type="date" id="todaysDate" name="todaysDate"><br><br>
 
       <!-- Customer Name Field -->
-      <label for="name">Customer Name:</label>
-      <input type="text" id="name" name="name" required><br><br>
+      <label for="customerName">Customer Name:</label>
+      <input type="text" id="customerName" name="customerName" required><br><br>
 
-      <!-- Factory Dropdown Option -->
+      <!-- Project Product Dropdown Option -->
       <!-- Add More or edit as required -->
-      <label for="factory">Factory:</label>
-      <select id="factory" name="factory">
-        <option value="factory1">Changhong</option>
-        <option value="factory2">Hafei</option>
-        <option value="factory3">Inspur</option>
-        <option value="factory4">Joyoung</option>      
+      <label for="projectProduct">Product:</label>
+      <select id="projectProduct" name="projectProduct">
+        <option value="projectProduct1">1. Nova</option>
+        <option value="projectProduct2">2. Kora</option>
+        <option value="projectProduct3">3. 800 Series</option>
+        <option value="projectProduct4">4. HCV</option>      
+        <option value="projectProduct4">5. other (please specify)</option> 
       </select><br><br>
 
+      <!-- Project Product Other Field -->
+      <label for="projectProductOther">If Other, please specify:</label>
+      <input type="text" id="projectProductOther" name="projectProductOther"><br><br>
+      
       <!-- Project Name -->
       <label for="projectName">Project Name:</label>
       <input type="text" id="projectName" name="projectName" required><br><br>
 
-      <!-- Job Number Field -->
+      <!-- Job Number Field
       <label for="jobNumber">Job Number:</label>
-      <input type="number" id="jobNumber" name="jobNumber" min="1" step="1" required><br><br>
+      <input type="number" id="jobNumber" name="jobNumber" min="1" step="1" required><br><br> -->
     
   </div>
 
@@ -65,19 +75,30 @@
 
     <!-- New or Repeat Project radio button -->
     <!-- value of "new" will be the default -->
-    <label>New or Repeat Project:</label><br>
-    <input type="radio" id="new" name="newOrRepeat" value="new" checked>
+    <h4>New or Repeat Project:</h4>
+    <input type="radio" id="new" name="newOrRepeat" value="New" checked>
     <label for="new">New</label><br>
-    <input type="radio" id="repeat" name="newOrRepeat" value="repeat">
+    <input type="radio" id="repeat" name="newOrRepeat" value="Repeat">
     <label for="repeat">Repeat</label><br><br>
 
     <!-- Product Code -->
     <label for="productCode">Product Code:</label>
-    <input type="text" id="productCode" name="productCode" required><br><br>
+    <input type="number" id="productCode" name="productCode" required><br><br>
 
     <!-- Sample Required Information -->
-    <label for="sampleRequired">Sample Required Information:</label><br>
-    <input type="text" id="sampleRequired" name="sampleRequired" required><br><br>
+    <label for="samplesRequired">Number of Samples Required:</label>
+    <select id="samplesRequired" name="samplesRequired">
+      <option value="samplesRequired1">1</option>
+      <option value="samplesRequired2">2</option>
+      <option value="samplesRequired3">3</option>
+      <option value="samplesRequired4">4</option>      
+      <option value="samplesRequired5">5</option> 
+      <option value="samplesRequired6">6</option>
+      <option value="samplesRequired7">7</option>
+      <option value="samplesRequired8">8</option>
+      <option value="samplesRequired9">9</option>      
+      <option value="samplesRequired10">10</option> 
+    </select><br><br>
 
     <!-- Sample Required Date -->
     <label for="sampleRequiredDate">Sample Required Date:</label>
@@ -119,116 +140,186 @@
     </div>
 
     <!-- Cup Size dropdown option-->
-    <label for="cupSize">Cup Size (Volume):</label>
+    <label for="cupSize">Cup Volume and Size:</label>
     <select id="cupSize" name="cupSize">
-      <option value="XS">XS - 120ml / 4oz</option>
-      <option value="S">S - 250ml / 8oz</option>
-      <option value="M">M - 350ml / 12oz</option>
-      <option value="XM">XM - 400 ml / 14oz</option>
-      <option value="L">L - 475ml / 16oz</option>
+      <option value="cupSize1">1. 6oz</option>
+      <option value="cupSize2">2. HCV</option>
+      <option value="cupSize3">3. Other</option>
+    </select><br><br>
+
+    <!-- Cup Size dropdown option-->
+    <label for="cupSizeOptions">If other, please select:</label>
+    <select id="cupSizeOptions" name="cupSizeOptions">
+      <option value="cupSizeOption1"></option>
+      <option value="cupSizeOption2">S - 250ml / 8oz</option>
+      <option value="cupSizeOption3">M - 350ml / 12oz</option>
+      <option value="cupSizeOption4">XM - 400 ml / 14oz</option>
+      <option value="cupSizeOption5">L - 475ml / 16oz</option>
+      <option value="cupSizeOption6">XS - 120ml / 4oz</option>
+      <option value="cupSizeOption7">S - 250ml / 8oz</option>
+      <option value="cupSizeOption8">M - 350ml / 12oz</option>
+      <option value="cupSizeOption9">XM - 400 ml / 14oz</option>
+      <option value="cupSizeOption10">L - 475ml / 16oz</option>
     </select><br><br>
 
     <!-- Cup Base Colour dropdown option-->
-    <label for="cupBaseColour">Cup Base Colour:</label>
-    <select id="cupBaseColour" name="cupBaseColour">
-      <option value="white">White</option>
-      <option value="black">Black</option>
-      <option value="red">Red</option>
-      <option value="blue">Blue</option>
-      <option value="green">Green</option>
-      <option value="yellow">Yellow</option>
-      <option value="orange">Orange</option>
-      <option value="purple">Purple</option>
-      <option value="pink">Pink</option>
-      <option value="brown">Brown</option>
-      <option value="grey">Grey</option>
+    <label for="cupBaseColour">Cup Base Colour:</label><br>
+    <input type="text" id="cupBaseColour" name="cupBaseColour" required><br><br>
+
+    <!-- Cup Pantone Reference-->
+    <label for="cupPantoneReference">Cup Pantone Reference:</label><br>
+    <input type="text" id="cupPantoneReference" name="cupPantoneReference" required><br><br>
+
+        <!-- New or Repeat Project radio button
+    value of "new" will be the default
+    <h4>New or Repeat Project:</h4> -->
+    <!-- <input type="radio" id="new" name="newOrRepeat" value="new" checked>
+    <label for="new">New</label><br>
+    <input type="radio" id="repeat" name="newOrRepeat" value="repeat">
+    <label for="repeat">Repeat</label><br><br>  -->
+
+<!-- Coated (C) or Uncoated (U) radio button options -->
+<!-- value of "coated" will be the default -->
+<h4>Coated (C) or Uncoated (U) ?:</h4>
+<input type="radio" id="cupCoated" name="cupCoatedOrUncoated" value="Coated" checked>
+<label for="cupCoated">Coated (C)</label><br>
+<input type="radio" id="cupUncoated" name="cupCoatedOrUncoated" value="Uncoated">
+<label for="cupUncoated">Uncoated (U)</label><br><br>
+
+    <!-- Cup Decoration option-->
+    <label for="cupDecorationOptions">Cup Decoration:</label>
+    <select id="cupDecorationOptions" name="cupDecorationOptions">
+      <option value="cupDecorationOptions1">1. Logo Print</option>
+      <option value="cupDecorationOptions2">2. Full Wrap</option>
+      <option value="cupDecorationOptions3">3. Undecorated</option>
+      <option value="cupDecorationOptions4">4. Other - Please Specify</option>
     </select><br><br>
 
-    <!-- Cup Decoration -->
-    <label for="cupDecoration">Cup Decoration:</label><br>
+    <!-- Cup Decoration details (other) -->
+    <label for="cupDecoration">If Other, please specify:</label><br>
     <input type="text" id="cupDecoration" name="cupDecoration" required><br><br>
 
-    <!-- Cup Artwork -->
-    <label for="cupArtwork">Cup Artwork:</label><br>
-    <input type="text" id="cupArtwork" name="cupArtwork" required><br><br>
-    
-    <!-- Cup Mould/Base -->
-    <label for="cupMouldBase">Cup Mould/Base:</label><br>
-    <input type="text" id="cupMouldBase" name="cupMouldBase" required><br><br>
+    <!-- Cup Artwork Options -->
+    <!-- value of "completed by client will be the default -->
+    <h4>Cup Artwork:</h4>
+    <input type="radio" id="cupArtworkCompletedByClient" name="cupArtworkCompletedBy" value="CLIENT" checked>
+    <label for="cupArtworkCompletedByClient">Completed by CLIENT</label><br>
+    <input type="radio" id="cupArtworkCompletedByEcoffeeCup" name="cupArtworkCompletedBy" value="Ecoffee Cup">
+    <label for="cupArtworkCompletedByEcoffeeCup">Completed by Ecoffee Cup</label><br><br>
 
-    <!-- Cup Extra Notes - set number of text rows -->
-    <label for="cupExtraNotes">Cup Extra Notes:</label><br>
-    <textarea id="cupExtraNotes" name="cupExtraNotes" rows="4" required></textarea><br><br>
+   
+    <!-- Cup Mould/Base options-->
+    <label for="cupMouldBaseOptions">Cup Mould/Base:</label>
+    <select id="cupMouldBaseOptions" name="cupMouldBaseOptions">
+      <option value="cupMouldBaseOption1">1. Standard Ecoffee Cup</option>
+      <option value="cupMouldBaseOption2">2. Standard blank</option>
+      <option value="cupMouldBaseOption3">3. Silk-screen printed </option> 
+      <option value="cupMouldBaseOption4">4. other (please specify)</option>
+    </select><br><br>
+
+    <!-- Cup Mould/Base details (other) -->
+    <label for="cupMouldBaseOther">If Other, please specify:</label><br>
+    <input type="text" id="cupMouldBaseOther" name="cupMouldBaseOther" required><br><br>
+
 
 
     <!-- Sleeve Details -->
+
 
     <div class="smallHeader">
       <h3>Silicone Sleeve</h3>
       </div>
 
+    <!-- Sleeve Required?-->
+    <!-- Includes options of "Yes" or "No" -->
+    <!-- value of "No" will be the default -->
+    <h4>Sleeve Required:</h4>
+    <input type="radio" id="sleeveRequiredYes" name="sleeveRequired" value="Yes">
+    <label for="sleeveRequiredYes">Yes</label><br>
+    <input type="radio" id="sleeveRequiredNo" name="sleeveRequired" value="No" checked>
+    <label for="sleeveRequiredNo">No</label><br><br>
+
+    <!--Sleeve Size radio option-->
+    <!-- Includes options of "6oz" or "other" -->
+    <!-- value of "6oz" will be the default -->
+    <h4>Sleeve Size:</h4>
+    <input type="radio" id="sleeve6oz" name="sleeveSize" value="6oz" checked>
+    <label for="sleeve6oz">6oz</label><br>
+    <input type="radio" id="sleeveOther" name="sleeveSize" value="Other">
+    <label for="sleeveOther">Other (please select below)</label><br><br>
 
     <!-- Sleeve Size dropdown option-->
-    <label for="sleeveSize">Sleeve Size:</label>
-    <select id="sleeveSize" name="sleeveSize">
-      <option value="XS">XS - 120ml / 4oz</option>
-      <option value="S">S - 250ml / 8oz</option>
-      <option value="M">M - 350ml / 12oz</option>
-      <option value="XM">XM - 400 ml / 14oz</option>
-      <option value="L">L - 475ml / 16oz</option>
+    <label for="sleeveSizeOptions">Sleeve Size options:</label>
+    <select id="sleeveSizeOptions" name="sleeveSizeOptions">
+      <option value="sleeveSizeOption1"></option>
+      <option value="sleeveSizeOption2">XS - 120ml / 4oz</option>
+      <option value="sleeveSizeOption3">S - 250ml / 8oz</option>
+      <option value="sleeveSizeOption4">M - 350ml / 12oz</option>
+      <option value="sleeveSizeOption5">XM - 400 ml / 14oz</option>
+      <option value="sleeveSizeOption6">L - 475ml / 16oz</option>
     </select><br><br>
 
     <!-- Sleeve Base Colour dropdown option-->
-    <label for="sleeveBaseColour">Sleeve Base Colour:</label>
-    <select id="sleeveBaseColour" name="sleeveBaseColour">
-      <option value="white">White</option>
-      <option value="black">Black</option>
-      <option value="red">Red</option>
-      <option value="blue">Blue</option>
-      <option value="green">Green</option>
-      <option value="yellow">Yellow</option>
-      <option value="orange">Orange</option>
-      <option value="purple">Purple</option>
-      <option value="pink">Pink</option>
-      <option value="brown">Brown</option>
-      <option value="grey">Grey</option>
+    <label for="sleeveBaseColour">Sleeve Base Colour:</label><br>
+    <input type="text" id="sleeveBaseColour" name="sleeveBaseColour" required><br><br>
+
+    <!-- Sleeve Pantone Reference-->
+    <label for="sleevePantoneReference">Sleeve Pantone Reference:</label><br>
+    <input type="text" id="sleevePantoneReference" name="sleevePantoneReference" required><br><br>
+
+    <!-- Sleeve Coated (C) or Uncoated (U) radio button options -->
+    <!-- value of "coated" will be the default -->
+    <h4>Coated (C) or Uncoated (U) ?:</h4>
+    <input type="radio" id="sleeveCoated" name="sleeveCoatedOrUncoated" value="Coated" checked>
+    <label for="sleeveCoated">Coated (C)"</label><br>
+    <input type="radio" id="sleeveUncoated" name="sleeveCoatedOrUncoated" value="Uncoated">
+    <label for="sleeveUncoated">Uncoated (U)</label><br><br>
+
+    <!-- Sleeve Artwork radio option-->
+    <!-- Includes options of "completed by client" or "completed by Ecoffee Cup" -->
+    <!-- value of "completed by client" will be the default -->
+    <h4>Sleeve Artwork:</h4>
+    <input type="radio" id="sleeveArtworkCompletedByCompletedByClient" name="sleeveArtworkCompletedBy" value="CLIENT" checked>
+    <label for="sleeveArtworkCompletedByCompletedByClient">Completed by CLIENT</label><br>
+    <input type="radio" id="sleeveArtworkCompletedByECoffeeCup" name="sleeveArtworkCompletedBy" value="Ecoffee Cup">
+    <label for="sleeveArtworkCompletedByECoffeeCup">Completed by Ecoffee Cup</label><br><br>
+    
+    <!-- Sleeve Mould options-->
+    <label for="sleeveMouldOptions">Cup Mould/Base:</label>
+    <select id="sleeveMouldOptions" name="sleeveMouldOptions">
+      <option value="sleeveMouldOption1">1. Standard Ecoffee Cup</option>
+      <option value="sleeveMouldOption2">2. Standard blank</option>
+      <option value="sleeveMouldOption3">3. other (please specify)</option>
     </select><br><br>
 
-    <!-- Sleeve Artwork -->
-    <label for="sleeveArtwork">Sleeve Artwork:</label><br>
-    <input type="text" id="sleeveArtwork" name="sleeveArtwork" required><br><br>
-
-    <!-- Sleeve Mould -->
-    <label for="sleeveMould">Sleeve Mould:</label><br>
-    <input type="text" id="sleeveMould" name="sleeveMould" required><br><br>
+    <!-- Sleeve Mould details (other) -->
+    <label for="sleeveMouldOther">If Other, please specify:</label><br>
+    <input type="text" id="sleeveMouldOther" name="sleeveMouldOther" required><br><br>
 
     <!-- Sleeve Embossing raadio button -->
     <!-- Includes options of "Emboss", "Deboss", or "N/A" -->
     <!-- value of "N/A" will be the default -->
-    <label>Embossing:</label><br>
-    <input type="radio" id="emboss" name="embossing" value="emboss">
-    <label for="emboss">Emboss</label><br>
-    <input type="radio" id="deboss" name="embossing" value="deboss">
-    <label for="deboss">Deboss</label><br>
-    <input type="radio" id="na" name="embossing" value="na" checked>
+    <h4>Embossing:</h4>
+    <input type="radio" id="na" name="sleeveEmbossing" value="N/A" checked>
     <label for="na">N/A</label><br><br>
+    <input type="radio" id="emboss" name="sleeveEmbossing" value="Emboss">
+    <label for="emboss">Emboss</label><br>
+    <input type="radio" id="deboss" name="sleeveEmbossing" value="Deboss">
+    <label for="deboss">Deboss</label><br>
 
     <!-- Sleeve Overprint required? -->
     <!-- Includes options of "Yes" or "No" -->
     <!-- value of "No" will be the default -->
-    <label>Overprint Required:</label><br>
-    <input type="radio" id="yes" name="overprint" value="yes">
-    <label for="yes">Yes</label><br>
-    <input type="radio" id="no" name="overprint" value="no" checked>
-    <label for="no">No</label><br><br>
+    <h4>Overprint Required:</h4>
+    <input type="radio" id="sleeveOverprintYes" name="sleeveOverprint" value="Yes">
+    <label for="sleeveOverprintYes">Yes</label><br>
+    <input type="radio" id="sleeveOverprintNo" name="sleeveOverprint" value="No" checked>
+    <label for="sleeveOverprintNo">No</label><br><br>
 
     <!-- Sleeve Overprint details (if applicable) -->
-    <label for="overprintDetails">Overprint Details:</label><br>
-    <input type="text" id="overprintDetails" name="overprintDetails"><br><br>
+    <label for="sleeveOverprintDetails">Overprint Details:</label><br>
+    <input type="text" id="sleeveOverprintDetails" name="sleeveOverprintDetails"><br><br>
     
-    <!-- Sleeve Extra Notes - set number of text rows -->
-    <label for="sleeveExtraNotes">Sleeve Extra Notes:</label><br>
-    <textarea id="sleeveExtraNotes" name="sleeveExtraNotes" rows="4" required></textarea><br><br>
 
     </div>
 
@@ -245,45 +336,64 @@
       <h3>Lid</h3>
       </div>
 
+    <!-- Lid Required?-->
+    <!-- Includes options of "Yes" or "No" -->
+    <!-- value of "No" will be the default -->
+    <h4>Lid Required:</h4>
+    <input type="radio" id="lidRequiredYes" name="lidRequired" value="Yes">
+    <label for="lidRequiredYes">Yes</label><br>
+    <input type="radio" id="lidRequiredNo" name="lidRequired" value="No" checked>
+    <label for="lidRequiredNo">No</label><br><br>
+
+    <!--Lid Size radio option-->
+    <!-- Includes options of "6oz" or "other" -->
+    <!-- value of "6oz" will be the default -->
+    <h4>Lid Size:</h4>
+    <input type="radio" id="lid6oz" name="lidSize" value="6oz" checked>
+    <label for="lid6oz">6oz</label><br>
+    <input type="radio" id="lidOther" name="lidSize" value="Other">
+    <label for="lidOther">Other (please select below)</label><br><br>
+
     <!-- Lid Size dropdown option-->
-    <label for="lidSize">Lid Size:</label>
-    <select id="lidSize" name="lidSize">
-      <option value="XS">XS - 120ml / 4oz</option>
-      <option value="S">S - 250ml / 8oz</option>
-      <option value="M">M - 350ml / 12oz</option>
-      <option value="XM">XM - 400 ml / 14oz</option>
-      <option value="L">L - 475ml / 16oz</option>
+    <label for="lidSizeOptions">Lid Size:</label>
+    <select id="lidSizeOptions" name="lidSizeOptions">
+      <option value="lidSizeOption1">XS - 120ml / 4oz</option>
+      <option value="lidSizeOption2">S - 250ml / 8oz</option>
+      <option value="lidSizeOption3">M - 350ml / 12oz</option>
+      <option value="lidSizeOption4">XM - 400 ml / 14oz</option>
+      <option value="lidSizeOptions">L - 475ml / 16oz</option>
     </select><br><br>
 
     <!-- Lid Base Colour dropdown option-->
-    <label for="lidBaseColour">Lid Base Colour:</label>
-    <select id="lidBaseColour" name="lidBaseColour">
-      <option value="white">White</option>
-      <option value="black">Black</option>
-      <option value="red">Red</option>
-      <option value="blue">Blue</option>
-      <option value="green">Green</option>
-      <option value="yellow">Yellow</option>
-      <option value="orange">Orange</option>
-      <option value="purple">Purple</option>
-      <option value="pink">Pink</option>
-      <option value="brown">Brown</option>
-      <option value="grey">Grey</option>
+    <label for="lidBaseColour">Lid Base Colour:</label><br>
+    <input type="text" id="lidBaseColour" name="lidBaseColour" required><br><br>
+
+    <!-- Lid Pantone Reference-->
+    <label for="lidPantoneReference">Lid Pantone Reference:</label><br>
+    <input type="text" id="lidPantoneReference" name="lidPantoneReference" required><br><br>
+
+    <!-- Lid Coated (C) or Uncoated (U) radio button options -->
+    <!-- value of "coated" will be the default -->
+    <h4>Coated (C) or Uncoated (U) ?:</h4>
+    <input type="radio" id="lidCoated" name="lidCoatedOrUncoated" value="Coated" checked>
+    <label for="lidCoated">Coated (C)"</label><br>
+    <input type="radio" id="lidUncoated" name="lidCoatedOrUncoated" value="Uncoated">
+    <label for="lidUncoated">Uncoated (U)</label><br><br>
+
+
+    <!-- Lid Mould options-->
+    <label for="lidMouldOptions">Lid Mould:</label>
+    <select id="lidMouldOptions" name="lidMouldOptions">
+      <option value="lidMouldOption1">1. Standard Ecoffee Cup</option>
+      <option value="lidMouldOption2">2. Standard blank</option>
+      <option value="lidMouldOptions">3. other (please specify)</option>
     </select><br><br>
 
-    <!-- Lid Mould -->  
-    <label for="lidMould">Lid Mould:</label><br>
-    <input type="text" id="lidMould" name="lidMould" required><br><br>
+    <!-- Lid Mould details (other) -->
+    <label for="lidMouldOther">If Other, please specify:</label><br>
+    <input type="text" id="lidMouldOther" name="lidMouldOther" required><br><br>
 
-    <!-- Lid Artwork -->
-    <label for="lidArtwork">Lid Artwork:</label><br>
-    <input type="text" id="lidArtwork" name="lidArtwork" required><br><br>
-
-    <!-- Lid Extra Notes - set number of text rows -->
-    <label for="lidExtraNotes">Lid Extra Notes:</label><br>
-    <textarea id="lidExtraNotes" name="lidExtraNotes" rows="4" required></textarea><br><br>
-
-   
+  
 
     <!-- Packaging Details -->
 
@@ -291,70 +401,132 @@
       <h3>Packaging</h3>
       </div>
 
-    <!-- Individual Box required? -->
+
+    <!-- Packaging Type options-->
+    <label for="packagingTypeOptions">Packaging Type:</label>
+    <select id="packagingTypeOptions" name="packagingTypeOptions">
+      <option value="packagingTypeOption1">1. Box</option>
+      <option value="packagingTypeOption2">2. Cardboard Sleeve</option>
+      <option value="packagingTypeOption3">3. other (please specify)</option>
+    </select><br><br>
+
+    <!-- Packaging Type details (other) -->
+    <label for="packagingTypeOther">If Other, please specify:</label><br>
+    <input type="text" id="packagingTypeOther" name="packagingTypeOther" required><br><br>
+    
+    <!-- Packaging Cutter Guide radio options -->
+    <!-- Includes options of "standard Ecoffee Cup" or "Other" -->
+    <!-- value of "standard Ecoffee Cup" will be the default -->
+    <h4>Packaging Cutter Guide:</h4>
+    <input type="radio" id="standardEcoffeeCup" name="packagingCutterGuide" value="Standard Ecoffee Cup" checked>
+    <label for="standardEcoffeeCup">Standard Ecoffee Cup</label><br>
+    <input type="radio" id="other" name="packagingCutterGuide" value="Other">
+    <label for="other">Other (please specify)</label><br><br>
+
+   <!--Packaging Cutter Guide option details-->
+    <label for="packagingCutterGuideOther">If Other, please specify:</label><br>
+    <input type="text" id="packagingCutterGuideOther" name="packagingCutterGuideOther" required><br><br>
+
+    <!-- Packaging Colour Process Radio Options -->
+    <!-- Includes options of "CMYK" or "Pantone" -->
+    <!-- value of "CMYK" will be the default -->
+    <h4>Packaging Print Type:</h4>
+    <input type="radio" id="fourColour" name="packagingPrintType" value="4-Colour" checked>
+    <label for="fourColour">4-Colour</label><br>
+    <input type="radio" id="pantone" name="packagingPrintType" value="Pantone">
+    <label for="pantone">Pantone</label><br><br>
+
+    <!-- Packaging Colour Process details-->
+    <label for="packagingPrintTypeDetails">If Pantone, please specify:</label><br>
+    <input type="text" id="packagingPrintTypeDetails" name="packagingPrintTypeDetails" required><br><br>
+
+    <!-- Packaging Colour Coated (C) or Uncoated (U) radio button options -->
+    <!-- value of "coated" will be the default -->
+    <h4>If Pantone, then Coated (C) or Uncoated (U) ?:</h4>
+    <input type="radio" id="packagingCoated" name="packagingPrintTypeCoatedOrUncoated" value="Coated" checked>
+    <label for="packagingCoated">Coated (C)"</label><br>
+    <input type="radio" id="packagingUncoated" name="packagingPrintTypeCoatedOrUncoated" value="Uncoated">
+    <label for="packagingUncoated">Uncoated (U)</label><br><br>
+
+    
+    <!-- Packaging Paper Stock Options-->
+    <label for="packagingPaperStock">Packaging Paper Stock:</label>
+    <select id="packagingPaperStock" name="packagingPaperStock">
+      <option value="packagingPaperStock">1. standard ECC White (200gsm)</option>
+      <option value="packagingPaperStock">2. Standard ECC Kraft (200gsm)</option>
+      <option value="packagingPaperStock">3. other (please specify)</option>
+    </select><br><br>
+
+    <!-- Packaging Paper Stock details (other) -->
+    <label for="packagingPaperStockOther">If Other, please specify:</label><br>
+    <input type="text" id="packagingPaperStockOther" name="packagingPaperStockOther" required><br><br>
+
+
+    <!-- Packaging Artwork radio options-->
+    <!-- Includes options of "completed by client" or "completed by Ecoffee Cup" -->
+    <!-- value of "completed by client" will be the default -->
+    <h4">Packaging Artwork:</h4>
+    <input type="radio" id="packagingArtworkCompletedByClient" name="packagingArtworkCompletedBy" value="CLIENT" checked>
+    <label for="packagingArtworkCompletedByClient">Completed by CLIENT</label><br>
+    <input type="radio" id="packagingArtworkCompletedByECoffeeCup" name="packagingArtworkCompletedBy" value="Ecoffee Cup">
+    <label for="packagingArtworkCompletedByECoffeeCup">Completed by Ecoffee Cup</label><br><br>
+    
+    <!-- Packaging Barcode radio option-->
     <!-- Includes options of "Yes" or "No" -->
     <!-- value of "No" will be the default -->
-    <label>Individual Box Required:</label><br>
-    <input type="radio" id="yes" name="individualBox" value="yes">
-    <label for="yes">Yes</label><br>
-    <input type="radio" id="no" name="individualBox" value="no" checked>
-    <label for="no">No</label><br><br>
+    <h4>Barcode Required:</h4>
+    <input type="radio" id="packagingBarcodeRequiredYes" name="packagingBarcodeRequired" value="Yes">
+    <label for="packagingBarcodeRequiredYes">Yes</label><br>
+    <input type="radio" id="packagingBarcodeRequiredNo" name="packagingBarcodeRequired" value="No" checked>
+    <label for="packagingBarcodeRequiredNo">No</label><br><br>
 
-    <!-- Individual Cardboard Sleeve required? -->
-    <!-- Includes options of "Yes" or "No" -->
-    <!-- value of "No" will be the default -->
-    <label>Individual Cardboard Sleeve Required:</label><br>
-    <input type="radio" id="yes" name="individualCardboardSleeve" value="yes">
-    <label for="yes">Yes</label><br>
-    <input type="radio" id="no" name="individualCardboardSleeve" value="no" checked>
-    <label for="no">No</label><br><br>
+    <!-- Packaging Barcode details (if applicable) -->
+    <label for="packagingBarcodeDetails">Barcode Number (if applicable):</label><br>
+    <input type="number" id="packagingBarcodeDetails" name="packagingBarcodeDetails"><br><br>
 
-    <!-- Packaging Cutter Guide -->
-    <label for="packagingCutterGuide">Packaging Cutter Guide:</label><br>
-    <input type="text" id="packagingCutterGuide" name="packagingCutterGuide" required><br><br>
+    <!-- Packaging Outer Carton Markings options -->
+    <label for="packagingOuterCartonMarkings">Packaging Outer Carton Markings:</label>
+    <select id="packagingOuterCartonMarkings" name="packagingOuterCartonMarkings">
+      <option value="packagingOuterCartonMarkings1">1. Standard Ecoffee Cup</option>
+      <option value="packagingOuterCartonMarkings2">2. Standard blank</option>
+      <option value="packagingOuterCartonMarkings3">3. other (please specify)</option>
+    </select><br><br>
 
-    <!-- Packaging Print Information -->
-    <label for="packagingPrintInformation">Packaging Print Information:</label><br>
-    <input type="text" id="packagingPrintInformation" name="packagingPrintInformation" required><br><br>
+    <!-- Packaging Outer Carton Markings details (other) -->
+    <label for="packagingOuterCartonMarkingsOther">If Other, please specify:</label><br>
+    <input type="text" id="packagingOuterCartonMarkingsOther" name="packagingOuterCartonMarkingsOther" required><br><br>
 
-    <!-- Packaging Paper Stock -->
-    <label for="packagingPaperStock">Packaging Paper Stock:</label><br>
-    <input type="text" id="packagingPaperStock" name="packagingPaperStock" required><br><br>
+  </div>  
+  </div>
 
-    <!-- Packaging Artwork -->
-    <label for="packagingArtwork">Packaging Artwork:</label><br>
-    <input type="text" id="packagingArtwork" name="packagingArtwork" required><br><br>
+      <!-- End of Product Details Section -->
 
-    <!-- Packaging Colour -->
-    <label for="packagingColour">Packaging Colour:</label><br>
-    <input type="text" id="packagingColour" name="packagingColour" required><br><br>
+    <!-- Extra Notes - set number of text rows -->
+    <label for="extraNotes">Extra Notes: (Optional)</label><br>
+    <textarea id="extraNotes" name="extraNotes" rows="10" required></textarea><br><br>
 
-    <!-- Packaging Outer Carton Markings -->
-    <label for="packagingOuterCartonMarkings">Packaging Outer Carton Markings:</label><br>
-    <input type="text" id="packagingOuterCartonMarkings" name="packagingOuterCartonMarkings" required><br><br>
+    <!-- End of Form -->
 
-    <!-- Packaging Barcode -->
-    <label for="packagingBarcode">Packaging Barcode:</label><br>
-    <input type="text" id="packagingBarcode" name="packagingBarcode" required><br><br>
+    <!-- Save Form and update Database--> 
+    <br><br>
+    
+    <button type="button" id="saveToDatabase">Save Form to Database</button>
+    <button type="button" id="updateDatabase">Update Form on Database</button>
+    <button type="button" id="deleteFromDatabase">Delete Current Form from Database</button>
 
-    <!-- Packaging Extra Notes - set number of text rows -->
-    <label for="packagingExtraNotes">Packaging Extra Notes:</label><br>
-    <textarea id="packagingExtraNotes" name="packagingExtraNotes" rows="4" required></textarea><br><br>
+    <br><br>
 
-    </div>  
-    </div>
+    <button type="button" id="saveAsPDF">Save Form as PDF</button>
 
-    <!-- End of Product Details Section -->
+    <br><br>
+    
+    <!-- Search for Job ID-->
+    <label for="searchJobId">Search for Job ID:</label>
+    <input type="number" id="searchJobId" name="searchJobId" min="1" step="1" required>
+    <button type="button" id="searchDatabase">Search Database</button>
 
-
-
-
-    <!-- Save Form as a PDF --> 
-    <button type="button" id="saveAsPDF">Save as PDF</button>
 
   </form>
-
-  <script src="script.js"></script>
 
 </body>
 </html>
