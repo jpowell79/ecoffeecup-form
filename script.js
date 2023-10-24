@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const packagingPrintTypeDetails = document.getElementById(
     "packagingPrintTypeDetails"
   ).value;
-  const packagingPrintTypeCoatedOrUncoated = document.querySelector(
+  const packaagingPrintTypeCoatedOrUncoated = document.querySelector(
     'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
   ).value;
 
@@ -187,7 +187,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const extraNotes = document.getElementById("extraNotes").value;
 });
 
-import { pack } from "html2canvas/dist/types/css/types/color";
 // connect to firebase ///////////////////////////////////////////////////////////////////////////
 
 // Import the functions you need from the SDKs you need
@@ -311,7 +310,7 @@ function createForm() {
       'input[name="packagingPrintType"]:checked'
     ).value,
     PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
-    PackagingPrintTypeCoatedOrUncoated: document.querySelector(
+    PackaagingPrintTypeCoatedOrUncoated: document.querySelector(
       'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
     ).value,
     PackagingPaperStock: packagingPaperStock.value,
@@ -348,6 +347,9 @@ function createForm() {
 
       // Disable the delete button
       document.getElementById("deleteFromDatabase").disabled = true;
+
+      // Move focus back to the top of the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
     })
     .catch((error) => {
       alert(error);
@@ -448,7 +450,7 @@ function updateForm() {
         'input[name="packagingPrintType"]:checked'
       ).value,
       PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
-      PackagingPrintTypeCoatedOrUncoated: document.querySelector(
+      PackaagingPrintTypeCoatedOrUncoated: document.querySelector(
         'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
       ).value,
       PackagingPaperStock: packagingPaperStock.value,
@@ -529,21 +531,6 @@ function readForm() {
   const dbRef = ref(db);
   let idToSearch = document.getElementById("searchJobId").value;
 
-  // Function to correctly set the value of a radio button
-  function setRadioValue(radioGroupName, value) {
-    const radioButtons = document.querySelectorAll(
-      `input[name="${radioGroupName}"]`
-    );
-
-    radioButtons.forEach((radioButton) => {
-      if (radioButton.value === value) {
-        radioButton.checked = true;
-      } else {
-        radioButton.checked = false;
-      }
-    });
-  }
-
   get(child(dbRef, "Jobs/" + idToSearch)) // searchJobId is the form ID entered by the user
     .then((snapshot) => {
       if (snapshot.exists()) {
@@ -563,7 +550,24 @@ function readForm() {
         projectName.value = snapshot.val().ProjectName;
         projectProductOther.value = snapshot.val().ProjectProductOther;
         projectName.value = snapshot.val().ProjectName;
-        setRadioValue("newOrRepeat", snapshot.val().NewOrRepeat);
+
+        // Get all radio buttons with the name "newOrRepeat"
+        const newOrRepeatValue = snapshot.val().NewOrRepeat;
+
+        // Get all radio buttons with the name "newOrRepeat"
+        const radioButtons = document.querySelectorAll(
+          'input[name="newOrRepeat"]'
+        );
+
+        // Iterate through the radio buttons
+        radioButtons.forEach((radioButton) => {
+          if (radioButton.value === newOrRepeatValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         productCode.value = snapshot.val().ProductCode;
         samplesRequired.value = snapshot.val().SamplesRequired;
         sampleRequiredDate.value = snapshot.val().SampleRequiredDate;
@@ -575,34 +579,236 @@ function readForm() {
         cupSizeOptions.value = snapshot.val().CupSizeOptions;
         cupBaseColour.value = snapshot.val().CupBaseColour;
         cupPantoneReference.value = snapshot.val().CupPantoneReference;
-        setRadioValue("cupCoatedOrUncoated", snapshot.val().CupCoatedOrUncoated);
+
+        // Get all radio buttons with the name "cupCoatedOrUncoated"
+        const cupCoatedOrUncoatedValue = snapshot.val().CupCoatedOrUncoated;
+
+        // Get all radio buttons with the name "cupCoatedOrUncoated"
+        const cupCoatedOrUncoatedRadioButtons = document.querySelectorAll(
+          'input[name="cupCoatedOrUncoated"]'
+        );
+
+        // Iterate through the radio buttons
+        cupCoatedOrUncoatedRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === cupCoatedOrUncoatedValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         cupDecorationOptions.value = snapshot.val().CupDecorationOptions;
         cupDecoration.value = snapshot.val().CupDecoration;
-        setRadioValue("cupArtworkCompletedBy", snapshot.val().CupArtworkCompletedBy);
+
+        // Get all radio buttons with the name "cupArtworkCompletedBy"
+        const cupArtworkCompletedByValue = snapshot.val().CupArtworkCompletedBy;
+
+        // Get all radio buttons with the name "cupArtworkCompletedBy"
+        const cupArtworkCompletedByRadioButtons = document.querySelectorAll(
+          'input[name="cupArtworkCompletedBy"]'
+        );
+
+        // Iterate through the radio buttons
+        cupArtworkCompletedByRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === cupArtworkCompletedByValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         cupMouldBaseOptions.value = snapshot.val().CupMouldBaseOptions;
         cupMouldBaseOther.value = snapshot.val().CupMouldBaseOther;
 
         // Sleeve details
-        setRadioValue("sleeveRequired", snapshot.val().SleeveRequired);
-        setRadioValue("sleeveSize", snapshot.val().SleeveSize);
+
+        // Get all radio buttons with the name "sleeveRequired"
+        const sleeveRequiredValue = snapshot.val().SleeveRequired;
+
+        // Get all radio buttons with the name "sleeveRequired"
+        const sleeveRequiredRadioButtons = document.querySelectorAll(
+          'input[name="sleeveRequired"]'
+        );
+
+        // Iterate through the radio buttons
+        sleeveRequiredRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === sleeveRequiredValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
+        // Get the Sleeve section
+        const sleeveSection = document.getElementById("sleeve-section");
+
+        // If sleeveRequired is "No", disable the Sleeve section
+        if (sleeveRequiredValue === "No") {
+          sleeveSection.disabled = true;
+        } else {
+          sleeveSection.disabled = false;
+        }
+
+        // Get all radio buttons with the name "sleeveSize"
+        const sleeveSizeValue = snapshot.val().SleeveSize;
+
+        // Get all radio buttons with the name "sleeveSize"
+        const sleeveSizeRadioButtons = document.querySelectorAll(
+          'input[name="sleeveSize"]'
+        );
+
+        // Iterate through the radio buttons
+        sleeveSizeRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === sleeveSizeValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         sleeveSizeOptions.value = snapshot.val().SleeveSizeOptions;
         sleeveBaseColour.value = snapshot.val().SleeveBaseColour;
         sleevePantoneReference.value = snapshot.val().SleevePantoneReference;
-        setRadioValue("sleeveCoatedOrUncoated", snapshot.val().SleeveCoatedOrUncoated);
-        setRadioValue("sleeveArtworkCompletedBy", snapshot.val().SleeveArtworkCompletedBy);
+
+        // Get all radio buttons with the name "sleeveCoatedOrUncoated"
+        const sleeveCoatedOrUncoatedValue =
+          snapshot.val().SleeveCoatedOrUncoated;
+
+        // Get all radio buttons with the name "sleeveCoatedOrUncoated"
+        const sleeveCoatedOrUncoatedRadioButtons = document.querySelectorAll(
+          'input[name="sleeveCoatedOrUncoated"]'
+        );
+
+        // Iterate through the radio buttons
+        sleeveCoatedOrUncoatedRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === sleeveCoatedOrUncoatedValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
+        // Get all radio buttons with the name "sleeveArtworkCompletedBy"
+        const sleeveArtworkCompletedByValue =
+          snapshot.val().SleeveArtworkCompletedBy;
+
+        // Get all radio buttons with the name "sleeveArtworkCompletedBy"
+        const sleeveArtworkCompletedByRadioButtons = document.querySelectorAll(
+          'input[name="sleeveArtworkCompletedBy"]'
+        );
+
+        // Iterate through the radio buttons
+        sleeveArtworkCompletedByRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === sleeveArtworkCompletedByValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         sleeveMouldOptions.value = snapshot.val().SleeveMouldOptions;
         sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
-        setRadioValue("sleeveEmbossing", snapshot.val().SleeveEmbossing);
-        setRadioValue("sleeveOverprint", snapshot.val().SleeveOverprint);
+
+        // Get all radio buttons with the name "sleeveEmbossing"
+        const sleeveEmbossingValue = snapshot.val().SleeveEmbossing;
+
+        // Get all radio buttons with the name "sleeveEmbossing"
+        const sleeveEmbossingRadioButtons = document.querySelectorAll(
+          'input[name="sleeveEmbossing"]'
+        );
+
+        // Iterate through the radio buttons
+        sleeveEmbossingRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === sleeveEmbossingValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
+        // Get all radio buttons with the name "sleeveOverprint"
+        const sleeveOverprintValue = snapshot.val().SleeveOverprint;
+
+        // Get all radio buttons with the name "sleeveOverprint"
+        const sleeveOverprintRadioButtons = document.querySelectorAll(
+          'input[name="sleeveOverprint"]'
+        );
+
+        // Iterate through the radio buttons
+        sleeveOverprintRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === sleeveOverprintValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         sleeveOverprintDetails.value = snapshot.val().SleeveOverprintDetails;
 
         // Lid details
-        setRadioValue("lidRequired", snapshot.val().LidRequired);
-        setRadioValue("lidSize", snapshot.val().LidSize);
+
+        // Get all radio buttons with the name "lidRequired"
+        const lidRequiredValue = snapshot.val().LidRequired;
+
+        // Get all radio buttons with the name "lidRequired"
+        const lidRequiredRadioButtons = document.querySelectorAll(
+          'input[name="lidRequired"]'
+        );
+
+        // Iterate through the radio buttons
+        lidRequiredRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === lidRequiredValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
+        // If lidRequired is "No", disable the Sleeve section
+        if (lidRequiredValue === "No") {
+          lidSection.disabled = true;
+        } else {
+          lidSection.disabled = false;
+        }
+
+        // Get all radio buttons with the name "lidSize"
+        const lidSizeValue = snapshot.val().LidSize;
+
+        // Get all radio buttons with the name "lidSize"
+        const lidSizeRadioButtons = document.querySelectorAll(
+          'input[name="lidSize"]'
+        );
+
+        // Iterate through the radio buttons
+        lidSizeRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === lidSizeValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         lidSizeOptions.value = snapshot.val().LidSizeOptions;
         lidBaseColour.value = snapshot.val().LidBaseColour;
         lidPantoneReference.value = snapshot.val().LidPantoneReference;
-        setRadioValue("lidCoatedOrUncoated", snapshot.val().LidCoatedOrUncoated);
+
+        // Get all radio buttons with the name "lidCoatedOrUncoated"
+        const lidCoatedOrUncoatedValue = snapshot.val().LidCoatedOrUncoated;
+
+        // Get all radio buttons with the name "lidCoatedOrUncoated"
+        const lidCoatedOrUncoatedRadioButtons = document.querySelectorAll(
+          'input[name="lidCoatedOrUncoated"]'
+        );
+
+        // Iterate through the radio buttons
+        lidCoatedOrUncoatedRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === lidCoatedOrUncoatedValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         lidMouldOptions.value = snapshot.val().LidMouldOptions;
         lidMouldOther.value = snapshot.val().LidMouldOther;
 
@@ -610,23 +816,113 @@ function readForm() {
 
         packagingTypeOptions.value = snapshot.val().PackagingTypeOptions;
         packagingTypeOther.value = snapshot.val().PackagingTypeOther;
-        setRadioValue("packagingCutterGuide", snapshot.val().PackagingCutterGuide);
+
+        // Get all radio buttons with the name "packagingCutterGuide"
+        const packagingCutterGuideValue = snapshot.val().PackagingCutterGuide;
+
+        // Get all radio buttons with the name "packagingCutterGuide"
+        const packagingCutterGuideRadioButtons = document.querySelectorAll(
+          'input[name="packagingCutterGuide"]'
+        );
+
+        // Iterate through the radio buttons
+        packagingCutterGuideRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === packagingCutterGuideValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         packagingCutterGuideOther.value =
           snapshot.val().PackagingCutterGuideOther;
-        setRadioValue("packagingPrintType", snapshot.val().PackagingPrintType);
+
+        // Get all radio buttons with the name "packagingPrintType"
+        const packagingPrintTypeValue = snapshot.val().PackagingPrintType;
+
+        // Get all radio buttons with the name "packagingPrintType"
+        const packagingPrintTypeRadioButtons = document.querySelectorAll(
+          'input[name="packagingPrintType"]'
+        );
+
+        // Iterate through the radio buttons
+        packagingPrintTypeRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === packagingPrintTypeValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         packagingPrintTypeDetails.value =
           snapshot.val().PackagingPrintTypeDetails;
-        setRadioValue("packagingPrintTypeCoatedOrUncoated",
-          snapshot.val().PackagingPrintTypeCoatedOrUncoated);
+
+        // Get all radio buttons with the name "packagingPrintTypeCoatedOrUncoated"
+        const packagingPrintTypeCoatedOrUncoatedValue =
+          snapshot.val().PackaagingPrintTypeCoatedOrUncoated;
+
+        // Get all radio buttons with the name "packagingPrintTypeCoatedOrUncoated"
+        const packagingPrintTypeCoatedOrUncoatedRadioButtons =
+          document.querySelectorAll(
+            'input[name="packagingPrintTypeCoatedOrUncoated"]'
+          );
+
+        // Iterate through the radio buttons
+        packagingPrintTypeCoatedOrUncoatedRadioButtons.forEach(
+          (radioButton) => {
+            if (radioButton.value === packagingPrintTypeCoatedOrUncoatedValue) {
+              radioButton.checked = true; // Set the radio button as checked
+            } else {
+              radioButton.checked = false; // Uncheck other radio buttons with the same name
+            }
+          }
+        );
+
         packagingPaperStock.value = snapshot.val().PackagingPaperStock;
         packagingPaperStockOther.value =
           snapshot.val().PackagingPaperStockOther;
-        setRadioValue("packagingArtworkCompletedBy",
-          snapshot.val().PackagingArtworkCompletedBy);
+
+        // Get all radio buttons with the name "packagingArtworkCompletedBy"
+        const packagingArtworkCompletedByValue =
+          snapshot.val().PackagingArtworkCompletedBy;
+
+        // Get all radio buttons with the name "packagingArtworkCompletedBy"
+        const packagingArtworkCompletedByRadioButtons =
+          document.querySelectorAll(
+            'input[name="packagingArtworkCompletedBy"]'
+          );
+
+        // Iterate through the radio buttons
+        packagingArtworkCompletedByRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === packagingArtworkCompletedByValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
         packagingOuterCartonMarkings.value =
           snapshot.val().PackagingOuterCartonMarkings;
-        setRadioValue("packagingBarcodeRequired",
-          snapshot.val().PackagingBarcodeRequired);
+
+        // Get all radio buttons with the name "packagingBarcodeRequired"
+        const packagingBarcodeRequiredValue =
+          snapshot.val().PackagingBarcodeRequired;
+
+        // Get all radio buttons with the name "packagingBarcodeRequired"
+        const packagingBarcodeRequiredRadioButtons = document.querySelectorAll(
+          'input[name="packagingBarcodeRequired"]'
+        );
+
+        // Iterate through the radio buttons
+        packagingBarcodeRequiredRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === packagingBarcodeRequiredValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
+        snapshot.val().PackagingBarcodeRequired;
         packagingBarcodeDetails.value = snapshot.val().PackagingBarcodeDetails;
 
         // Extra notes (optional)
@@ -864,7 +1160,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
   const packagingPrintTypeDetails = document.getElementById(
     "packagingPrintTypeDetails"
   ).value;
-  const packagingPrintTypeCoatedOrUncoated = document.querySelector(
+  const packaagingPrintTypeCoatedOrUncoated = document.querySelector(
     'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
   ).value;
 
@@ -1196,7 +1492,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
     startY + lineHeight * 32
   );
   doc.text(
-    `Packaging Print Type Coated or Uncoated: ${packagingPrintTypeCoatedOrUncoated}`,
+    `Packaging Print Type Coated or Uncoated: ${packaagingPrintTypeCoatedOrUncoated}`,
     column3X,
     startY + lineHeight * 33
   );
