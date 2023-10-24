@@ -1,8 +1,6 @@
-// function to save form data to database ///////////////////////////////////////
-
 // unique identieir for each form
 document.addEventListener("DOMContentLoaded", () => {
-  const jobId = document.getElementById("jobId");
+  const jobId = document.getElementById("searchJobId");
 
   // Project Details
   const todaysDate = document.getElementById("todaysDate").value;
@@ -226,8 +224,7 @@ const db = getDatabase();
 // function to save form data to database ///////////////////////////////////////
 
 function createForm() {
-  console.log(jobId.value);
-
+  console.log("Initial jobId value: " + jobId.value);
   set(ref(db, "Jobs/" + jobId.value), {
     // Job ID
     JobId: jobId.value,
@@ -236,9 +233,7 @@ function createForm() {
     // Project details
 
     CustomerName: customerName.value,
-    // Email: email.value,
     ProjectName: projectName.value,
-    // JobNumber: jobNumber.value,
     ProjectProduct: projectProduct.value,
     ProjectProductOther: projectProductOther.value,
     ProjectName: projectName.value,
@@ -257,7 +252,7 @@ function createForm() {
     CupPantoneReference: cupPantoneReference.value,
     CupCoatedOrUncoated: document.querySelector(
       'input[name="cupCoatedOrUncoated"]:checked'
-    ),
+    ).value,
     CupDecorationOptions: cupDecorationOptions.value,
     CupDecoration: cupDecoration.value,
     CupArtworkCompletedBy: document.querySelector(
@@ -334,37 +329,29 @@ function createForm() {
     ExtraNotes: extraNotes.value,
   })
     .then(() => {
-      alert("Form successfully saved to database");
+      alert("Form successfully saved to the database");
+
+      // Increment the jobId
+
+      jobId.value = Number(jobId.value) + 1;
+      console.log("Job ID incremented to " + jobId.value);
+      let latestValue = jobId.value;
+
+      // Reset the form fields to their default/blank values
+      document.getElementById("productRequestForm").reset();
+      console.log("Form reset");
+
+      // Populate the jobId input field with the incremented value
+      document.getElementById("jobId").value = Number(latestValue);
+      console.log("New value on form is " + Number(latestValue));
+
+      // Disable the delete button
+      document.getElementById("deleteFromDatabase").disabled = true;
     })
     .catch((error) => {
       alert(error);
     });
 }
-
-// Check if the form with the given formId exists in the database
-function checkFormExistence(formId) {
-  const dbRef = ref(db, "Projects/" + formId);
-
-  return get(dbRef)
-    .then((snapshot) => snapshot.exists())
-    .catch((error) => false);
-}
-
-// // Function to enable/disable buttons based on form existence
-// function toggleButtons(formExists) {
-//   const saveToDatabaseBtn = document.getElementById("saveToDatabase");
-//   const updateDatabaseBtn = document.getElementById("updateDatabase");
-
-//   if (formExists) {
-//     // Form exists, disable "Save" and enable "Update"
-//     saveToDatabaseBtn.disabled = true;
-//     updateDatabaseBtn.disabled = false;
-//   } else {
-//     // Form doesn't exist, enable "Save" and disable "Update"
-//     saveToDatabaseBtn.disabled = false;
-//     updateDatabaseBtn.disabled = true;
-//   }
-// }
 
 // // When the page loads, check if the form exists and toggle buttons accordingly
 function updateForm() {
@@ -376,8 +363,108 @@ function updateForm() {
   if (confirmed) {
     // Proceed with updating the form
     set(ref(db, "Jobs/" + jobId.value), {
-      // Update the form data here
-      // ...
+      // Job ID
+      JobId: jobId.value,
+      TodaysDate: todaysDate.value,
+
+      // Project details
+
+      CustomerName: customerName.value,
+      ProjectName: projectName.value,
+      ProjectProduct: projectProduct.value,
+      ProjectProductOther: projectProductOther.value,
+      ProjectName: projectName.value,
+      NewOrRepeat: document.querySelector('input[name="newOrRepeat"]:checked')
+        .value,
+      ProductCode: productCode.value,
+      SamplesRequired: samplesRequired.value,
+      SampleRequiredDate: sampleRequiredDate.value,
+
+      // Product details
+
+      // Cup details
+      CupSize: cupSize.value,
+      CupSizeOptions: cupSizeOptions.value,
+      CupBaseColour: cupBaseColour.value,
+      CupPantoneReference: cupPantoneReference.value,
+      CupCoatedOrUncoated: document.querySelector(
+        'input[name="cupCoatedOrUncoated"]:checked'
+      ).value,
+      CupDecorationOptions: cupDecorationOptions.value,
+      CupDecoration: cupDecoration.value,
+      CupArtworkCompletedBy: document.querySelector(
+        'input[name="cupArtworkCompletedBy"]:checked'
+      ),
+      CupMouldBaseOptions: cupMouldBaseOptions.value,
+      CupMouldBaseOther: cupMouldBaseOther.value,
+
+      // Sleeve details
+      SleeveRequired: document.querySelector(
+        'input[name="sleeveRequired"]:checked'
+      ).value,
+      SleeveSize: document.querySelector('input[name="sleeveSize"]:checked')
+        .value,
+      SleeveSizeOptions: sleeveSizeOptions.value,
+      SleeveBaseColour: sleeveBaseColour.value,
+      SleevePantoneReference: sleevePantoneReference.value,
+      SleeveCoatedOrUncoated: document.querySelector(
+        'input[name="sleeveCoatedOrUncoated"]:checked'
+      ),
+      SleeveArtworkCompletedBy: document.querySelector(
+        'input[name="sleeveArtworkCompletedBy"]:checked'
+      ),
+      SleeveMouldOptions: sleeveMouldOptions.value,
+      SleeveMouldOther: sleeveMouldOther.value,
+      SleeveEmbossing: document.querySelector(
+        'input[name="sleeveEmbossing"]:checked'
+      ).value,
+      SleeveOverprint: document.querySelector(
+        'input[name="sleeveOverprint"]:checked'
+      ).value,
+      SleeveOverprintDetails: sleeveOverprintDetails.value,
+
+      // Lid details
+      LidRequired: document.querySelector('input[name="lidRequired"]:checked')
+        .value,
+      LidSize: document.querySelector('input[name="lidSize"]:checked').value,
+      LidSizeOptions: lidSizeOptions.value,
+      LidBaseColour: lidBaseColour.value,
+      LidPantoneReference: lidPantoneReference.value,
+      LidCoatedOrUncoated: document.querySelector(
+        'input[name="lidCoatedOrUncoated"]:checked'
+      ).value,
+      LidMouldOptions: lidMouldOptions.value,
+      LidMouldOther: lidMouldOther.value,
+
+      // Packaging details
+      PackagingTypeOptions: packagingTypeOptions.value,
+      PackagingTypeOther: packagingTypeOther.value,
+      PackagingCutterGuide: document.querySelector(
+        'input[name="packagingCutterGuide"]:checked'
+      ).value,
+      PackagingCutterGuideOther: packagingCutterGuideOther.value,
+      PackagingPrintType: document.querySelector(
+        'input[name="packagingPrintType"]:checked'
+      ).value,
+      PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
+      PackaagingPrintTypeCoatedOrUncoated: document.querySelector(
+        'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
+      ).value,
+      PackagingPaperStock: packagingPaperStock.value,
+      PackagingPaperStockOther: packagingPaperStockOther.value,
+      PackagingArtworkCompletedBy: document.querySelector(
+        'input[name="packagingArtworkCompletedBy"]:checked'
+      ).value,
+      PackagingOuterCartonMarkings: packagingOuterCartonMarkings.value,
+      PackagingOuterCartonMarkingsOther:
+        packagingOuterCartonMarkingsOther.value,
+      PackagingBarcodeRequired: document.querySelector(
+        'input[name="packagingBarcodeRequired"]:checked'
+      ).value,
+      PackagingBarcodeDetails: packagingBarcodeDetails.value,
+
+      // Extra notes (optional)
+      ExtraNotes: extraNotes.value,
     })
       .then(() => {
         alert("Job successfully updated in the database");
@@ -388,45 +475,80 @@ function updateForm() {
   }
 }
 
-// Function to toggle buttons based on form existence
-function toggleButtons(jobExists) {
-  // Implement your logic to enable or disable buttons here
-  // For example:
-  const updateButton = document.getElementById("updateDatabase");
-  if (jobExists) {
-    updateButton.disabled = false;
-  } else {
-    updateButton.disabled = true;
-  }
+// Function to fetch the latest jobId from your Firebase database
+function fetchLatestJobId() {
+  const dbRef = ref(db);
+
+  return get(child(dbRef, "Jobs")) // Assuming "Jobs" is the key where jobId is stored
+    .then((snapshot) => {
+      // Initialize jobIdPlusOne to 1 if no data exists in the "Jobs" node
+      if (!snapshot.exists()) {
+        return 1;
+      }
+
+      // Find the maximum jobId in the database and increment it by 1
+      let maxJobId = 0;
+      snapshot.forEach((childSnapshot) => {
+        const jobId = parseInt(childSnapshot.val().JobId);
+        if (jobId > maxJobId) {
+          maxJobId = jobId;
+        }
+      });
+
+      console.log("Max Job ID in the database: " + maxJobId); // Debug statement
+
+      return Number(maxJobId) + 1;
+    });
 }
 
-// When the page loads, check if the form exists and toggle buttons accordingly
-document.addEventListener("DOMContentLoaded", () => {
-  checkJobExistence(jobId.value).then((jobExists) => {
-    toggleButtons(jobExists);
-  });
-});
+// Function to populate the jobId input field with the latest jobId
+function populateJobIdField() {
+  fetchLatestJobId()
+    .then((latestJobId) => {
+      console.log("Latest Job ID fetched: " + latestJobId); // Debug statement
+
+      // Populate the jobId input field with the latest jobId
+      document.getElementById("jobId").value = latestJobId;
+
+      // Disable the "Update" and "Delete" buttons
+      document.getElementById("updateDatabase").disabled = true;
+      document.getElementById("deleteFromDatabase").disabled = true;
+    })
+    .catch((error) => {
+      console.error("Error fetching latest Job Id: " + error);
+    });
+}
+
+// Add an event listener to call populateJobIdField when the page loads
+window.addEventListener("load", populateJobIdField);
 
 // function to retrieve form data from database //////////////////////////////////
 function readForm() {
-  const searchJobId = document.getElementById("searchJobId");
+  // const searchJobId = document.getElementById("searchJobId");
   const dbRef = ref(db);
+  let idToSearch = document.getElementById("searchJobId").value;
 
-  get(child(dbRef, "Jobs/" + jobId.value)) // searchJobId is the form ID entered by the user
+  get(child(dbRef, "Jobs/" + idToSearch)) // searchJobId is the form ID entered by the user
     .then((snapshot) => {
       if (snapshot.exists()) {
+        // Enable the "Update" and "Delete" buttons
+        document.getElementById("updateDatabase").disabled = false;
+        document.getElementById("deleteFromDatabase").disabled = false;
+
+        // Disable the "Save" button
+        document.getElementById("saveToDatabase").disabled = true;
+
         jobId.value = snapshot.val().JobId;
         todaysDate.value = snapshot.val().TodaysDate;
 
         // Project details
         customerName.value = snapshot.val().CustomerName;
-        // email.value = snapshot.val().Email;
         projectProduct.value = snapshot.val().ProjectProduct;
         projectName.value = snapshot.val().ProjectName;
-        // jobNumber.value = snapshot.val().JobNumber;
         projectProductOther.value = snapshot.val().ProjectProductOther;
         projectName.value = snapshot.val().ProjectName;
-        newOrRepeat.value = snapshot.val().NewOrRepeat;
+        document.querySelector('input[name="newOrRepeat"]:checked').value =
+          snapshot.val().NewOrRepeat;
         productCode.value = snapshot.val().ProductCode;
         samplesRequired.value = snapshot.val().SamplesRequired;
         sampleRequiredDate.value = snapshot.val().SampleRequiredDate;
@@ -438,35 +560,52 @@ function readForm() {
         cupSizeOptions.value = snapshot.val().CupSizeOptions;
         cupBaseColour.value = snapshot.val().CupBaseColour;
         cupPantoneReference.value = snapshot.val().CupPantoneReference;
-        cupCoatedOrUncoated.value = snapshot.val().CupCoatedOrUncoated;
+        document.querySelector(
+          'input[name="cupCoatedOrUncoated"]:checked'
+        ).value = snapshot.val().CupCoatedOrUncoated;
         cupDecorationOptions.value = snapshot.val().CupDecorationOptions;
         cupDecoration.value = snapshot.val().CupDecoration;
-        cupArtworkCompletedBy.value = snapshot.val().CupArtworkCompletedBy;
+        document.querySelector(
+          'input[name="cupArtworkCompletedBy"]:checked'
+        ).value = snapshot.val().CupArtworkCompletedBy;
         cupMouldBaseOptions.value = snapshot.val().CupMouldBaseOptions;
         cupMouldBaseOther.value = snapshot.val().CupMouldBaseOther;
 
         // Sleeve details
-        sleeveRequired.value = snapshot.val().SleeveRequired;
-        sleeveSize.value = snapshot.val().SleeveSize;
+        document.querySelector('input[name="sleeveRequired"]:checked').value =
+          snapshot.val().SleeveRequired;
+        document.querySelector('input[name="sleeveSize"]:checked').value =
+          snapshot.val().SleeveSize;
         sleeveSizeOptions.value = snapshot.val().SleeveSizeOptions;
         sleeveBaseColour.value = snapshot.val().SleeveBaseColour;
         sleevePantoneReference.value = snapshot.val().SleevePantoneReference;
-        sleeveCoatedOrUncoated.value = snapshot.val().SleeveCoatedOrUncoated;
-        sleeveArtworkCompletedBy.value =
-          snapshot.val().SleeveArtworkCompletedBy;
+        document.querySelector(
+          'input[name="sleeveCoatedOrUncoated"]:checked'
+        ).value = snapshot.val().SleeveCoatedOrUncoated;
+        document.querySelector(
+          'input[name="sleeveArtworkCompletedBy"]:checked'
+        ).value = snapshot.val().SleeveArtworkCompletedBy;
+        snapshot.val().SleeveArtworkCompletedBy;
         sleeveMouldOptions.value = snapshot.val().SleeveMouldOptions;
         sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
-        sleeveEmbossing.value = snapshot.val().SleeveEmbossing;
-        sleeveOverprint.value = snapshot.val().SleeveOverprint;
+        document.querySelector('input[name="sleeveEmbossing"]:checked').value =
+          snapshot.val().SleeveEmbossing;
+
+        document.querySelector('input[name="sleeveOverprint"]:checked').value =
+          snapshot.val().SleeveOverprint;
         sleeveOverprintDetails.value = snapshot.val().SleeveOverprintDetails;
 
         // Lid details
-        lidRequired.value = snapshot.val().LidRequired;
-        lidSize.value = snapshot.val().LidSize;
+        document.querySelector('input[name="lidRequired"]:checked').value =
+          snapshot.val().LidRequired;
+        document.querySelector('input[name="lidSize"]:checked').value =
+          snapshot.val().LidSize;
         lidSizeOptions.value = snapshot.val().LidSizeOptions;
         lidBaseColour.value = snapshot.val().LidBaseColour;
         lidPantoneReference.value = snapshot.val().LidPantoneReference;
-        lidCoatedOrUncoated.value = snapshot.val().LidCoatedOrUncoated;
+        document.querySelector(
+          'input[name="lidCoatedOrUncoated"]:checked'
+        ).value = snapshot.val().LidCoatedOrUncoated;
         lidMouldOptions.value = snapshot.val().LidMouldOptions;
         lidMouldOther.value = snapshot.val().LidMouldOther;
 
@@ -474,23 +613,33 @@ function readForm() {
 
         packagingTypeOptions.value = snapshot.val().PackagingTypeOptions;
         packagingTypeOther.value = snapshot.val().PackagingTypeOther;
-        packagingCutterGuide.value = snapshot.val().PackagingCutterGuide;
+        document.querySelector(
+          'input[name="packagingCutterGuide"]:checked'
+        ).value = snapshot.val().PackagingCutterGuide;
         packagingCutterGuideOther.value =
           snapshot.val().PackagingCutterGuideOther;
-        packagingPrintType.value = snapshot.val().PackagingPrintType;
+        document.querySelector(
+          'input[name="packagingPrintType"]:checked'
+        ).value = snapshot.val().PackagingPrintType;
         packagingPrintTypeDetails.value =
           snapshot.val().PackagingPrintTypeDetails;
-        packaagingPrintTypeCoatedOrUncoated.value =
-          snapshot.val().PackaagingPrintTypeCoatedOrUncoated;
+        document.querySelector(
+          'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
+        ).value = snapshot.val().PackaagingPrintTypeCoatedOrUncoated;
+        snapshot.val().PackaagingPrintTypeCoatedOrUncoated;
         packagingPaperStock.value = snapshot.val().PackagingPaperStock;
         packagingPaperStockOther.value =
           snapshot.val().PackagingPaperStockOther;
-        packagingArtworkCompletedBy.value =
-          snapshot.val().PackagingArtworkCompletedBy;
+        document.querySelector(
+          'input[name="packagingArtworkCompletedBy"]:checked'
+        ).value = snapshot.val().PackagingArtworkCompletedBy;
+        snapshot.val().PackagingArtworkCompletedBy;
         packagingOuterCartonMarkings.value =
           snapshot.val().PackagingOuterCartonMarkings;
-        packagingBarcodeRequired.value =
-          snapshot.val().PackagingBarcodeRequired;
+        document.querySelector(
+          'input[name="packagingBarcodeRequired"]:checked'
+        ).value = snapshot.val().PackagingBarcodeRequired;
+        snapshot.val().PackagingBarcodeRequired;
         packagingBarcodeDetails.value = snapshot.val().PackagingBarcodeDetails;
 
         // Extra notes (optional)
@@ -498,48 +647,19 @@ function readForm() {
 
         console.log("Job Id exists");
         // Call toggleButtons to enable/disable buttons based on form existence
-        toggleButtons(true);
+        // toggleButtons(true);
       } else {
+        alert(`Job Id ${idToSearch} does not exist`);
         console.log("Job Id does not exist");
-        // Call toggleButtons to enable/disable buttons based on form non-existence
-        toggleButtons(false);
+        document.getElementById("saveToDatabase").disabled = false;
+        document.getElementById("updateDatabase").disabled = false;
+        document.getElementById("deleteFromDatabase").disabled = true;
       }
     })
     .catch((error) => {
       console.error(error);
     });
 }
-
-// Function to get the next available form ID
-// Check if the form with the given formId exists in the database
-function checkJobExistence(jobId) {
-  const dbRef = ref(db, "Jobs/" + jobId);
-
-  return get(dbRef)
-    .then((snapshot) => snapshot.exists())
-    .catch((error) => false);
-}
-
-// Function to get the next available form ID
-function getNextJobId() {
-  return checkJobExistence().then((highestJobId) => {
-    return highestJobId + 1; // Increment the highest Job ID by 1
-  });
-}
-
-// When the page loads, populate the "Job ID" input field
-document.addEventListener("DOMContentLoaded", () => {
-  const jobIdInput = document.getElementById("jobId");
-
-  // Call the function to get the next job ID
-  getNextJobId()
-    .then((nextJobId) => {
-      jobIdInput.value = nextJobId;
-    })
-    .catch((error) => {
-      console.error("Error populating Job ID:", error);
-    });
-});
 
 // function to delete form data from database ////////////////////////////////////
 function deleteForm() {
@@ -553,6 +673,19 @@ function deleteForm() {
     remove(ref(db, "Jobs/" + jobId.value))
       .then(() => {
         alert("Job successfully deleted from database");
+
+        // Reset the form fields to their default/blank values
+        document.getElementById("productRequestForm").reset();
+
+        // Disable the "Update" and "Delete" buttons
+        document.getElementById("updateDatabase").disabled = true;
+        document.getElementById("deleteFromDatabase").disabled = true;
+
+        // Enable the "Save" button
+        document.getElementById("saveToDatabase").disabled = false;
+
+        // change the job id to the next available job id
+        populateJobIdField();
       })
       .catch((error) => {
         alert(error);
@@ -571,9 +704,6 @@ const deleteFromDatabaseBtn = document.getElementById("deleteFromDatabase");
 
 // button to search database for form data //////////////////////////////////////
 const searchDatabaseBtn = document.getElementById("searchDatabase");
-
-// Form ID to search for ////////////////////////////////////////////////////////
-const searchJobId = document.getElementById("searchJobId").value;
 
 // function to save form data to database ///////////////////////////////////////
 
@@ -606,6 +736,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
   const newOrRepeat = document.querySelector(
     'input[name="newOrRepeat"]:checked'
   ).value;
+
   const productCode = document.getElementById("productCode").value;
 
   const samplesRequired =
@@ -659,7 +790,9 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
     'input[name="sleeveRequired"]:checked'
   ).value;
 
-  const sleeveSize = document.querySelector('input[name="sleeveSize"]:checked');
+  const sleeveSize = document.querySelector(
+    'input[name="sleeveSize"]:checked'
+  ).value;
 
   const sleeveSizeOptions =
     document.getElementById("sleeveSizeOptions").options[
@@ -1153,3 +1286,43 @@ const formattedDate2 = `${year2}-${month2}-${day2}`;
 
 // Set the default value of the date picker to 14 days from today
 document.getElementById("sampleRequiredDate").value = formattedDate2;
+
+// script to disable the sleeve and lid sections if they are not required
+
+// Sleeve Required radio button
+var sleeveRequiredYes = document.getElementById("sleeveRequiredYes");
+var sleeveRequiredNo = document.getElementById("sleeveRequiredNo");
+var sleeveSection = document.getElementById("sleeve-section");
+
+sleeveRequiredYes.addEventListener("change", function () {
+  if (sleeveRequiredYes.checked) {
+    // Enable the Sleeve section
+    sleeveSection.disabled = false;
+  }
+});
+
+sleeveRequiredNo.addEventListener("change", function () {
+  if (sleeveRequiredNo.checked) {
+    // Disable the Sleeve section
+    sleeveSection.disabled = true;
+  }
+});
+
+// Lid Required radio button
+var lidRequiredYes = document.getElementById("lidRequiredYes");
+var lidRequiredNo = document.getElementById("lidRequiredNo");
+var lidSection = document.getElementById("lid-section");
+
+lidRequiredYes.addEventListener("change", function () {
+  if (lidRequiredYes.checked) {
+    // Enable the Lid section
+    lidSection.disabled = false;
+  }
+});
+
+lidRequiredNo.addEventListener("change", function () {
+  if (lidRequiredNo.checked) {
+    // Disable the Lid section
+    lidSection.disabled = true;
+  }
+});
