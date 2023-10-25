@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js"></script>
-  <script type="module" src="script.js"></script>
+  
   <link rel="stylesheet" href="style.css"> <!-- Link to your style.css file -->
 
   <title>Ecoffee Cup Project Request Form</title>
@@ -14,14 +14,25 @@
 
 
   <h1>
-          <div class="search-header">
-          <!-- Search for Job ID-->
-          <label for="searchJobId">Search for Job ID:</label>
-          <input type="number" id="searchJobId" name="searchJobId" min="1" step="1" required>
-          <button type="button" id="searchDatabase">Search Database</button>
+    <div class="search-header">
+      <!-- Search for Job ID-->
+      <div class="centered-text">
+        Ecoffee Cup Project Request Form
+      </div>
 
+      <div class="navButtons">
+        <label for="searchJobId">Search for Job ID:</label>
+        <input type="number" id="searchJobId" name="searchJobId" min="1" step="1" required>
+        <button type="button" id="searchDatabase">Search Database</button>
+        <!-- Navigation buttons -->
+        <br>
+        <button type="button" id="prevForm" class="nav-button">Previous</button>
+        <button type="button" id="nextForm" class="nav-button">Next</button>
+        <br>
+        <span class="small-text">You can alway press F5 or refresh the page for a new job</span>
+      </div>
+    </div>
 
-    Ecoffee Cup Project Request Form
     <img src="logo.png" alt="Logo" id="logo">
   </h1>
 
@@ -191,9 +202,9 @@
     <!-- Cup Artwork Options -->
     <!-- value of "completed by client will be the default -->
     <h4>Cup Artwork:</h4>
-    <input type="radio" id="cupArtworkCompletedByClient" name="cupArtworkCompletedBy" value="CLIENT" checked>
+    <input type="radio" id="cupArtworkCompletedByClient" name="cupArtworkCompletedBy" value="Completed by CLIENT" checked>
     <label for="cupArtworkCompletedByClient">Completed by CLIENT</label><br>
-    <input type="radio" id="cupArtworkCompletedByEcoffeeCup" name="cupArtworkCompletedBy" value="Ecoffee Cup">
+    <input type="radio" id="cupArtworkCompletedByEcoffeeCup" name="cupArtworkCompletedBy" value="Completed by Ecoffee Cup">
     <label for="cupArtworkCompletedByEcoffeeCup">Completed by Ecoffee Cup</label><br><br>
 
    
@@ -262,18 +273,18 @@
     <!-- Sleeve Coated (C) or Uncoated (U) radio button options -->
     <!-- value of "coated" will be the default -->
     <h4>Coated (C) or Uncoated (U) ?:</h4>
-    <input type="radio" id="sleeveCoated" name="sleeveCoatedOrUncoated" value="Coated (C)" checked>
-    <label for="sleeveCoated">Coated (C)</label><br>
-    <input type="radio" id="sleeveUncoated" name="sleeveCoatedOrUncoated" value="Uncoated (U)">
-    <label for="sleeveUncoated">Uncoated (U)</label><br><br>
+    <input type="radio" id="sleeveCoated" name="sleeveCoatedOrUncoated" value="Sleeve Coated (C)" checked>
+    <label for="sleeveCoated">Sleeve Coated (C)</label><br>
+    <input type="radio" id="sleeveUncoated" name="sleeveCoatedOrUncoated" value="Sleeve Uncoated (U)">
+    <label for="sleeveUncoated">Sleeve Uncoated (U)</label><br><br>
 
     <!-- Sleeve Artwork radio option-->
     <!-- Includes options of "completed by client" or "completed by Ecoffee Cup" -->
     <!-- value of "completed by client" will be the default -->
     <h4>Sleeve Artwork:</h4>
-    <input type="radio" id="sleeveArtworkCompletedByCompletedByClient" name="sleeveArtworkCompletedBy" value="CLIENT" checked>
+    <input type="radio" id="sleeveArtworkCompletedByCompletedByClient" name="sleeveArtworkCompletedBy" value="Completed by CLIENT" checked>
     <label for="sleeveArtworkCompletedByCompletedByClient">Completed by CLIENT</label><br>
-    <input type="radio" id="sleeveArtworkCompletedByECoffeeCup" name="sleeveArtworkCompletedBy" value="Ecoffee Cup">
+    <input type="radio" id="sleeveArtworkCompletedByECoffeeCup" name="sleeveArtworkCompletedBy" value="Completed by Ecoffee Cup">
     <label for="sleeveArtworkCompletedByECoffeeCup">Completed by Ecoffee Cup</label><br><br>
     
     <!-- Sleeve Mould options-->
@@ -465,9 +476,9 @@
     <!-- Includes options of "completed by client" or "completed by Ecoffee Cup" -->
     <!-- value of "completed by client" will be the default -->
     <h4">Packaging Artwork:</h4>
-    <input type="radio" id="packagingArtworkCompletedByClient" name="packagingArtworkCompletedBy" value="CLIENT" checked>
+    <input type="radio" id="packagingArtworkCompletedByClient" name="packagingArtworkCompletedBy" value="Completed by CLIENT" checked>
     <label for="packagingArtworkCompletedByClient">Completed by CLIENT</label><br>
-    <input type="radio" id="packagingArtworkCompletedByECoffeeCup" name="packagingArtworkCompletedBy" value="Ecoffee Cup">
+    <input type="radio" id="packagingArtworkCompletedByECoffeeCup" name="packagingArtworkCompletedBy" value="Completed by Ecoffee Cup">
     <label for="packagingArtworkCompletedByECoffeeCup">Completed by Ecoffee Cup</label><br><br>
     
     <!-- Packaging Barcode radio option-->
@@ -546,5 +557,6 @@
 
   </form>
 
+<script type="module" src="script.js"></script>
 </body>
 </html>
