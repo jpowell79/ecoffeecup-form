@@ -2575,7 +2575,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       const logoImage = document.getElementById("logo");
 
       // Add the logo image to the PDF
-      const logoWidth = 30; // Adjust the width of the logo as needed
+      const logoWidth = 25; // Adjust the width of the logo as needed
       const logoHeight = (logoWidth * logoImage.height) / logoImage.width; // Maintain the aspect ratio
 
       // Get the page width and height
@@ -2596,7 +2596,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       // Define column widths and positions
       const column1X = 10; // Adjust this value as needed
       const column2X = 20; // Adjust this value as needed
-      const column3X = 105; // Adjust this value as needed
+      const column3X = 100; // Adjust this value as needed
       const column4X = 5;
       const startY = 10;
       const lineHeight = 5.5;
@@ -2609,14 +2609,26 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
 
       doc.setFontSize(14);
       doc.setFontStyle("bold");
+      doc.setTextColor(255, 255, 255); // White color
+
+      doc.setFillColor(31, 21, 58); // Light blue color
+      // 2px behind, then 1 less than text line height, 150px wide, 7.5px high
+      doc.rect(8, startY + lineHeight * 2, 150, 7.5, "F"); // 'F' stands for fill
 
       doc.text("Project Details", column1X, startY + lineHeight * 3);
 
+      doc.setTextColor(0, 0, 0); // Black color
       doc.setFontSize(8);
       doc.setFontStyle("normal");
 
+      // Assuming todaysDate is in the "YYYY-MM-DD" format
+      const dateParts = todaysDate.split("-"); // Split the date into parts
+      if (dateParts.length === 3) {
+        const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        doc.text(`Date: ${formattedDate}`, column2X, startY + lineHeight * 5);
+      }
+
       // Project Details
-      doc.text(`Date: ${todaysDate}`, column2X, startY + lineHeight * 5);
       doc.text(
         `Customer Name: ${customerName}`,
         column2X,
@@ -2652,16 +2664,29 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
         column3X,
         startY + lineHeight * 7
       );
-      doc.text(
-        `Sample Required Date: ${sampleRequiredDate}`,
-        column3X,
-        startY + lineHeight * 8
-      );
+
+      // Assuming todaysDate is in the "YYYY-MM-DD" format
+      const sampleDateParts = sampleRequiredDate.split("-"); // Split the date into parts
+      if (sampleDateParts.length === 3) {
+        const formattedDate = `${sampleDateParts[2]}-${sampleDateParts[1]}-${sampleDateParts[0]}`;
+        doc.text(`Date: ${formattedDate}`, column3X, startY + lineHeight * 8);
+      }
+
+      // doc.text(
+      //   `Sample Required Date: ${sampleRequiredDate}`,
+      //   column3X,
+      //   startY + lineHeight * 8
+      // );
 
       // Product Details
 
       doc.setFontSize(14);
       doc.setFontStyle("bold");
+      doc.setTextColor(255, 255, 255); // White color
+
+      doc.setFillColor(31, 21, 58); // Light blue color
+      // 2px behind, then 1 less than text line height, 150px wide, 7.5px high
+      doc.rect(8, startY + lineHeight * 10, 150, 7.5, "F"); // 'F' stands for fill
 
       doc.text("Product Details", column1X, startY + lineHeight * 11);
 
@@ -2669,71 +2694,79 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
 
       doc.setFontSize(12);
       doc.setFontStyle("bold");
+      doc.setTextColor(0, 0, 0); // Black color
+
+      doc.setTextColor(255, 255, 255); // White color
+
+      doc.setFillColor(31, 21, 58); // Light blue color
+      // 2px behind, then 1 less than text line height, 150px wide, 7.5px high
+      doc.rect(18, startY + lineHeight * 12, 55, 7.5, "F"); // 'F' stands for fill
 
       doc.text("Cup Details", column2X, startY + lineHeight * 13);
 
       doc.setFontSize(8);
       doc.setFontStyle("normal");
+      doc.setTextColor(0, 0, 0); // Black color
 
       doc.text(
         `Cup Size Option: ${cupSize}`,
         column2X,
-        startY + lineHeight * 14
+        startY + lineHeight * 15
       );
 
       doc.text(
         `If other, please specify: ${cupSizeOptions}`,
         column2X,
-        startY + lineHeight * 15
+        startY + lineHeight * 16
       );
       doc.text(
         `Cup Base Colour: ${cupBaseColour}`,
         column2X,
-        startY + lineHeight * 16
+        startY + lineHeight * 17
       );
       doc.text(
         `Cup Pantone Reference: ${cupPantoneReference}`,
         column2X,
-        startY + lineHeight * 17
+        startY + lineHeight * 18
       );
       doc.text(
         `Cup Coated or Uncoated: ${cupCoatedOrUncoated}`,
-        column2X,
-        startY + lineHeight * 18
-      );
-
-      doc.text(
-        `Cup Decoration Option: ${cupDecorationOptions}`,
         column2X,
         startY + lineHeight * 19
       );
 
       doc.text(
-        `If other, please specify: ${cupDecoration}`,
+        `Cup Decoration Option: ${cupDecorationOptions}`,
         column2X,
         startY + lineHeight * 20
       );
+
       doc.text(
-        `Cup Artwork Completed By: ${cupArtworkCompletedBy}`,
+        `If other, please specify: ${cupDecoration}`,
         column2X,
         startY + lineHeight * 21
       );
       doc.text(
-        `Cup Mould Base Option: ${cupMouldBaseOptions}`,
+        `Cup Artwork Completed By: ${cupArtworkCompletedBy}`,
         column2X,
         startY + lineHeight * 22
       );
-
       doc.text(
-        `Silk Screen Provided By: ${silkScreenProvidedBy}`,
+        `Cup Mould Base Option: ${cupMouldBaseOptions}`,
         column2X,
         startY + lineHeight * 23
       );
 
       doc.text(
-        `If other, please specify: ${cupMouldBaseOther}`,
+        `Silk Screen Provided By: ${silkScreenProvidedBy}`,
         column2X,
         startY + lineHeight * 24
+      );
+
+      doc.text(
+        `If other, please specify: ${cupMouldBaseOther}`,
+        column2X,
+        startY + lineHeight * 25
       );
 
       // Sleeve Details
@@ -2741,62 +2774,71 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       doc.setFontSize(12);
       doc.setFontStyle("bold");
 
-      doc.text("Sleeve Details", column2X, startY + lineHeight * 26);
+      doc.setTextColor(0, 0, 0); // Black color
+
+      doc.setTextColor(255, 255, 255); // White color
+
+      doc.setFillColor(31, 21, 58); // Light blue color
+      // 2px behind, then 1 less than text line height, 150px wide, 7.5px high
+      doc.rect(18, startY + lineHeight * 27, 55, 7.5, "F"); // 'F' stands for fill
+
+      doc.text("Sleeve Details", column2X, startY + lineHeight * 28);
 
       doc.setFontSize(8);
       doc.setFontStyle("normal");
+      doc.setTextColor(0, 0, 0); // Black color
 
       doc.text(
         `Sleeve Required: ${sleeveRequired}`,
         column2X,
-        startY + lineHeight * 27
+        startY + lineHeight * 30
       );
 
       doc.text(
         `Sleeve Size: ${sleeveSize}`,
         column2X,
-        startY + lineHeight * 28
+        startY + lineHeight * 31
       );
       doc.text(
         `Sleeve Base Colour: ${sleeveBaseColour}`,
         column2X,
-        startY + lineHeight * 29
+        startY + lineHeight * 32
       );
       doc.text(
         `Sleeve Pantone Reference: ${sleevePantoneReference}`,
         column2X,
-        startY + lineHeight * 30
+        startY + lineHeight * 33
       );
       doc.text(
         `Sleeve Coated or Uncoated: ${sleeveCoatedOrUncoated}`,
         column2X,
-        startY + lineHeight * 31
+        startY + lineHeight * 34
       );
       doc.text(
         `Sleeve Artwork Completed By: ${sleeveArtworkCompletedBy}`,
         column2X,
-        startY + lineHeight * 32
+        startY + lineHeight * 35
       );
       doc.text(
         `Sleeve Mould Option: ${sleeveMouldOptions}`,
         column2X,
-        startY + lineHeight * 33
+        startY + lineHeight * 36
       );
 
       doc.text(
         `Sleeve Embossing: ${sleeveEmbossing}`,
         column2X,
-        startY + lineHeight * 34
+        startY + lineHeight * 37
       );
       doc.text(
         `Sleeve Overprint: ${sleeveOverprint}`,
         column2X,
-        startY + lineHeight * 35
+        startY + lineHeight * 38
       );
       doc.text(
         `Sleeve Overprint Details: ${sleeveOverprintDetails}`,
         column2X,
-        startY + lineHeight * 36
+        startY + lineHeight * 39
       );
 
       // Lid Details
@@ -2804,46 +2846,53 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       doc.setFontSize(12);
       doc.setFontStyle("bold");
 
+      doc.setTextColor(255, 255, 255); // White color
+
+      doc.setFillColor(31, 21, 58); // Light blue color
+      // 2px behind, then 1 less than text line height, 150px wide, 7.5px high
+      doc.rect(98, startY + lineHeight * 12, 55, 7.5, "F"); // 'F' stands for fill
+
       doc.text("Lid Details", column3X, startY + lineHeight * 13);
 
       doc.setFontSize(8);
-      doc.setFontStyle("Normal");
+      doc.setFontStyle("normal");
+      doc.setTextColor(0, 0, 0); // Black color
 
       doc.text(
         `Lid Required: ${lidRequired}`,
         column3X,
-        startY + lineHeight * 14
+        startY + lineHeight * 15
       );
       // doc.text(`Lid Size Option: ${lidSize}`, column3X, startY + lineHeight * 15);
       doc.text(
         `Lid Size: ${lidSizeOptions}`,
         column3X,
-        startY + lineHeight * 15
+        startY + lineHeight * 16
       );
       doc.text(
         `Lid Mould Option: ${lidMouldOptions}`,
         column3X,
-        startY + lineHeight * 16
+        startY + lineHeight * 17
       );
       doc.text(
         `If other, please specify: ${lidMouldOther}`,
         column3X,
-        startY + lineHeight * 17
+        startY + lineHeight * 18
       );
       doc.text(
         `Lid Base Colour: ${lidBaseColour}`,
         column3X,
-        startY + lineHeight * 18
+        startY + lineHeight * 19
       );
       doc.text(
         `Lid Pantone Reference: ${lidPantoneReference}`,
         column3X,
-        startY + lineHeight * 19
+        startY + lineHeight * 20
       );
       doc.text(
         `Lid Coated or Uncoated: ${lidCoatedOrUncoated}`,
         column3X,
-        startY + lineHeight * 20
+        startY + lineHeight * 21
       );
 
       // Packaging Details
@@ -2851,99 +2900,106 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       doc.setFontSize(12);
       doc.setFontStyle("bold");
 
-      doc.text("Packaging Details", column3X, startY + lineHeight * 26);
+      doc.setTextColor(255, 255, 255); // White color
+
+      doc.setFillColor(31, 21, 58); // Light blue color
+      // 2px behind, then 1 less than text line height, 150px wide, 7.5px high
+      doc.rect(98, startY + lineHeight * 27, 55, 7.5, "F"); // 'F' stands for fill
+
+      doc.text("Packaging Details", column3X, startY + lineHeight * 28);
 
       doc.setFontSize(8);
       doc.setFontStyle("normal");
+      doc.setTextColor(0, 0, 0); // Black color
 
       doc.text(
         `Packaging Required: ${packagingRequired}`,
         column3X,
-        startY + lineHeight * 27
+        startY + lineHeight * 30
       );
 
       doc.text(
         `Packaging Type Option: ${packagingTypeOptions}`,
         column3X,
-        startY + lineHeight * 28
+        startY + lineHeight * 31
       );
       doc.text(
         `If other, please specify: ${packagingTypeOther}`,
         column3X,
-        startY + lineHeight * 29
+        startY + lineHeight * 32
       );
       doc.text(
         `Packaging Cutter Guide: ${packagingCutterGuide}`,
         column3X,
-        startY + lineHeight * 30
+        startY + lineHeight * 33
       );
       doc.text(
         `Packaging Cutter Guide Other: ${packagingCutterGuideOther}`,
         column3X,
-        startY + lineHeight * 31
+        startY + lineHeight * 34
       );
       doc.text(
         `Packaging Paper Stock Option: ${packagingPaperStock}`,
         column3X,
-        startY + lineHeight * 32
+        startY + lineHeight * 35
       );
       doc.text(
         `If other, please specify: ${packagingPaperStockOther}`,
         column3X,
-        startY + lineHeight * 33
+        startY + lineHeight * 36
       );
       doc.text(
         `Packaging Print Type: ${packagingPrintType}`,
         column3X,
-        startY + lineHeight * 34
+        startY + lineHeight * 37
       );
       doc.text(
         `Packaging Print Type Details: ${packagingPrintTypeDetails}`,
         column3X,
-        startY + lineHeight * 35
+        startY + lineHeight * 38
       );
       doc.text(
         `Packaging Print Type Coated or Uncoated: ${packagingPrintTypeCoatedOrUncoated}`,
         column3X,
-        startY + lineHeight * 36
+        startY + lineHeight * 39
       );
 
       doc.text(
         `Packaging Artwork Completed By: ${packagingArtworkCompletedBy}`,
         column3X,
-        startY + lineHeight * 37
+        startY + lineHeight * 40
       );
       doc.text(
         `Packaging Outer Carton Markings Option: ${packagingOuterCartonMarkings}`,
         column3X,
-        startY + lineHeight * 38
+        startY + lineHeight * 41
       );
       doc.text(
         `If other, pleaase specify: ${packagingOuterCartonMarkingsOther}`,
         column3X,
-        startY + lineHeight * 39
+        startY + lineHeight * 42
       );
       doc.text(
         `Packaging Barcode Required: ${packagingBarcodeRequired}`,
         column3X,
-        startY + lineHeight * 40
+        startY + lineHeight * 43
       );
       doc.text(
         `Packaging Barcode Details: ${packagingBarcodeDetails}`,
         column3X,
-        startY + lineHeight * 41
+        startY + lineHeight * 44
       );
 
       doc.setFontSize(14);
       doc.setFontStyle("bold");
 
-      doc.text("Extra Notes", column2X, startY + lineHeight * 44);
+      doc.text("Extra Notes", column2X, startY + lineHeight * 46);
 
       doc.setFontSize(8);
       doc.setFontStyle("normal");
 
       // Extra Notes (optional)
-      doc.text(`Notes: ${extraNotes}`, column2X, startY + lineHeight * 45);
+      doc.text(`Notes: ${extraNotes}`, column2X, startY + lineHeight * 47);
 
       // Save the PDF
       doc.save("productRequestForm.pdf");
