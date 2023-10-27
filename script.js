@@ -1,11 +1,7 @@
-// connect to firebase ///////////////////////////////////////////////////////////////////////////
-
-// Import the functions you need from the SDKs you need
+// connecting to firebase DB
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDArL2GYZ0obc2K1wl_lJGsNcsgZPirmd0",
   authDomain: "ecoffeecup-form.firebaseapp.com",
@@ -20,6 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+// Import functions required from the SDKs
 import {
   getDatabase,
   set,
@@ -32,163 +29,173 @@ import {
 
 const db = getDatabase();
 
+//////////////////////////////////////////////////////////////////////////////////////////
+
 // function to save form data to database ///////////////////////////////////////
 
 function createForm() {
-  console.log("Initial jobId value: " + jobId.value);
-  set(ref(db, "Jobs/" + jobId.value), {
-    // Job ID
-    JobId: jobId.value,
-    TodaysDate: todaysDate.value,
+  if (validateForm()) {
+    console.log("save to database button clicked");
 
-    // Project details
+    console.log("Initial jobId value: " + jobId.value);
+    set(ref(db, "Jobs/" + jobId.value), {
+      // Job ID
+      JobId: jobId.value,
+      TodaysDate: todaysDate.value,
 
-    CustomerName: customerName.value,
-    ProjectName: projectName.value,
-    ProjectProduct: projectProduct.value,
-    ProjectProductOther: projectProductOther.value,
-    ProjectName: projectName.value,
-    NewOrRepeat: document.querySelector('input[name="newOrRepeat"]:checked')
-      .value,
-    ProductCode: productCode.value,
-    SamplesRequired: samplesRequired.value,
-    SampleRequiredDate: sampleRequiredDate.value,
+      // Project details
 
-    // Product details
+      CustomerName: customerName.value,
+      ProjectName: projectName.value,
+      ProjectProduct: projectProduct.value,
+      ProjectProductOther: projectProductOther.value,
+      ProjectName: projectName.value,
+      NewOrRepeat: document.querySelector('input[name="newOrRepeat"]:checked')
+        .value,
+      ProductCode: productCode.value,
+      SamplesRequired: samplesRequired.value,
+      SampleRequiredDate: sampleRequiredDate.value,
 
-    // Cup details
-    CupSize: cupSize.value,
-    CupSizeOptions: cupSizeOptions.value,
-    CupBaseColour: cupBaseColour.value,
-    CupPantoneReference: cupPantoneReference.value,
-    CupCoatedOrUncoated: document.querySelector(
-      'input[name="cupCoatedOrUncoated"]:checked'
-    ).value,
-    CupDecorationOptions: cupDecorationOptions.value,
-    CupDecoration: cupDecoration.value,
-    CupArtworkCompletedBy: document.querySelector(
-      'input[name="cupArtworkCompletedBy"]:checked'
-    ).value,
-    CupMouldBaseOptions: cupMouldBaseOptions.value,
-    CupMouldBaseOther: cupMouldBaseOther.value,
+      // Product details
 
-    // Sleeve details
-    SleeveRequired: document.querySelector(
-      'input[name="sleeveRequired"]:checked'
-    ).value,
-    SleeveSize: document.querySelector('input[name="sleeveSize"]:checked')
-      .value,
-    SleeveSizeOptions: sleeveSizeOptions.value,
-    SleeveBaseColour: sleeveBaseColour.value,
-    SleevePantoneReference: sleevePantoneReference.value,
-    SleeveCoatedOrUncoated: document.querySelector(
-      'input[name="sleeveCoatedOrUncoated"]:checked'
-    ).value,
-    SleeveArtworkCompletedBy: document.querySelector(
-      'input[name="sleeveArtworkCompletedBy"]:checked'
-    ).value,
-    SleeveMouldOptions: sleeveMouldOptions.value,
-    SleeveMouldOther: sleeveMouldOther.value,
-    SleeveEmbossing: document.querySelector(
-      'input[name="sleeveEmbossing"]:checked'
-    ).value,
-    SleeveOverprint: document.querySelector(
-      'input[name="sleeveOverprint"]:checked'
-    ).value,
-    SleeveOverprintDetails: sleeveOverprintDetails.value,
+      // Cup details
+      CupSize: cupSize.value,
+      CupSizeOptions: cupSizeOptions.value,
+      CupBaseColour: cupBaseColour.value,
+      CupPantoneReference: cupPantoneReference.value,
+      CupCoatedOrUncoated: document.querySelector(
+        'input[name="cupCoatedOrUncoated"]:checked'
+      ).value,
+      CupDecorationOptions: cupDecorationOptions.value,
+      CupDecoration: cupDecoration.value,
+      CupArtworkCompletedBy: document.querySelector(
+        'input[name="cupArtworkCompletedBy"]:checked'
+      ).value,
+      CupMouldBaseOptions: cupMouldBaseOptions.value,
+      CupMouldBaseOther: cupMouldBaseOther.value,
 
-    // Lid details
-    LidRequired: document.querySelector('input[name="lidRequired"]:checked')
-      .value,
-    LidSize: document.querySelector('input[name="lidSize"]:checked').value,
-    LidSizeOptions: lidSizeOptions.value,
-    LidBaseColour: lidBaseColour.value,
-    LidPantoneReference: lidPantoneReference.value,
-    LidCoatedOrUncoated: document.querySelector(
-      'input[name="lidCoatedOrUncoated"]:checked'
-    ).value,
-    LidMouldOptions: lidMouldOptions.value,
-    LidMouldOther: lidMouldOther.value,
+      // Sleeve details
+      SleeveRequired: document.querySelector(
+        'input[name="sleeveRequired"]:checked'
+      ).value,
+      // SleeveSize: document.querySelector('input[name="sleeveSize"]:checked')
+      //   .value,
+      SleeveSize: sleeveSize.value,
+      SleeveBaseColour: sleeveBaseColour.value,
+      SleevePantoneReference: sleevePantoneReference.value,
+      SleeveCoatedOrUncoated: document.querySelector(
+        'input[name="sleeveCoatedOrUncoated"]:checked'
+      ).value,
+      SleeveArtworkCompletedBy: document.querySelector(
+        'input[name="sleeveArtworkCompletedBy"]:checked'
+      ).value,
+      SleeveMouldOptions: sleeveMouldOptions.value,
+      // SleeveMouldOther: sleeveMouldOther.value,
+      SleeveEmbossing: document.querySelector(
+        'input[name="sleeveEmbossing"]:checked'
+      ).value,
+      SleeveOverprint: document.querySelector(
+        'input[name="sleeveOverprint"]:checked'
+      ).value,
+      SleeveOverprintDetails: sleeveOverprintDetails.value,
 
-    // Packaging details
-    PackagingTypeOptions: packagingTypeOptions.value,
-    PackagingTypeOther: packagingTypeOther.value,
-    PackagingCutterGuide: document.querySelector(
-      'input[name="packagingCutterGuide"]:checked'
-    ).value,
-    PackagingCutterGuideOther: packagingCutterGuideOther.value,
-    PackagingPrintType: document.querySelector(
-      'input[name="packagingPrintType"]:checked'
-    ).value,
-    PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
+      // Lid details
+      LidRequired: document.querySelector('input[name="lidRequired"]:checked')
+        .value,
+      // LidSize: document.querySelector('input[name="lidSize"]:checked').value,
+      LidSizeOptions: lidSizeOptions.value,
+      LidBaseColour: lidBaseColour.value,
+      LidPantoneReference: lidPantoneReference.value,
+      LidCoatedOrUncoated: document.querySelector(
+        'input[name="lidCoatedOrUncoated"]:checked'
+      ).value,
+      LidMouldOptions: lidMouldOptions.value,
+      LidMouldOther: lidMouldOther.value,
 
-    PackagingPrintTypeCoatedOrUncoated: document.querySelector(
-      'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
-    ).value,
+      // Packaging details
+      PackagingRequired: document.querySelector(
+        'input[name="packagingRequired"]:checked'
+      ).value,
+      PackagingTypeOptions: packagingTypeOptions.value,
+      PackagingTypeOther: packagingTypeOther.value,
+      PackagingCutterGuide: document.querySelector(
+        'input[name="packagingCutterGuide"]:checked'
+      ).value,
+      PackagingCutterGuideOther: packagingCutterGuideOther.value,
+      PackagingPrintType: document.querySelector(
+        'input[name="packagingPrintType"]:checked'
+      ).value,
+      PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
 
-    PackagingPaperStock: packagingPaperStock.value,
-    PackagingPaperStockOther: packagingPaperStockOther.value,
-    PackagingArtworkCompletedBy: document.querySelector(
-      'input[name="packagingArtworkCompletedBy"]:checked'
-    ).value,
-    PackagingOuterCartonMarkings: packagingOuterCartonMarkings.value,
-    PackagingOuterCartonMarkingsOther: packagingOuterCartonMarkingsOther.value,
-    PackagingBarcodeRequired: document.querySelector(
-      'input[name="packagingBarcodeRequired"]:checked'
-    ).value,
-    PackagingBarcodeDetails: packagingBarcodeDetails.value,
+      PackagingPrintTypeCoatedOrUncoated: document.querySelector(
+        'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
+      ).value,
 
-    // Extra notes (optional)
-    ExtraNotes: extraNotes.value,
-  })
-    .then(() => {
-      alert("Form successfully saved to the database");
+      PackagingPaperStock: packagingPaperStock.value,
+      PackagingPaperStockOther: packagingPaperStockOther.value,
+      PackagingArtworkCompletedBy: document.querySelector(
+        'input[name="packagingArtworkCompletedBy"]:checked'
+      ).value,
+      PackagingOuterCartonMarkings: packagingOuterCartonMarkings.value,
+      PackagingOuterCartonMarkingsOther:
+        packagingOuterCartonMarkingsOther.value,
+      PackagingBarcodeRequired: document.querySelector(
+        'input[name="packagingBarcodeRequired"]:checked'
+      ).value,
+      PackagingBarcodeDetails: packagingBarcodeDetails.value,
 
-      // Increment the jobId
-
-      jobId.value = Number(jobId.value) + 1;
-      console.log("Job ID incremented to " + jobId.value);
-      let latestValue = jobId.value;
-
-      // Reset the form fields to their default/blank values
-      document.getElementById("productRequestForm").reset();
-      console.log("Form reset");
-
-      // Populate the jobId input field with the incremented value
-      document.getElementById("jobId").value = Number(latestValue);
-      console.log("New value on form is " + Number(latestValue));
-
-      // Disable the delete button
-      document.getElementById("deleteFromDatabase").disabled = true;
-
-      // update the dates
-      // script to make the date field auto-populate with today's date
-      const currentDate1 = new Date();
-      const year1 = currentDate1.getFullYear();
-      const month1 = String(currentDate1.getMonth() + 1).padStart(2, "0");
-      const day1 = String(currentDate1.getDate()).padStart(2, "0");
-      const formattedDate1 = `${year1}-${month1}-${day1}`;
-      document.getElementById("todaysDate").value = formattedDate1;
-
-      // script to make the "request date" field populate with the date in two weeks from today
-      const currentDate2 = new Date();
-      currentDate2.setDate(currentDate2.getDate() + 14);
-
-      // Format the date as "YYYY-MM-DD" for the input field
-      const year2 = currentDate2.getFullYear();
-      const month2 = String(currentDate2.getMonth() + 1).padStart(2, "0");
-      const day2 = String(currentDate2.getDate()).padStart(2, "0");
-      const formattedDate2 = `${year2}-${month2}-${day2}`;
-
-      // Set the default value of the date picker to 14 days from today
-      document.getElementById("sampleRequiredDate").value = formattedDate2;
-
-      // Move focus back to the top of the page
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Extra notes (optional)
+      ExtraNotes: extraNotes.value,
     })
-    .catch((error) => {
-      alert(error);
-    });
+      .then(() => {
+        alert("Form successfully saved to the database");
+
+        // Increment the jobId
+
+        jobId.value = Number(jobId.value) + 1;
+        console.log("Job ID incremented to " + jobId.value);
+        let latestValue = jobId.value;
+
+        // Reset the form fields to their default/blank values
+        document.getElementById("productRequestForm").reset();
+        console.log("Form reset");
+
+        // Populate the jobId input field with the incremented value
+        document.getElementById("jobId").value = Number(latestValue);
+        console.log("New value on form is " + Number(latestValue));
+
+        // Disable the delete button
+        document.getElementById("deleteFromDatabase").disabled = true;
+
+        // update the dates
+        // script to make the date field auto-populate with today's date
+        const currentDate1 = new Date();
+        const year1 = currentDate1.getFullYear();
+        const month1 = String(currentDate1.getMonth() + 1).padStart(2, "0");
+        const day1 = String(currentDate1.getDate()).padStart(2, "0");
+        const formattedDate1 = `${year1}-${month1}-${day1}`;
+        document.getElementById("todaysDate").value = formattedDate1;
+
+        // script to make the "request date" field populate with the date in two weeks from today
+        const currentDate2 = new Date();
+        currentDate2.setDate(currentDate2.getDate() + 14);
+
+        // Format the date as "YYYY-MM-DD" for the input field
+        const year2 = currentDate2.getFullYear();
+        const month2 = String(currentDate2.getMonth() + 1).padStart(2, "0");
+        const day2 = String(currentDate2.getDate()).padStart(2, "0");
+        const formattedDate2 = `${year2}-${month2}-${day2}`;
+
+        // Set the default value of the date picker to 14 days from today
+        document.getElementById("sampleRequiredDate").value = formattedDate2;
+
+        // Move focus back to the top of the page
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
 }
 
 // // When the page loads, check if the form exists and toggle buttons accordingly
@@ -240,9 +247,9 @@ function updateForm() {
       SleeveRequired: document.querySelector(
         'input[name="sleeveRequired"]:checked'
       ).value,
-      SleeveSize: document.querySelector('input[name="sleeveSize"]:checked')
-        .value,
-      SleeveSizeOptions: sleeveSizeOptions.value,
+      // SleeveSize: document.querySelector('input[name="sleeveSize"]:checked')
+      //   .value,
+      SleeveSize: sleeveSize.value,
       SleeveBaseColour: sleeveBaseColour.value,
       SleevePantoneReference: sleevePantoneReference.value,
       SleeveCoatedOrUncoated: document.querySelector(
@@ -252,7 +259,7 @@ function updateForm() {
         'input[name="sleeveArtworkCompletedBy"]:checked'
       ),
       SleeveMouldOptions: sleeveMouldOptions.value,
-      SleeveMouldOther: sleeveMouldOther.value,
+      // SleeveMouldOther: sleeveMouldOther.value,
       SleeveEmbossing: document.querySelector(
         'input[name="sleeveEmbossing"]:checked'
       ).value,
@@ -264,7 +271,7 @@ function updateForm() {
       // Lid details
       LidRequired: document.querySelector('input[name="lidRequired"]:checked')
         .value,
-      LidSize: document.querySelector('input[name="lidSize"]:checked').value,
+      // LidSize: document.querySelector('input[name="lidSize"]:checked').value,
       LidSizeOptions: lidSizeOptions.value,
       LidBaseColour: lidBaseColour.value,
       LidPantoneReference: lidPantoneReference.value,
@@ -275,6 +282,9 @@ function updateForm() {
       LidMouldOther: lidMouldOther.value,
 
       // Packaging details
+      PackagingRequired: document.querySelector(
+        'input[name="packagingRequired"]:checked'
+      ).value,
       PackagingTypeOptions: packagingTypeOptions.value,
       PackagingTypeOther: packagingTypeOther.value,
       PackagingCutterGuide: document.querySelector(
@@ -540,24 +550,24 @@ async function readForm() {
           sleeveSection.disabled = false;
         }
 
-        // Get all radio buttons with the name "sleeveSize"
-        const sleeveSizeValue = snapshot.val().SleeveSize;
+        // // Get all radio buttons with the name "sleeveSize"
+        // const sleeveSizeValue = snapshot.val().SleeveSize;
 
-        // Get all radio buttons with the name "sleeveSize"
-        const sleeveSizeRadioButtons = document.querySelectorAll(
-          'input[name="sleeveSize"]'
-        );
+        // // Get all radio buttons with the name "sleeveSize"
+        // const sleeveSizeRadioButtons = document.querySelectorAll(
+        //   'input[name="sleeveSize"]'
+        // );
 
-        // Iterate through the radio buttons
-        sleeveSizeRadioButtons.forEach((radioButton) => {
-          if (radioButton.value === sleeveSizeValue) {
-            radioButton.checked = true; // Set the radio button as checked
-          } else {
-            radioButton.checked = false; // Uncheck other radio buttons with the same name
-          }
-        });
+        // // Iterate through the radio buttons
+        // sleeveSizeRadioButtons.forEach((radioButton) => {
+        //   if (radioButton.value === sleeveSizeValue) {
+        //     radioButton.checked = true; // Set the radio button as checked
+        //   } else {
+        //     radioButton.checked = false; // Uncheck other radio buttons with the same name
+        //   }
+        // });
 
-        sleeveSizeOptions.value = snapshot.val().SleeveSizeOptions;
+        sleeveSize.value = snapshot.val().SleeveSize;
         sleeveBaseColour.value = snapshot.val().SleeveBaseColour;
         sleevePantoneReference.value = snapshot.val().SleevePantoneReference;
 
@@ -598,7 +608,7 @@ async function readForm() {
         });
 
         sleeveMouldOptions.value = snapshot.val().SleeveMouldOptions;
-        sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
+        // sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
 
         // Get all radio buttons with the name "sleeveEmbossing"
         const sleeveEmbossingValue = snapshot.val().SleeveEmbossing;
@@ -662,22 +672,22 @@ async function readForm() {
           lidSection.disabled = false;
         }
 
-        // Get all radio buttons with the name "lidSize"
-        const lidSizeValue = snapshot.val().LidSize;
+        // // Get all radio buttons with the name "lidSize"
+        // const lidSizeValue = snapshot.val().LidSize;
 
-        // Get all radio buttons with the name "lidSize"
-        const lidSizeRadioButtons = document.querySelectorAll(
-          'input[name="lidSize"]'
-        );
+        // // Get all radio buttons with the name "lidSize"
+        // const lidSizeRadioButtons = document.querySelectorAll(
+        //   'input[name="lidSize"]'
+        // );
 
-        // Iterate through the radio buttons
-        lidSizeRadioButtons.forEach((radioButton) => {
-          if (radioButton.value === lidSizeValue) {
-            radioButton.checked = true; // Set the radio button as checked
-          } else {
-            radioButton.checked = false; // Uncheck other radio buttons with the same name
-          }
-        });
+        // // Iterate through the radio buttons
+        // lidSizeRadioButtons.forEach((radioButton) => {
+        //   if (radioButton.value === lidSizeValue) {
+        //     radioButton.checked = true; // Set the radio button as checked
+        //   } else {
+        //     radioButton.checked = false; // Uncheck other radio buttons with the same name
+        //   }
+        // });
 
         lidSizeOptions.value = snapshot.val().LidSizeOptions;
         lidBaseColour.value = snapshot.val().LidBaseColour;
@@ -704,6 +714,30 @@ async function readForm() {
         lidMouldOther.value = snapshot.val().LidMouldOther;
 
         // Packaging details
+
+        // Get all radio buttons with the name "packagingRequired"
+        const packagingRequiredValue = snapshot.val().packagingRequired;
+
+        // Get all radio buttons with the name "packagingRequired"
+        const packagingRequiredRadioButtons = document.querySelectorAll(
+          'input[name="packagingRequired"]'
+        );
+
+        // Iterate through the radio buttons
+        packagingRequiredRadioButtons.forEach((radioButton) => {
+          if (radioButton.value === packagingRequiredValue) {
+            radioButton.checked = true; // Set the radio button as checked
+          } else {
+            radioButton.checked = false; // Uncheck other radio buttons with the same name
+          }
+        });
+
+        // If packagingRequired is "No", disable the Packaging section
+        if (packagingRequiredValue === "No") {
+          packagingSection.disabled = true;
+        } else {
+          packagingSection.disabled = false;
+        }
 
         packagingTypeOptions.value = snapshot.val().PackagingTypeOptions;
         packagingTypeOther.value = snapshot.val().PackagingTypeOther;
@@ -1018,24 +1052,24 @@ async function prevForm() {
       sleeveSection.disabled = false;
     }
 
-    // Get all radio buttons with the name "sleeveSize"
-    const sleeveSizeValue = snapshot.val().SleeveSize;
+    // // Get all radio buttons with the name "sleeveSize"
+    // const sleeveSizeValue = snapshot.val().SleeveSize;
 
-    // Get all radio buttons with the name "sleeveSize"
-    const sleeveSizeRadioButtons = document.querySelectorAll(
-      'input[name="sleeveSize"]'
-    );
+    // // Get all radio buttons with the name "sleeveSize"
+    // const sleeveSizeRadioButtons = document.querySelectorAll(
+    //   'input[name="sleeveSize"]'
+    // );
 
-    // Iterate through the radio buttons
-    sleeveSizeRadioButtons.forEach((radioButton) => {
-      if (radioButton.value === sleeveSizeValue) {
-        radioButton.checked = true; // Set the radio button as checked
-      } else {
-        radioButton.checked = false; // Uncheck other radio buttons with the same name
-      }
-    });
+    // // Iterate through the radio buttons
+    // sleeveSizeRadioButtons.forEach((radioButton) => {
+    //   if (radioButton.value === sleeveSizeValue) {
+    //     radioButton.checked = true; // Set the radio button as checked
+    //   } else {
+    //     radioButton.checked = false; // Uncheck other radio buttons with the same name
+    //   }
+    // });
 
-    sleeveSizeOptions.value = snapshot.val().SleeveSizeOptions;
+    sleeveSize.value = snapshot.val().SleeveSize;
     sleeveBaseColour.value = snapshot.val().SleeveBaseColour;
     sleevePantoneReference.value = snapshot.val().SleevePantoneReference;
 
@@ -1075,7 +1109,7 @@ async function prevForm() {
     });
 
     sleeveMouldOptions.value = snapshot.val().SleeveMouldOptions;
-    sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
+    // sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
 
     // Get all radio buttons with the name "sleeveEmbossing"
     const sleeveEmbossingValue = snapshot.val().SleeveEmbossing;
@@ -1139,22 +1173,22 @@ async function prevForm() {
       lidSection.disabled = false;
     }
 
-    // Get all radio buttons with the name "lidSize"
-    const lidSizeValue = snapshot.val().LidSize;
+    // // Get all radio buttons with the name "lidSize"
+    // const lidSizeValue = snapshot.val().LidSize;
 
-    // Get all radio buttons with the name "lidSize"
-    const lidSizeRadioButtons = document.querySelectorAll(
-      'input[name="lidSize"]'
-    );
+    // // Get all radio buttons with the name "lidSize"
+    // const lidSizeRadioButtons = document.querySelectorAll(
+    //   'input[name="lidSize"]'
+    // );
 
-    // Iterate through the radio buttons
-    lidSizeRadioButtons.forEach((radioButton) => {
-      if (radioButton.value === lidSizeValue) {
-        radioButton.checked = true; // Set the radio button as checked
-      } else {
-        radioButton.checked = false; // Uncheck other radio buttons with the same name
-      }
-    });
+    // // Iterate through the radio buttons
+    // lidSizeRadioButtons.forEach((radioButton) => {
+    //   if (radioButton.value === lidSizeValue) {
+    //     radioButton.checked = true; // Set the radio button as checked
+    //   } else {
+    //     radioButton.checked = false; // Uncheck other radio buttons with the same name
+    //   }
+    // });
 
     lidSizeOptions.value = snapshot.val().LidSizeOptions;
     lidBaseColour.value = snapshot.val().LidBaseColour;
@@ -1181,6 +1215,30 @@ async function prevForm() {
     lidMouldOther.value = snapshot.val().LidMouldOther;
 
     // Packaging details
+
+    // Get all radio buttons with the name "packagingRequired"
+    const packagingRequiredValue = snapshot.val().packagingRequired;
+
+    // Get all radio buttons with the name "packagingRequired"
+    const packagingRequiredRadioButtons = document.querySelectorAll(
+      'input[name="packagingRequired"]'
+    );
+
+    // Iterate through the radio buttons
+    packagingRequiredRadioButtons.forEach((radioButton) => {
+      if (radioButton.value === packagingRequiredValue) {
+        radioButton.checked = true; // Set the radio button as checked
+      } else {
+        radioButton.checked = false; // Uncheck other radio buttons with the same name
+      }
+    });
+
+    // If packagingRequired is "No", disable the Packaging section
+    if (packagingRequiredValue === "No") {
+      packagingSection.disabled = true;
+    } else {
+      packagingSection.disabled = false;
+    }
 
     packagingTypeOptions.value = snapshot.val().PackagingTypeOptions;
     packagingTypeOther.value = snapshot.val().PackagingTypeOther;
@@ -1348,6 +1406,16 @@ async function nextForm() {
   let highestDbId = String(await latestJobId());
 
   if (Number(previousJobId) === Number(highestDbId)) {
+    if (jobId.value === "1") {
+      document.getElementById("prevForm").disabled = false;
+      console.log("prevForm button enabled");
+      jobId.value = idToSearch;
+      document.getElementById("prevForm").disabled = false;
+
+      // update the searchJobId field
+      searchJobId.value = Number(jobId.value);
+    }
+
     console.log("next will be new form!");
 
     // Reset the form fields to their default/blank values
@@ -1398,20 +1466,11 @@ async function nextForm() {
     snapshot = await get(child(ref(db), `Jobs/${idToSearch}`));
   }
 
-  // console.log("Highest DB ID: " + highestDbId); // Debug statement
-  // console.log("previous ID: " + previousJobId); // Debug statement
-  // console.log(typeof highestDbId); // Debug statement
-  // console.log(typeof jobId.value); // Debug statement
-  // console.log(typeof previousJobId); // Debug statement
-
-  // get(child(ref(db), "Jobs/" + idToSearch)) // searchJobId is the form ID entered by the user
-  //   .then((snapshot) => {
-
   console.log("highest DB entry is " + highestDbId); // Debug statement
 
   if (snapshot.exists()) {
     if (jobId.value === "1") {
-      document.getElementById("prevForm").disabled = true;
+      document.getElementById("prevForm").disabled = false;
       console.log("prevForm button enabled");
       jobId.value = idToSearch;
       document.getElementById("prevForm").disabled = false;
@@ -1430,11 +1489,6 @@ async function nextForm() {
       // update the seaarchJobId field
       searchJobId.value = Number(jobId.value);
     }
-
-    // console.log(currentJobId === highestDbId); // Debug statement
-    // console.log(previousJobId.trim()); // Debug statement
-    // console.log(highestDbId.trim()); // Debug statement
-    // console.log(currentJobId); // Debug statement
 
     // Project details
     customerName.value = snapshot.val().CustomerName;
@@ -1539,24 +1593,24 @@ async function nextForm() {
       sleeveSection.disabled = false;
     }
 
-    // Get all radio buttons with the name "sleeveSize"
-    const sleeveSizeValue = snapshot.val().SleeveSize;
+    // // Get all radio buttons with the name "sleeveSize"
+    // const sleeveSizeValue = snapshot.val().SleeveSize;
 
-    // Get all radio buttons with the name "sleeveSize"
-    const sleeveSizeRadioButtons = document.querySelectorAll(
-      'input[name="sleeveSize"]'
-    );
+    // // Get all radio buttons with the name "sleeveSize"
+    // const sleeveSizeRadioButtons = document.querySelectorAll(
+    //   'input[name="sleeveSize"]'
+    // );
 
-    // Iterate through the radio buttons
-    sleeveSizeRadioButtons.forEach((radioButton) => {
-      if (radioButton.value === sleeveSizeValue) {
-        radioButton.checked = true; // Set the radio button as checked
-      } else {
-        radioButton.checked = false; // Uncheck other radio buttons with the same name
-      }
-    });
+    // // Iterate through the radio buttons
+    // sleeveSizeRadioButtons.forEach((radioButton) => {
+    //   if (radioButton.value === sleeveSizeValue) {
+    //     radioButton.checked = true; // Set the radio button as checked
+    //   } else {
+    //     radioButton.checked = false; // Uncheck other radio buttons with the same name
+    //   }
+    // });
 
-    sleeveSizeOptions.value = snapshot.val().SleeveSizeOptions;
+    sleeveSize.value = snapshot.val().SleeveSize;
     sleeveBaseColour.value = snapshot.val().SleeveBaseColour;
     sleevePantoneReference.value = snapshot.val().SleevePantoneReference;
 
@@ -1596,7 +1650,7 @@ async function nextForm() {
     });
 
     sleeveMouldOptions.value = snapshot.val().SleeveMouldOptions;
-    sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
+    // sleeveMouldOther.value = snapshot.val().SleeveMouldOther;
 
     // Get all radio buttons with the name "sleeveEmbossing"
     const sleeveEmbossingValue = snapshot.val().SleeveEmbossing;
@@ -1660,22 +1714,22 @@ async function nextForm() {
       lidSection.disabled = false;
     }
 
-    // Get all radio buttons with the name "lidSize"
-    const lidSizeValue = snapshot.val().LidSize;
+    // // Get all radio buttons with the name "lidSize"
+    // const lidSizeValue = snapshot.val().LidSize;
 
-    // Get all radio buttons with the name "lidSize"
-    const lidSizeRadioButtons = document.querySelectorAll(
-      'input[name="lidSize"]'
-    );
+    // // Get all radio buttons with the name "lidSize"
+    // const lidSizeRadioButtons = document.querySelectorAll(
+    //   'input[name="lidSize"]'
+    // );
 
-    // Iterate through the radio buttons
-    lidSizeRadioButtons.forEach((radioButton) => {
-      if (radioButton.value === lidSizeValue) {
-        radioButton.checked = true; // Set the radio button as checked
-      } else {
-        radioButton.checked = false; // Uncheck other radio buttons with the same name
-      }
-    });
+    // // Iterate through the radio buttons
+    // lidSizeRadioButtons.forEach((radioButton) => {
+    //   if (radioButton.value === lidSizeValue) {
+    //     radioButton.checked = true; // Set the radio button as checked
+    //   } else {
+    //     radioButton.checked = false; // Uncheck other radio buttons with the same name
+    //   }
+    // });
 
     lidSizeOptions.value = snapshot.val().LidSizeOptions;
     lidBaseColour.value = snapshot.val().LidBaseColour;
@@ -1702,6 +1756,23 @@ async function nextForm() {
     lidMouldOther.value = snapshot.val().LidMouldOther;
 
     // Packaging details
+
+    // Get all radio buttons with the name "packagingRequired"
+    const packagingRequiredValue = snapshot.val().packagingRequired;
+
+    // Get all radio buttons with the name "packagingRequired"
+    const packagingRequiredRadioButtons = document.querySelectorAll(
+      'input[name="packagingRequired"]'
+    );
+
+    // Iterate through the radio buttons
+    packagingRequiredRadioButtons.forEach((radioButton) => {
+      if (radioButton.value === packagingRequiredValue) {
+        radioButton.checked = true; // Set the radio button as checked
+      } else {
+        radioButton.checked = false; // Uncheck other radio buttons with the same name
+      }
+    });
 
     packagingTypeOptions.value = snapshot.val().PackagingTypeOptions;
     packagingTypeOther.value = snapshot.val().PackagingTypeOther;
@@ -1822,11 +1893,6 @@ async function nextForm() {
     document.getElementById("updateDatabase").disabled = false;
     document.getElementById("deleteFromDatabase").disabled = true;
   }
-
-  // })
-  // .catch((error) => {
-  //   console.error(error);
-  // });
 }
 
 // button to save form data to database /////////////////////////////////////////
@@ -1856,601 +1922,604 @@ nextFormBtn.addEventListener("click", nextForm);
 // script to save web form as PDF ///////////////////////////////////////////////
 
 document.getElementById("saveAsPDF").addEventListener("click", function () {
-  console.log("save as PDF button clicked");
-  console.log(document.getElementById("jobId"));
-  console.log(document.getElementById("customerName").value);
-  const jobIdElement = document.getElementById("jobId");
-  if (jobIdElement) {
-    const jobId = jobIdElement.value;
+  if (validateForm()) {
+    console.log("save as PDF button clicked");
 
-    // // Function to retrieve form data from the database
-    // async function retrieveFormDataFromDatabase(jobId) {
-    //   try {
-    //     const snapshot = await get(child(ref(db), `Jobs/${jobId}`));
-    //     if (snapshot.exists()) {
-    //       return snapshot.val(); // Return the retrieved form data
-    //     } else {
-    //       throw new Error("Form data not found in the database.");
-    //     }
-    //   } catch (error) {
-    //     console.error("Error retrieving form data: " + error);
-    //     return null;
-    //   }
-    // }
+    console.log("save as PDF button clicked");
+    console.log(document.getElementById("jobId"));
+    console.log(document.getElementById("customerName").value);
+    const jobIdElement = document.getElementById("jobId");
+    if (jobIdElement) {
+      const jobId = jobIdElement.value;
 
-    // // Retrieve form data from the database
-    // const formData = await retrieveFormDataFromDatabase(jobId);
+      // Create a new jsPDF instance
+      const doc = new jsPDF();
 
-    // if (formData) {
-    // Create a new jsPDF instance
-    const doc = new jsPDF();
+      console.log("doc created");
 
-    console.log("doc created");
+      // Project Details
+      const todaysDate = document.getElementById("todaysDate").value;
+      const customerName = document.getElementById("customerName").value;
+      const projectName = document.getElementById("projectName").value;
 
-    // Project Details
-    const todaysDate = document.getElementById("todaysDate").value;
-    const customerName = document.getElementById("customerName").value;
-    const projectName = document.getElementById("projectName").value;
+      const projectProduct =
+        document.getElementById("projectProduct").options[
+          document.getElementById("projectProduct").selectedIndex
+        ].text;
 
-    const projectProduct =
-      document.getElementById("projectProduct").options[
-        document.getElementById("projectProduct").selectedIndex
+      const projectProductOther = document.getElementById(
+        "projectProductOther"
+      ).value;
+      // const jobNumber = document.getElementById("jobNumber").value;
+      const newOrRepeat = document.querySelector(
+        'input[name="newOrRepeat"]:checked'
+      ).value;
+
+      const productCode = document.getElementById("productCode").value;
+
+      const samplesRequired = document.getElementById("samplesRequired").value;
+
+      const sampleRequiredDate =
+        document.getElementById("sampleRequiredDate").value;
+
+      // Product Details
+
+      // Cup Details
+      const cupSize =
+        document.getElementById("cupSize").options[
+          document.getElementById("cupSize").selectedIndex
+        ].text;
+
+      const cupSizeOptions = document.getElementById("cupSizeOptions").value;
+
+      const cupBaseColour =
+        document.getElementById("cupBaseColour").options[
+          document.getElementById("cupBaseColour").selectedIndex
+        ].text;
+
+      const cupPantoneReference = document.getElementById(
+        "cupPantoneReference"
+      ).value;
+
+      const cupCoatedOrUncoated = document.querySelector(
+        'input[name="cupCoatedOrUncoated"]:checked'
+      ).value;
+
+      const cupDecorationOptions = document.getElementById(
+        "cupDecorationOptions"
+      ).options[document.getElementById("cupDecorationOptions").selectedIndex]
+        .text;
+
+      const cupDecoration = document.getElementById("cupDecoration").value;
+
+      const cupArtworkCompletedBy = document.querySelector(
+        'input[name="cupArtworkCompletedBy"]:checked'
+      ).value;
+
+      const cupMouldBaseOptions = document.getElementById("cupMouldBaseOptions")
+        .options[document.getElementById("cupMouldBaseOptions").selectedIndex]
+        .text;
+
+      const silkScreenProvidedBy = document.querySelector(
+        'input[name="silkScreenProvidedBy"]:checked'
+      ).value;
+
+      const cupMouldBaseOther =
+        document.getElementById("cupMouldBaseOther").value;
+
+      // Sleeve Details
+
+      const sleeveRequired = document.querySelector(
+        'input[name="sleeveRequired"]:checked'
+      ).value;
+
+      const sleeveSize =
+        document.getElementById("sleeveSize").options[
+          document.getElementById("sleeveSize").selectedIndex
+        ].text;
+
+      const sleeveBaseColour =
+        document.getElementById("sleeveBaseColour").value;
+      const sleevePantoneReference = document.getElementById(
+        "sleevePantoneReference"
+      ).value;
+      const sleeveCoatedOrUncoated = document.querySelector(
+        'input[name="sleeveCoatedOrUncoated"]:checked'
+      ).value;
+      const sleeveArtworkCompletedBy = document.querySelector(
+        'input[name="sleeveArtworkCompletedBy"]:checked'
+      ).value;
+      const sleeveMouldOptions =
+        document.getElementById("sleeveMouldOptions").options[
+          document.getElementById("sleeveMouldOptions").selectedIndex
+        ].text;
+
+      const sleeveEmbossing = document.querySelector(
+        'input[name="sleeveEmbossing"]:checked'
+      ).value;
+
+      const sleeveOverprint = document.querySelector(
+        'input[name="sleeveOverprint"]:checked'
+      ).value;
+      const sleeveOverprintDetails = document.getElementById(
+        "sleeveOverprintDetails"
+      ).value;
+
+      // Lid details
+
+      const lidRequired = document.querySelector(
+        'input[name="lidRequired"]:checked'
+      ).value;
+
+      const lidSizeOptions =
+        document.getElementById("lidSizeOptions").options[
+          document.getElementById("lidSizeOptions").selectedIndex
+        ].text;
+
+      const lidBaseColour = document.getElementById("lidBaseColour").value;
+      const lidPantoneReference = document.getElementById(
+        "lidPantoneReference"
+      ).value;
+      const lidCoatedOrUncoated = document.querySelector(
+        'input[name="lidCoatedOrUncoated"]:checked'
+      ).value;
+      const lidMouldOptions =
+        document.getElementById("lidMouldOptions").options[
+          document.getElementById("lidMouldOptions").selectedIndex
+        ].text;
+
+      const lidMouldOther = document.getElementById("lidMouldOther").value;
+
+      // Packaging details
+
+      const packagingRequired = document.querySelector(
+        'input[name="packagingRequired"]:checked'
+      ).value;
+
+      const packagingTypeOptions = document.getElementById(
+        "packagingTypeOptions"
+      ).options[document.getElementById("packagingTypeOptions").selectedIndex]
+        .text;
+
+      const packagingTypeOther =
+        document.getElementById("packagingTypeOther").value;
+
+      const packagingCutterGuide = document.querySelector(
+        'input[name="packagingCutterGuide"]:checked'
+      ).value;
+
+      const packagingCutterGuideOther = document.getElementById(
+        "packagingCutterGuideOther"
+      ).value;
+
+      const packagingPrintType = document.querySelector(
+        'input[name="packagingPrintType"]:checked'
+      ).value;
+
+      const packagingPrintTypeDetails = document.getElementById(
+        "packagingPrintTypeDetails"
+      ).value;
+      const packagingPrintTypeCoatedOrUncoated = document.querySelector(
+        'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
+      ).value;
+
+      const packagingPaperStock = document.getElementById("packagingPaperStock")
+        .options[document.getElementById("packagingPaperStock").selectedIndex]
+        .text;
+
+      const packagingPaperStockOther = document.getElementById(
+        "packagingPaperStockOther"
+      ).value;
+      const packagingArtworkCompletedBy = document.querySelector(
+        'input[name="packagingArtworkCompletedBy"]:checked'
+      ).value;
+
+      const packagingOuterCartonMarkings = document.getElementById(
+        "packagingOuterCartonMarkings"
+      ).options[
+        document.getElementById("packagingOuterCartonMarkings").selectedIndex
       ].text;
 
-    const projectProductOther = document.getElementById(
-      "projectProductOther"
-    ).value;
-    // const jobNumber = document.getElementById("jobNumber").value;
-    const newOrRepeat = document.querySelector(
-      'input[name="newOrRepeat"]:checked'
-    ).value;
-
-    const productCode = document.getElementById("productCode").value;
-
-    const samplesRequired =
-      document.getElementById("samplesRequired").options[
-        document.getElementById("samplesRequired").selectedIndex
-      ].text;
-
-    const sampleRequiredDate =
-      document.getElementById("sampleRequiredDate").value;
-
-    // Product Details
-
-    // Cup Details
-    const cupSize =
-      document.getElementById("cupSize").options[
-        document.getElementById("cupSize").selectedIndex
-      ].text;
-
-    const cupSizeOptions =
-      document.getElementById("cupSizeOptions").options[
-        document.getElementById("cupSizeOptions").selectedIndex
-      ].text;
-
-    const cupBaseColour = document.getElementById("cupBaseColour").value;
-    const cupPantoneReference = document.getElementById(
-      "cupPantoneReference"
-    ).value;
-
-    const cupCoatedOrUncoated = document.querySelector(
-      'input[name="cupCoatedOrUncoated"]:checked'
-    ).value;
-
-    const cupDecorationOptions = document.getElementById("cupDecorationOptions")
-      .options[document.getElementById("cupDecorationOptions").selectedIndex]
-      .text;
-
-    const cupDecoration = document.getElementById("cupDecoration").value;
-
-    const cupArtworkCompletedBy = document.querySelector(
-      'input[name="cupArtworkCompletedBy"]:checked'
-    ).value;
-
-    const cupMouldBaseOptions = document.getElementById("cupMouldBaseOptions")
-      .options[document.getElementById("cupMouldBaseOptions").selectedIndex]
-      .text;
-
-    const cupMouldBaseOther =
-      document.getElementById("cupMouldBaseOther").value;
-
-    // Sleeve Details
-
-    const sleeveRequired = document.querySelector(
-      'input[name="sleeveRequired"]:checked'
-    ).value;
-
-    const sleeveSize = document.querySelector(
-      'input[name="sleeveSize"]:checked'
-    ).value;
-
-    const sleeveSizeOptions =
-      document.getElementById("sleeveSizeOptions").options[
-        document.getElementById("sleeveSizeOptions").selectedIndex
-      ].text;
-
-    const sleeveBaseColour = document.getElementById("sleeveBaseColour").value;
-    const sleevePantoneReference = document.getElementById(
-      "sleevePantoneReference"
-    ).value;
-    const sleeveCoatedOrUncoated = document.querySelector(
-      'input[name="sleeveCoatedOrUncoated"]:checked'
-    ).value;
-    const sleeveArtworkCompletedBy = document.querySelector(
-      'input[name="sleeveArtworkCompletedBy"]:checked'
-    ).value;
-    const sleeveMouldOptions =
-      document.getElementById("sleeveMouldOptions").options[
-        document.getElementById("sleeveMouldOptions").selectedIndex
-      ].text;
-
-    const sleeveMouldOther = document.getElementById("sleeveMouldOther").value;
-    const sleeveEmbossing = document.querySelector(
-      'input[name="sleeveEmbossing"]:checked'
-    ).value;
-
-    const sleeveOverprint = document.querySelector(
-      'input[name="sleeveOverprint"]:checked'
-    ).value;
-    const sleeveOverprintDetails = document.getElementById(
-      "sleeveOverprintDetails"
-    ).value;
-
-    // Lid details
-
-    const lidRequired = document.querySelector(
-      'input[name="lidRequired"]:checked'
-    ).value;
-
-    const lidSize = document.querySelector(
-      'input[name="lidSize"]:checked'
-    ).value;
-
-    const lidSizeOptions =
-      document.getElementById("lidSizeOptions").options[
-        document.getElementById("lidSizeOptions").selectedIndex
-      ].text;
-
-    const lidBaseColour = document.getElementById("lidBaseColour").value;
-    const lidPantoneReference = document.getElementById(
-      "lidPantoneReference"
-    ).value;
-    const lidCoatedOrUncoated = document.querySelector(
-      'input[name="lidCoatedOrUncoated"]:checked'
-    ).value;
-    const lidMouldOptions =
-      document.getElementById("lidMouldOptions").options[
-        document.getElementById("lidMouldOptions").selectedIndex
-      ].text;
-
-    const lidMouldOther = document.getElementById("lidMouldOther").value;
-
-    // Packaging details
-
-    const packagingTypeOptions = document.getElementById("packagingTypeOptions")
-      .options[document.getElementById("packagingTypeOptions").selectedIndex]
-      .text;
-
-    const packagingTypeOther =
-      document.getElementById("packagingTypeOther").value;
-
-    const packagingCutterGuide = document.querySelector(
-      'input[name="packagingCutterGuide"]:checked'
-    ).value;
-
-    const packagingCutterGuideOther = document.getElementById(
-      "packagingCutterGuideOther"
-    ).value;
-
-    const packagingPrintType = document.querySelector(
-      'input[name="packagingPrintType"]:checked'
-    ).value;
-
-    const packagingPrintTypeDetails = document.getElementById(
-      "packagingPrintTypeDetails"
-    ).value;
-    const packagingPrintTypeCoatedOrUncoated = document.querySelector(
-      'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
-    ).value;
-
-    const packagingPaperStock = document.getElementById("packagingPaperStock")
-      .options[document.getElementById("packagingPaperStock").selectedIndex]
-      .text;
-
-    const packagingPaperStockOther = document.getElementById(
-      "packagingPaperStockOther"
-    ).value;
-    const packagingArtworkCompletedBy = document.querySelector(
-      'input[name="packagingArtworkCompletedBy"]:checked'
-    ).value;
-
-    const packagingOuterCartonMarkings = document.getElementById(
-      "packagingOuterCartonMarkings"
-    ).options[
-      document.getElementById("packagingOuterCartonMarkings").selectedIndex
-    ].text;
-
-    const packagingOuterCartonMarkingsOther = document.getElementById(
-      "packagingOuterCartonMarkingsOther"
-    ).value;
-
-    const packagingBarcodeRequired = document.querySelector(
-      'input[name="packagingBarcodeRequired"]:checked'
-    ).value;
-    const packagingBarcodeDetails = document.getElementById(
-      "packagingBarcodeDetails"
-    ).value;
-
-    // Extra Notes (optional)
-    const extraNotes = document.getElementById("extraNotes").value;
-
-    console.log("all variables declared");
-
-    // Add content to the saved PDF
-
-    // Set the font size
-    doc.setFontSize(10);
-
-    // Load the logo image
-    const logoImage = document.getElementById("logo");
-
-    // Add the logo image to the PDF
-    const logoWidth = 30; // Adjust the width of the logo as needed
-    const logoHeight = (logoWidth * logoImage.height) / logoImage.width; // Maintain the aspect ratio
-
-    // Get the page width and height
-    const pageWidth = doc.internal.pageSize.getWidth();
-    // const pageHeight = doc.internal.pageSize.getHeight();
-
-    // Add the logo to the top right corner of the PDF
-    // Add the logo to the top right corner of the PDF
-    doc.addImage(
-      logoImage,
-      "PNG",
-      pageWidth - logoWidth - 10,
-      10,
-      logoWidth,
-      logoHeight
-    );
-
-    // Define column widths and positions
-    const column1X = 10; // Adjust this value as needed
-    const column2X = 20; // Adjust this value as needed
-    const column3X = 105; // Adjust this value as needed
-    const column4X = 5;
-    const startY = 10;
-    const lineHeight = 6;
-
-    doc.setFontSize(18);
-    doc.setFontStyle("bold");
-
-    // ID
-    doc.text(`Job ID: ${jobId}`, column4X, startY + lineHeight * 1);
-
-    doc.setFontSize(14);
-    doc.setFontStyle("bold");
-
-    doc.text("Project Details", column1X, startY + lineHeight * 3);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-
-    // Project Details
-    doc.text(`Date: ${todaysDate}`, column2X, startY + lineHeight * 5);
-    doc.text(
-      `Customer Name: ${customerName}`,
-      column2X,
-      startY + lineHeight * 6
-    );
-    doc.text(`Project Name: ${projectName}`, column2X, startY + lineHeight * 7);
-    doc.text(
-      `Project Product Option: ${projectProduct}`,
-      column2X,
-      startY + lineHeight * 8
-    );
-
-    doc.text(
-      `If Other, please specify: ${projectProductOther}`,
-      column2X,
-      startY + lineHeight * 9
-    );
-    doc.text(
-      `New or Repeat: ${newOrRepeat}`,
-      column3X,
-      startY + lineHeight * 5
-    );
-    doc.text(`Product Code: ${productCode}`, column3X, startY + lineHeight * 6);
-    doc.text(
-      `Samples Required: ${samplesRequired}`,
-      column3X,
-      startY + lineHeight * 7
-    );
-    doc.text(
-      `Sample Required Date: ${sampleRequiredDate}`,
-      column3X,
-      startY + lineHeight * 8
-    );
-
-    // Product Details
-
-    doc.setFontSize(14);
-    doc.setFontStyle("bold");
-
-    doc.text("Product Details", column1X, startY + lineHeight * 11);
-
-    // Cup Details
-
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-
-    doc.text("Cup Details", column2X, startY + lineHeight * 13);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-
-    doc.text(`Cup Size Option: ${cupSize}`, column2X, startY + lineHeight * 14);
-
-    doc.text(
-      `If other, please specify: ${cupSizeOptions}`,
-      column2X,
-      startY + lineHeight * 15
-    );
-    doc.text(
-      `Cup Base Colour: ${cupBaseColour}`,
-      column2X,
-      startY + lineHeight * 16
-    );
-    doc.text(
-      `Cup Pantone Reference: ${cupPantoneReference}`,
-      column2X,
-      startY + lineHeight * 17
-    );
-    doc.text(
-      `Cup Coated or Uncoated: ${cupCoatedOrUncoated}`,
-      column2X,
-      startY + lineHeight * 18
-    );
-
-    doc.text(
-      `Cup Decoration Option: ${cupDecorationOptions}`,
-      column2X,
-      startY + lineHeight * 19
-    );
-
-    doc.text(
-      `If other, please specify: ${cupDecoration}`,
-      column2X,
-      startY + lineHeight * 20
-    );
-    doc.text(
-      `Cup Artwork Completed By: ${cupArtworkCompletedBy}`,
-      column2X,
-      startY + lineHeight * 21
-    );
-    doc.text(
-      `Cup Mould Base Option: ${cupMouldBaseOptions}`,
-      column2X,
-      startY + lineHeight * 22
-    );
-    doc.text(
-      `If other, please specify: ${cupMouldBaseOther}`,
-      column2X,
-      startY + lineHeight * 23
-    );
-
-    // Sleeve Details
-
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-
-    doc.text("Sleeve Details", column2X, startY + lineHeight * 26);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-
-    doc.text(
-      `Sleeve Required: ${sleeveRequired}`,
-      column2X,
-      startY + lineHeight * 27
-    );
-    doc.text(`Sleeve Size: ${sleeveSize}`, column2X, startY + lineHeight * 28);
-    doc.text(
-      `Sleeve Size Options: ${sleeveSizeOptions}`,
-      column2X,
-      startY + lineHeight * 29
-    );
-    doc.text(
-      `Sleeve Base Colour: ${sleeveBaseColour}`,
-      column2X,
-      startY + lineHeight * 30
-    );
-    doc.text(
-      `Sleeve Pantone Reference: ${sleevePantoneReference}`,
-      column2X,
-      startY + lineHeight * 31
-    );
-    doc.text(
-      `Sleeve Coated or Uncoated: ${sleeveCoatedOrUncoated}`,
-      column2X,
-      startY + lineHeight * 32
-    );
-    doc.text(
-      `Sleeve Artwork Completed By: ${sleeveArtworkCompletedBy}`,
-      column2X,
-      startY + lineHeight * 33
-    );
-    doc.text(
-      `Sleeve Mould Option: ${sleeveMouldOptions}`,
-      column2X,
-      startY + lineHeight * 34
-    );
-    doc.text(
-      `If other, please specify: ${sleeveMouldOther}`,
-      column2X,
-      startY + lineHeight * 35
-    );
-    doc.text(
-      `Sleeve Embossing: ${sleeveEmbossing}`,
-      column2X,
-      startY + lineHeight * 36
-    );
-    doc.text(
-      `Sleeve Overprint: ${sleeveOverprint}`,
-      column2X,
-      startY + lineHeight * 37
-    );
-    doc.text(
-      `Sleeve Overprint Details: ${sleeveOverprintDetails}`,
-      column2X,
-      startY + lineHeight * 38
-    );
-
-    // Lid Details
-
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-
-    doc.text("Lid Details", column3X, startY + lineHeight * 13);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("Normal");
-
-    doc.text(
-      `Lid Required: ${lidRequired}`,
-      column3X,
-      startY + lineHeight * 14
-    );
-    doc.text(`Lid Size Option: ${lidSize}`, column3X, startY + lineHeight * 15);
-    doc.text(
-      `If other, please specify: ${lidSizeOptions}`,
-      column3X,
-      startY + lineHeight * 16
-    );
-    doc.text(
-      `Lid Base Colour: ${lidBaseColour}`,
-      column3X,
-      startY + lineHeight * 17
-    );
-    doc.text(
-      `Lid Pantone Reference: ${lidPantoneReference}`,
-      column3X,
-      startY + lineHeight * 18
-    );
-    doc.text(
-      `Lid Coated or Uncoated: ${lidCoatedOrUncoated}`,
-      column3X,
-      startY + lineHeight * 19
-    );
-    doc.text(
-      `Lid Mould Option: ${lidMouldOptions}`,
-      column3X,
-      startY + lineHeight * 20
-    );
-    doc.text(
-      `If other, please specify: ${lidMouldOther}`,
-      column3X,
-      startY + lineHeight * 21
-    );
-
-    // Packaging Details
-
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-
-    doc.text("Packaging Details", column3X, startY + lineHeight * 26);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-
-    doc.text(
-      `Packaging Type Option: ${packagingTypeOptions}`,
-      column3X,
-      startY + lineHeight * 27
-    );
-    doc.text(
-      `If other, please specify: ${packagingTypeOther}`,
-      column3X,
-      startY + lineHeight * 28
-    );
-    doc.text(
-      `Packaging Cutter Guide: ${packagingCutterGuide}`,
-      column3X,
-      startY + lineHeight * 29
-    );
-    doc.text(
-      `Packaging Cutter Guide Other: ${packagingCutterGuideOther}`,
-      column3X,
-      startY + lineHeight * 30
-    );
-    doc.text(
-      `Packaging Print Type: ${packagingPrintType}`,
-      column3X,
-      startY + lineHeight * 31
-    );
-    doc.text(
-      `Packaging Print Type Details: ${packagingPrintTypeDetails}`,
-      column3X,
-      startY + lineHeight * 32
-    );
-    doc.text(
-      `Packaging Print Type Coated or Uncoated: ${packagingPrintTypeCoatedOrUncoated}`,
-      column3X,
-      startY + lineHeight * 33
-    );
-    doc.text(
-      `Packaging Paper Stock Option: ${packagingPaperStock}`,
-      column3X,
-      startY + lineHeight * 34
-    );
-    doc.text(
-      `If other, please specify: ${packagingPaperStockOther}`,
-      column3X,
-      startY + lineHeight * 35
-    );
-    doc.text(
-      `Packaging Artwork Completed By: ${packagingArtworkCompletedBy}`,
-      column3X,
-      startY + lineHeight * 36
-    );
-    doc.text(
-      `Packaging Outer Carton Markings Option: ${packagingOuterCartonMarkings}`,
-      column3X,
-      startY + lineHeight * 37
-    );
-    doc.text(
-      `If other, pleaase specify: ${packagingOuterCartonMarkingsOther}`,
-      column3X,
-      startY + lineHeight * 38
-    );
-    doc.text(
-      `Packaging Barcode Required: ${packagingBarcodeRequired}`,
-      column3X,
-      startY + lineHeight * 39
-    );
-    doc.text(
-      `Packaging Barcode Details: ${packagingBarcodeDetails}`,
-      column3X,
-      startY + lineHeight * 40
-    );
-
-    doc.setFontSize(14);
-    doc.setFontStyle("bold");
-
-    doc.text("Extra Notes", column2X, startY + lineHeight * 42);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-
-    // Extra Notes (optional)
-    doc.text(`Notes: ${extraNotes}`, column2X, startY + lineHeight * 43);
-
-    // Save the PDF
-    doc.save("productRequestForm.pdf");
-    console.log("PDF saved");
+      const packagingOuterCartonMarkingsOther = document.getElementById(
+        "packagingOuterCartonMarkingsOther"
+      ).value;
+
+      const packagingBarcodeRequired = document.querySelector(
+        'input[name="packagingBarcodeRequired"]:checked'
+      ).value;
+      const packagingBarcodeDetails = document.getElementById(
+        "packagingBarcodeDetails"
+      ).value;
+
+      // Extra Notes (optional)
+      const extraNotes = document.getElementById("extraNotes").value;
+
+      console.log("all variables declared");
+
+      // Add content to the saved PDF
+
+      // Set the font size
+      doc.setFontSize(10);
+
+      // Load the logo image
+      const logoImage = document.getElementById("logo");
+
+      // Add the logo image to the PDF
+      const logoWidth = 30; // Adjust the width of the logo as needed
+      const logoHeight = (logoWidth * logoImage.height) / logoImage.width; // Maintain the aspect ratio
+
+      // Get the page width and height
+      const pageWidth = doc.internal.pageSize.getWidth();
+      // const pageHeight = doc.internal.pageSize.getHeight();
+
+      // Add the logo to the top right corner of the PDF
+      // Add the logo to the top right corner of the PDF
+      doc.addImage(
+        logoImage,
+        "PNG",
+        pageWidth - logoWidth - 10,
+        10,
+        logoWidth,
+        logoHeight
+      );
+
+      // Define column widths and positions
+      const column1X = 10; // Adjust this value as needed
+      const column2X = 20; // Adjust this value as needed
+      const column3X = 105; // Adjust this value as needed
+      const column4X = 5;
+      const startY = 10;
+      const lineHeight = 5.5;
+
+      doc.setFontSize(18);
+      doc.setFontStyle("bold");
+
+      // Job Number
+      doc.text(`Job Number: ${jobId}`, column4X, startY + lineHeight * 1);
+
+      doc.setFontSize(14);
+      doc.setFontStyle("bold");
+
+      doc.text("Project Details", column1X, startY + lineHeight * 3);
+
+      doc.setFontSize(8);
+      doc.setFontStyle("normal");
+
+      // Project Details
+      doc.text(`Date: ${todaysDate}`, column2X, startY + lineHeight * 5);
+      doc.text(
+        `Customer Name: ${customerName}`,
+        column2X,
+        startY + lineHeight * 6
+      );
+
+      doc.text(`Product: ${projectProduct}`, column2X, startY + lineHeight * 7);
+
+      doc.text(
+        `If Other, please specify: ${projectProductOther}`,
+        column2X,
+        startY + lineHeight * 8
+      );
+
+      doc.text(
+        `Project Name: ${projectName}`,
+        column2X,
+        startY + lineHeight * 9
+      );
+
+      doc.text(
+        `New or Repeat: ${newOrRepeat}`,
+        column3X,
+        startY + lineHeight * 5
+      );
+      doc.text(
+        `Product Code: ${productCode}`,
+        column3X,
+        startY + lineHeight * 6
+      );
+      doc.text(
+        `Samples Required: ${samplesRequired}`,
+        column3X,
+        startY + lineHeight * 7
+      );
+      doc.text(
+        `Sample Required Date: ${sampleRequiredDate}`,
+        column3X,
+        startY + lineHeight * 8
+      );
+
+      // Product Details
+
+      doc.setFontSize(14);
+      doc.setFontStyle("bold");
+
+      doc.text("Product Details", column1X, startY + lineHeight * 11);
+
+      // Cup Details
+
+      doc.setFontSize(12);
+      doc.setFontStyle("bold");
+
+      doc.text("Cup Details", column2X, startY + lineHeight * 13);
+
+      doc.setFontSize(8);
+      doc.setFontStyle("normal");
+
+      doc.text(
+        `Cup Size Option: ${cupSize}`,
+        column2X,
+        startY + lineHeight * 14
+      );
+
+      doc.text(
+        `If other, please specify: ${cupSizeOptions}`,
+        column2X,
+        startY + lineHeight * 15
+      );
+      doc.text(
+        `Cup Base Colour: ${cupBaseColour}`,
+        column2X,
+        startY + lineHeight * 16
+      );
+      doc.text(
+        `Cup Pantone Reference: ${cupPantoneReference}`,
+        column2X,
+        startY + lineHeight * 17
+      );
+      doc.text(
+        `Cup Coated or Uncoated: ${cupCoatedOrUncoated}`,
+        column2X,
+        startY + lineHeight * 18
+      );
+
+      doc.text(
+        `Cup Decoration Option: ${cupDecorationOptions}`,
+        column2X,
+        startY + lineHeight * 19
+      );
+
+      doc.text(
+        `If other, please specify: ${cupDecoration}`,
+        column2X,
+        startY + lineHeight * 20
+      );
+      doc.text(
+        `Cup Artwork Completed By: ${cupArtworkCompletedBy}`,
+        column2X,
+        startY + lineHeight * 21
+      );
+      doc.text(
+        `Cup Mould Base Option: ${cupMouldBaseOptions}`,
+        column2X,
+        startY + lineHeight * 22
+      );
+
+      doc.text(
+        `Silk Screen Provided By: ${silkScreenProvidedBy}`,
+        column2X,
+        startY + lineHeight * 23
+      );
+
+      doc.text(
+        `If other, please specify: ${cupMouldBaseOther}`,
+        column2X,
+        startY + lineHeight * 24
+      );
+
+      // Sleeve Details
+
+      doc.setFontSize(12);
+      doc.setFontStyle("bold");
+
+      doc.text("Sleeve Details", column2X, startY + lineHeight * 26);
+
+      doc.setFontSize(8);
+      doc.setFontStyle("normal");
+
+      doc.text(
+        `Sleeve Required: ${sleeveRequired}`,
+        column2X,
+        startY + lineHeight * 27
+      );
+
+      doc.text(
+        `Sleeve Size: ${sleeveSize}`,
+        column2X,
+        startY + lineHeight * 28
+      );
+      doc.text(
+        `Sleeve Base Colour: ${sleeveBaseColour}`,
+        column2X,
+        startY + lineHeight * 29
+      );
+      doc.text(
+        `Sleeve Pantone Reference: ${sleevePantoneReference}`,
+        column2X,
+        startY + lineHeight * 30
+      );
+      doc.text(
+        `Sleeve Coated or Uncoated: ${sleeveCoatedOrUncoated}`,
+        column2X,
+        startY + lineHeight * 31
+      );
+      doc.text(
+        `Sleeve Artwork Completed By: ${sleeveArtworkCompletedBy}`,
+        column2X,
+        startY + lineHeight * 32
+      );
+      doc.text(
+        `Sleeve Mould Option: ${sleeveMouldOptions}`,
+        column2X,
+        startY + lineHeight * 33
+      );
+
+      doc.text(
+        `Sleeve Embossing: ${sleeveEmbossing}`,
+        column2X,
+        startY + lineHeight * 34
+      );
+      doc.text(
+        `Sleeve Overprint: ${sleeveOverprint}`,
+        column2X,
+        startY + lineHeight * 35
+      );
+      doc.text(
+        `Sleeve Overprint Details: ${sleeveOverprintDetails}`,
+        column2X,
+        startY + lineHeight * 36
+      );
+
+      // Lid Details
+
+      doc.setFontSize(12);
+      doc.setFontStyle("bold");
+
+      doc.text("Lid Details", column3X, startY + lineHeight * 13);
+
+      doc.setFontSize(8);
+      doc.setFontStyle("Normal");
+
+      doc.text(
+        `Lid Required: ${lidRequired}`,
+        column3X,
+        startY + lineHeight * 14
+      );
+      // doc.text(`Lid Size Option: ${lidSize}`, column3X, startY + lineHeight * 15);
+      doc.text(
+        `Lid Size: ${lidSizeOptions}`,
+        column3X,
+        startY + lineHeight * 15
+      );
+      doc.text(
+        `Lid Mould Option: ${lidMouldOptions}`,
+        column3X,
+        startY + lineHeight * 16
+      );
+      doc.text(
+        `If other, please specify: ${lidMouldOther}`,
+        column3X,
+        startY + lineHeight * 17
+      );
+      doc.text(
+        `Lid Base Colour: ${lidBaseColour}`,
+        column3X,
+        startY + lineHeight * 18
+      );
+      doc.text(
+        `Lid Pantone Reference: ${lidPantoneReference}`,
+        column3X,
+        startY + lineHeight * 19
+      );
+      doc.text(
+        `Lid Coated or Uncoated: ${lidCoatedOrUncoated}`,
+        column3X,
+        startY + lineHeight * 20
+      );
+
+      // Packaging Details
+
+      doc.setFontSize(12);
+      doc.setFontStyle("bold");
+
+      doc.text("Packaging Details", column3X, startY + lineHeight * 26);
+
+      doc.setFontSize(8);
+      doc.setFontStyle("normal");
+
+      doc.text(
+        `Packaging Required: ${packagingRequired}`,
+        column3X,
+        startY + lineHeight * 27
+      );
+
+      doc.text(
+        `Packaging Type Option: ${packagingTypeOptions}`,
+        column3X,
+        startY + lineHeight * 28
+      );
+      doc.text(
+        `If other, please specify: ${packagingTypeOther}`,
+        column3X,
+        startY + lineHeight * 29
+      );
+      doc.text(
+        `Packaging Cutter Guide: ${packagingCutterGuide}`,
+        column3X,
+        startY + lineHeight * 30
+      );
+      doc.text(
+        `Packaging Cutter Guide Other: ${packagingCutterGuideOther}`,
+        column3X,
+        startY + lineHeight * 31
+      );
+      doc.text(
+        `Packaging Paper Stock Option: ${packagingPaperStock}`,
+        column3X,
+        startY + lineHeight * 32
+      );
+      doc.text(
+        `If other, please specify: ${packagingPaperStockOther}`,
+        column3X,
+        startY + lineHeight * 33
+      );
+      doc.text(
+        `Packaging Print Type: ${packagingPrintType}`,
+        column3X,
+        startY + lineHeight * 34
+      );
+      doc.text(
+        `Packaging Print Type Details: ${packagingPrintTypeDetails}`,
+        column3X,
+        startY + lineHeight * 35
+      );
+      doc.text(
+        `Packaging Print Type Coated or Uncoated: ${packagingPrintTypeCoatedOrUncoated}`,
+        column3X,
+        startY + lineHeight * 36
+      );
+
+      doc.text(
+        `Packaging Artwork Completed By: ${packagingArtworkCompletedBy}`,
+        column3X,
+        startY + lineHeight * 37
+      );
+      doc.text(
+        `Packaging Outer Carton Markings Option: ${packagingOuterCartonMarkings}`,
+        column3X,
+        startY + lineHeight * 38
+      );
+      doc.text(
+        `If other, pleaase specify: ${packagingOuterCartonMarkingsOther}`,
+        column3X,
+        startY + lineHeight * 39
+      );
+      doc.text(
+        `Packaging Barcode Required: ${packagingBarcodeRequired}`,
+        column3X,
+        startY + lineHeight * 40
+      );
+      doc.text(
+        `Packaging Barcode Details: ${packagingBarcodeDetails}`,
+        column3X,
+        startY + lineHeight * 41
+      );
+
+      doc.setFontSize(14);
+      doc.setFontStyle("bold");
+
+      doc.text("Extra Notes", column2X, startY + lineHeight * 44);
+
+      doc.setFontSize(8);
+      doc.setFontStyle("normal");
+
+      // Extra Notes (optional)
+      doc.text(`Notes: ${extraNotes}`, column2X, startY + lineHeight * 45);
+
+      // Save the PDF
+      doc.save("productRequestForm.pdf");
+      console.log("PDF saved");
+    }
   }
-  // } else {
-  //   console.error("Element with ID 'jobId' not found.");
-  // }
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2476,7 +2545,7 @@ const formattedDate2 = `${year2}-${month2}-${day2}`;
 // Set the default value of the date picker to 14 days from today
 document.getElementById("sampleRequiredDate").value = formattedDate2;
 
-// script to disable the sleeve and lid sections if they are not required
+// script to disable the sleeve/lid/packaaging sections if they are not required
 
 // Sleeve Required radio button
 var sleeveRequiredYes = document.getElementById("sleeveRequiredYes");
@@ -2485,8 +2554,30 @@ var sleeveSection = document.getElementById("sleeve-section");
 
 sleeveRequiredYes.addEventListener("change", function () {
   if (sleeveRequiredYes.checked) {
-    // Enable the Sleeve section
-    sleeveSection.disabled = false;
+    // Check the selected product
+    var selectedProduct = document.getElementById("projectProduct").value;
+
+    // Check if the selected product requires Sleeve to be "No"
+    if (
+      selectedProduct === "2. Kora" ||
+      selectedProduct === "4. HCV" // Add more conditions as needed
+    ) {
+      // Show a confirm dialog
+      var confirmation = confirm(
+        "A sleeve is NOT required for this option. Are you sure you wish to override this?"
+      );
+
+      // If the user confirms, enable the Sleeve section
+      if (confirmation) {
+        sleeveSection.disabled = false;
+      } else {
+        // If the user cancels, revert the radio button to "No"
+        sleeveRequiredNo.checked = true;
+      }
+    } else {
+      // If the selected product does not require Sleeve to be "No", enable the Sleeve section
+      sleeveSection.disabled = false;
+    }
   }
 });
 
@@ -2502,10 +2593,36 @@ var lidRequiredYes = document.getElementById("lidRequiredYes");
 var lidRequiredNo = document.getElementById("lidRequiredNo");
 var lidSection = document.getElementById("lid-section");
 
+// Lid Required radio button
+var lidRequiredYes = document.getElementById("lidRequiredYes");
+var lidRequiredNo = document.getElementById("lidRequiredNo");
+var lidSection = document.getElementById("lid-section");
+
 lidRequiredYes.addEventListener("change", function () {
   if (lidRequiredYes.checked) {
-    // Enable the Lid section
-    lidSection.disabled = false;
+    // Check the selected product
+    var selectedProduct = document.getElementById("projectProduct").value;
+
+    // Check if the selected product requires Lid to be "No"
+    if (
+      selectedProduct === "4. HCV" // Add more conditions as needed
+    ) {
+      // Show a confirm dialog
+      var confirmation = confirm(
+        "A lid is NOT required for this option. Are you sure you wish to override this?"
+      );
+
+      // If the user confirms, enable the Lid section
+      if (confirmation) {
+        lidSection.disabled = false;
+      } else {
+        // If the user cancels, revert the radio button to "No"
+        lidRequiredNo.checked = true;
+      }
+    } else {
+      // If the selected product does not require Lid to be "No", enable the Lid section
+      lidSection.disabled = false;
+    }
   }
 });
 
@@ -2515,3 +2632,881 @@ lidRequiredNo.addEventListener("change", function () {
     lidSection.disabled = true;
   }
 });
+
+// Packaging Required radio button
+var packagingRequiredYes = document.getElementById("packagingRequiredYes");
+var packagingRequiredNo = document.getElementById("packagingRequiredNo");
+var packagingSection = document.getElementById("packaging-section");
+
+packagingRequiredYes.addEventListener("change", function () {
+  if (packagingRequiredYes.checked) {
+    // Check the selected product
+    var selectedProduct = document.getElementById("projectProduct").value;
+
+    // Check if the selected product requires Packaging to be "No"
+    if (selectedProduct === "2. Kora") {
+      // Show a confirm dialog
+      var confirmation = confirm(
+        "Packaging is NOT required for this option. Are you sure you wish to override this?"
+      );
+
+      // If the user confirms, enable the Packaging section
+      if (confirmation) {
+        packagingSection.disabled = false;
+      } else {
+        // If the user cancels, revert the radio button to "No"
+        packagingRequiredNo.checked = true;
+      }
+    } else {
+      // If the selected product does not require Packaging to be "No", enable the Packaging section
+      packagingSection.disabled = false;
+    }
+  }
+});
+
+packagingRequiredNo.addEventListener("change", function () {
+  if (packagingRequiredNo.checked) {
+    // Disable the Packaging section
+    packagingSection.disabled = true;
+  }
+});
+
+// Function to enable/disable Sleeve, Lid, and Packaging based on dropdown selection
+function handleDropdownSelection() {
+  var selectedProduct = document.getElementById("projectProduct").value;
+
+  // Disable all fieldsets and radio buttons initially
+  sleeveSection.disabled = true;
+  lidSection.disabled = true;
+  packagingSection.disabled = true;
+  sleeveRequiredYes.checked = false;
+  sleeveRequiredNo.checked = true;
+  lidRequiredYes.checked = false;
+  lidRequiredNo.checked = true;
+  packagingRequiredYes.checked = false;
+  packagingRequiredNo.checked = true;
+
+  // Enable fieldsets and radio buttons based on the selected product
+  if (selectedProduct === "2. Kora") {
+    lidSection.disabled = false;
+    packagingSection.disabled = false;
+    lidRequiredYes.checked = true;
+    packagingRequiredYes.checked = true;
+  } else if (
+    selectedProduct === "1. Nova" ||
+    selectedProduct === "3. 800 Series" ||
+    selectedProduct === "5. other (please specify)"
+  ) {
+    sleeveSection.disabled = false;
+    lidSection.disabled = false;
+    packagingSection.disabled = false;
+    sleeveRequiredYes.checked = true;
+    lidRequiredYes.checked = true;
+    packagingRequiredYes.checked = true;
+  } else if (selectedProduct === "4. HCV") {
+    packagingSection.disabled = false;
+    packagingRequiredYes.checked = true;
+  }
+}
+
+// Add an event listener to the dropdown to handle selection changes
+var projectProductDropdown = document.getElementById("projectProduct");
+projectProductDropdown.addEventListener("change", handleDropdownSelection);
+
+// Initially, call the function to set the initial state based on the default selected option
+handleDropdownSelection();
+
+// Function to enable/disable the "Packaging Type details" input based on the selected option
+// Get references to the elements
+var productDropdown = document.getElementById("projectProduct");
+var productOtherInput = document.getElementById("projectProductOther");
+var productLabel = document.querySelector('label[for="projectProductOther"]');
+
+// Add event listener to the Product dropdown
+productDropdown.addEventListener("change", function () {
+  // Check if the selected option is "other (please specify)"
+  if (productDropdown.value === "5. other (please specify)") {
+    // Enable the "If Other, please specify" input field
+    productOtherInput.disabled = false;
+    productOtherInput.required = true; // Make it required when enabled
+    productLabel.style.color = "black"; // Change label color to black (not greyed out)
+  } else {
+    // Disable and clear the "If Other, please specify" input field
+    productOtherInput.disabled = true;
+    productOtherInput.required = false; // Make it not required when disabled
+    productLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+productDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Cup Size details" input based on the selected option
+// Get references to the elements
+var cupSizeDropdown = document.getElementById("cupSize");
+var cupSizeOptionsInput = document.getElementById("cupSizeOptions");
+var cupSizeLabel = document.querySelector('label[for="cupSizeOptions"]');
+
+// Add event listener to the Cup Size dropdown
+cupSizeDropdown.addEventListener("change", function () {
+  // Check if the selected option is "Other"
+  if (cupSizeDropdown.value === "Other") {
+    // Enable the "If other, please specify" input field
+    cupSizeOptionsInput.disabled = false;
+    cupSizeOptionsInput.required = true; // Make it required when enabled
+    // Change label color to black (not greyed out)
+    cupSizeLabel.style.color = "black";
+  } else {
+    // Disable and clear the "If other, please specify" input field
+    cupSizeOptionsInput.disabled = true;
+    cupSizeOptionsInput.required = false; // Make it not required when disabled
+    cupSizeLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+cupSizeDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Cup Base Colour details" input based on the selected option
+// Get references to the elements
+var cupBaseColourDropdown = document.getElementById("cupBaseColour");
+var cupPantoneReferenceInput = document.getElementById("cupPantoneReference");
+var cupPantoneReferenceLabel = document.querySelector(
+  'label[for="cupPantoneReference"]'
+);
+
+// Add event listener to the Cup Base Colour dropdown
+cupBaseColourDropdown.addEventListener("change", function () {
+  // Check if the selected option is "Other (Pantone Matched)"
+  if (cupBaseColourDropdown.value === "Other (Pantone Matched)") {
+    // Enable the "Other (Pantone Matched)" input field
+    cupPantoneReferenceInput.disabled = false;
+    // Make it required when enabled
+    cupPantoneReferenceInput.required = true;
+    // Change label color to black (not greyed out)
+    cupPantoneReferenceLabel.style.color = "black";
+  } else {
+    // Disable and clear the "Other (Pantone Matched)" input field
+    cupPantoneReferenceInput.disabled = true;
+    // Make it not required when disabled
+    cupPantoneReferenceInput.required = false;
+    // Change label color to grey
+    cupPantoneReferenceLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+cupBaseColourDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Cup Decoration details" input based on the selected option
+// Get references to the elements
+var cupDecorationDropdown = document.getElementById("cupDecorationOptions");
+var cupDecorationInput = document.getElementById("cupDecoration");
+var cupDecorationLabel = document.querySelector('label[for="cupDecoration"]');
+
+// Add event listener to the Cup Decoration dropdown
+cupDecorationDropdown.addEventListener("change", function () {
+  // Check if the selected option is "4. Other - Please Specify"
+  if (cupDecorationDropdown.value === "4. Other - Please Specify") {
+    // Enable the "If Other, please specify" input field
+    cupDecorationInput.disabled = false;
+    // Make it required when enabled
+    cupDecorationInput.required = true;
+    // Change label color to black (not greyed out)
+    cupDecorationLabel.style.color = "black";
+  } else {
+    // Disable and clear the "If Other, please specify" input field
+    cupDecorationInput.disabled = true;
+    // Make it not required when disabled
+    cupDecorationInput.required = false;
+    // Change label color to grey
+    cupDecorationLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+cupDecorationDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Cup Mould/Base details" input based on the selected option
+// Get references to the elements
+
+// Get references to the elements
+var cupMouldBaseOptionsDropdown = document.getElementById(
+  "cupMouldBaseOptions"
+);
+
+var silkScreenLabel = document.querySelector(
+  'label[for="silkScreenProvidedBy"]'
+);
+
+var silkScreenProvidedByEcoffeeCupLabel = document.querySelector(
+  'label[for="silkScreenProvidedByEcoffeeCup"]'
+);
+
+var silkScreenProvidedByClientLabel = document.querySelector(
+  'label[for="silkScreenProvidedByClient"]'
+);
+
+var silkScreenProvidedByEcoffeeCup = document.getElementById(
+  "silkScreenProvidedByEcoffeeCup"
+);
+var silkScreenProvidedByClient = document.getElementById(
+  "silkScreenProvidedByClient"
+);
+var cupMouldBaseOtherInput = document.getElementById("cupMouldBaseOther");
+
+var cupMouldBaseOtherLabel = document.querySelector(
+  'label[for="cupMouldBaseOther"]'
+);
+
+var silkScreenLabel = document.querySelector("h4");
+
+// Function to enable/disable elements based on the selected option
+function updateCupMouldBaseElements() {
+  var selectedOption = cupMouldBaseOptionsDropdown.value;
+
+  // Disable both radio options and the input field by default
+  silkScreenProvidedByEcoffeeCup.disabled = true;
+  silkScreenProvidedByClient.disabled = true;
+  cupMouldBaseOtherInput.disabled = true;
+
+  // Make the radio options and input field required only when enabled
+  silkScreenProvidedByEcoffeeCup.required = false;
+  silkScreenProvidedByClient.required = false;
+  cupMouldBaseOtherInput.required = false;
+
+  // Change label colors to grey by default
+  silkScreenLabel.style.color = "#CCCCCC";
+  silkScreenProvidedByClientLabel.style.color = "#CCCCCC";
+  silkScreenProvidedByEcoffeeCupLabel.style.color = "#CCCCCC";
+  cupMouldBaseOtherLabel.style.color = "#CCCCCC";
+
+  if (
+    // Check if the selected option is "1. Standard Ecoffee Cup" or "2. Standard blank"
+    selectedOption === "1. Standard Ecoffee Cup" ||
+    selectedOption === "2. Standard blank"
+  ) {
+    // When "Standard Ecoffee Cup" or "Standard blank" is selected
+    silkScreenProvidedByEcoffeeCup.disabled = true;
+    silkScreenProvidedByClient.disabled = true;
+    cupMouldBaseOtherInput.disabled = true;
+  } else if (selectedOption === "3. Silk-screen printed") {
+    // When "Silk-screen printed" is selected, enable the radio options and disable the input field
+    silkScreenProvidedByEcoffeeCup.disabled = false;
+    silkScreenProvidedByClient.disabled = false;
+    cupMouldBaseOtherInput.disabled = true;
+    silkScreenLabel.style.color = "black";
+    silkScreenProvidedByClientLabel.style.color = "black";
+    silkScreenProvidedByEcoffeeCupLabel.style.color = "black";
+  } else if (selectedOption === "4. other (please specify)") {
+    // When "Other" is selected, disable the radio options and enable the input field
+    silkScreenProvidedByEcoffeeCup.disabled = true;
+    silkScreenProvidedByClient.disabled = true;
+    cupMouldBaseOtherInput.disabled = false;
+    cupMouldBaseOtherInput.required = true;
+    cupMouldBaseOtherLabel.style.color = "black";
+  }
+}
+
+// Add event listener to the Cup Mould/Base dropdown
+cupMouldBaseOptionsDropdown.addEventListener(
+  "change",
+  updateCupMouldBaseElements
+);
+
+// Initialize the state based on the initial selection
+updateCupMouldBaseElements();
+
+// Function to enable/disable the "Sleeve Base Colour details" input based on the selected option
+// Get references to the elements
+var sleeveBaseColourDropdown = document.getElementById("sleeveBaseColour");
+var sleevePantoneReferenceInput = document.getElementById(
+  "sleevePantoneReference"
+);
+var sleevePantoneReferenceLabel = document.querySelector(
+  'label[for="sleevePantoneReference"]'
+);
+
+// Add event listener to the Sleeve Base Colour dropdown
+sleeveBaseColourDropdown.addEventListener("change", function () {
+  // Check if the selected option is "Other (Pantone Matched)"
+  if (sleeveBaseColourDropdown.value === "Other (Pantone Matched)") {
+    // Enable the "Other (Pantone Matched)" input field
+    sleevePantoneReferenceInput.disabled = false;
+    // Make it required when enabled
+    sleevePantoneReferenceInput.required = true;
+    // Change label color to black (not greyed out)
+    sleevePantoneReferenceLabel.style.color = "black";
+  } else {
+    // Disable and clear the "Other (Pantone Matched)" input field
+    sleevePantoneReferenceInput.disabled = true;
+    // Make it not required when disabled
+    sleevePantoneReferenceInput.required = false;
+    // Change label color to grey
+    sleevePantoneReferenceLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+sleeveBaseColourDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Lid Size details" input based on the selected option
+// Get references to the elements
+var lidMouldDropdown = document.getElementById("lidMouldOptions");
+var lidMouldInput = document.getElementById("lidMouldOther");
+var lidMouldLabel = document.querySelector('label[for="lidMouldOther"]');
+
+// Add event listener to the Lid Mould dropdown
+lidMouldDropdown.addEventListener("change", function () {
+  // Check if the selected option is "3. other (please specify)"
+  if (lidMouldDropdown.value === "3. other (please specify)") {
+    // Enable the "If Other, please specify" input field
+    lidMouldInput.disabled = false;
+    // Make it required when enabled
+    lidMouldInput.required = true;
+    // Change label color to black (not greyed out)
+    lidMouldLabel.style.color = "black";
+  } else {
+    // Disable and clear the "If Other, please specify" input field
+    lidMouldInput.disabled = true;
+    // Make it not required when disabled
+    lidMouldInput.required = false;
+    // Change label color to grey
+    lidMouldLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+lidMouldDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Lid Base Colour details" input based on the selected option
+// Get references to the elements
+var lidBaseColourDropdown = document.getElementById("lidBaseColour");
+var lidPantoneReferenceInput = document.getElementById("lidPantoneReference");
+var lidBaseColourLabel = document.querySelector('label[for="lidBaseColour"]');
+
+// Add event listener to the Lid Base Colour dropdown
+lidBaseColourDropdown.addEventListener("change", function () {
+  // Check if the selected option is "Other (Pantone Matched)"
+  if (lidBaseColourDropdown.value === "Other (Pantone Matched)") {
+    // Enable the "Other (Pantone Matched)" input field
+    lidPantoneReferenceInput.disabled = false;
+    // Make it required when enabled
+    lidPantoneReferenceInput.required = true;
+    // Change label color to black (not greyed out)
+    lidBaseColourLabel.style.color = "black";
+  } else {
+    // Disable and clear the "Other (Pantone Matched)" input field
+    lidPantoneReferenceInput.disabled = true;
+    // Make it not required when disabled
+    lidPantoneReferenceInput.required = false;
+    // Change label color to grey
+    lidBaseColourLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+lidBaseColourDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Packaging Type details" input based on the selected option
+// Get references to the elements
+var packagingTypeDropdown = document.getElementById("packagingTypeOptions");
+var packagingTypeOtherInput = document.getElementById("packagingTypeOther");
+var packagingTypeLabel = document.querySelector(
+  'label[for="packagingTypeOther"]'
+);
+
+// Add event listener to the Packaging Type dropdown
+packagingTypeDropdown.addEventListener("change", function () {
+  // Check if the selected option is "3. other (please specify)"
+  if (packagingTypeDropdown.value === "3. other (please specify)") {
+    // Enable the "If Other, please specify" input field
+    packagingTypeOtherInput.disabled = false;
+    packagingTypeOtherInput.required = true; // Make it required when enabled
+    // Change label color to black (not greyed out)
+    packagingTypeLabel.style.color = "black";
+  } else {
+    // Disable and clear the "If Other, please specify" input field
+    packagingTypeOtherInput.disabled = true;
+    packagingTypeOtherInput.required = false; // Make it not required when disabled
+    // Change label color to grey
+    packagingTypeLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+packagingTypeDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Packaging Cutter Guide details" input based on the selected option
+// Get references to the elements
+var packagingOuterCartonMarkingsDropdown = document.getElementById(
+  "packagingOuterCartonMarkings"
+);
+var packagingOuterCartonMarkingsOtherInput = document.getElementById(
+  "packagingOuterCartonMarkingsOther"
+);
+var packagingOuterCartonMarkingsLabel = document.querySelector(
+  'label[for="packagingOuterCartonMarkingsOther"]'
+);
+
+// Add event listener to the Packaging Outer Carton Markings dropdown
+packagingOuterCartonMarkingsDropdown.addEventListener("change", function () {
+  // Check if the selected option is "other (please specify)"
+  if (packagingOuterCartonMarkingsDropdown.value === "other (please specify)") {
+    // Enable the "If Other, please specify" input field
+    packagingOuterCartonMarkingsOtherInput.disabled = false;
+    // Make it required when enabled
+    packagingOuterCartonMarkingsOtherInput.required = true;
+    // Change label color to black (not greyed out)
+    packagingOuterCartonMarkingsLabel.style.color = "black";
+  } else {
+    // Disable and clear the "If Other, please specify" input field
+    packagingOuterCartonMarkingsOtherInput.disabled = true;
+    // Make it not required when disabled
+    packagingOuterCartonMarkingsOtherInput.required = false;
+    // Change label color to grey
+    packagingOuterCartonMarkingsLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+packagingOuterCartonMarkingsDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Packaging Cutter Guide details" input based on the selected option
+// Get references to the elements
+var packagingOuterCartonMarkingsDropdown = document.getElementById(
+  "packagingOuterCartonMarkings"
+);
+var packagingOuterCartonMarkingsOtherInput = document.getElementById(
+  "packagingOuterCartonMarkingsOther"
+);
+var packagingOuterCartonMarkingsLabel = document.querySelector(
+  'label[for="packagingOuterCartonMarkingsOther"]'
+);
+
+// Add event listener to the Packaging Outer Carton Markings dropdown
+packagingOuterCartonMarkingsDropdown.addEventListener("change", function () {
+  // Check if the selected option is "other (please specify)"
+  if (packagingOuterCartonMarkingsDropdown.value === "other (please specify)") {
+    // Enable the "If Other, please specify" input field
+    packagingOuterCartonMarkingsOtherInput.disabled = false;
+    // Make it required when enabled
+    packagingOuterCartonMarkingsOtherInput.required = true;
+    // Change label color to black (not greyed out)
+    packagingOuterCartonMarkingsLabel.style.color = "black";
+  } else {
+    // Disable and clear the "If Other, please specify" input field
+    packagingOuterCartonMarkingsOtherInput.disabled = true;
+    // Make it not required when disabled
+    packagingOuterCartonMarkingsOtherInput.required = false;
+    // Change label color to grey
+    packagingOuterCartonMarkingsLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+packagingOuterCartonMarkingsDropdown.dispatchEvent(new Event("change"));
+
+// Funtion to handle the "Packaging Cutter Guide" radio buttons
+// Get references to the elements
+
+var packagingCutterGuideStandardE = document.getElementById(
+  "packagingCutterGuideStandardE"
+);
+var packagingCutterGuideO = document.getElementById("packagingCutterGuideO");
+var packagingCutterGuideOtherInput = document.getElementById(
+  "packagingCutterGuideOther"
+);
+var packagingCutterGuideLabel = document.querySelector(
+  'label[for="packagingCutterGuideOther"]'
+);
+
+function handlePackagingCutterGuideRadioChange() {
+  if (packagingCutterGuideO.checked) {
+    // Enable the "Overprint Details" input field
+    packagingCutterGuideOtherInput.disabled = false;
+    // Make it required when enabled
+    packagingCutterGuideOtherInput.required = true;
+    // Change label color to black (not greyed out)
+    packagingCutterGuideLabel.style.color = "black";
+  } else {
+    // Disable and clear the input field
+    packagingCutterGuideOtherInput.disabled = true;
+    // Make it not required when disabled
+    packagingCutterGuideOtherInput.required = false;
+    // Change label color to grey
+    packagingCutterGuideLabel.style.color = "#CCCCCC";
+  }
+}
+
+// Add event listeners to the radio buttons
+packagingCutterGuideO.addEventListener(
+  "change",
+  handlePackagingCutterGuideRadioChange
+);
+packagingCutterGuideStandardE.addEventListener(
+  "change",
+  handlePackagingCutterGuideRadioChange
+);
+
+// Initialize the state based on the initial selection
+handlePackagingCutterGuideRadioChange();
+
+// Function to enable/disable the "Packaging Barcode details" input based on the selected option
+// Get references to the elements
+var packagingBarcodeRequiredNo = document.getElementById(
+  "packagingBarcodeRequiredNo"
+);
+var packagingBarcodeRequiredYesEcofffeeCup = document.getElementById(
+  "packagingBarcodeRequiredYesEcofffeeCup"
+);
+var packagingBarcodeRequiredYesClient = document.getElementById(
+  "packagingBarcodeRequiredYesClient"
+);
+var packagingBarcodeDetailsInput = document.getElementById(
+  "packagingBarcodeDetails"
+);
+var packagingBarcodeDetailsLabel = document.querySelector(
+  'label[for="packagingBarcodeDetails"]'
+);
+
+// Function to enable or disable the input field based on the selected radio button
+function handleBarcodeRadioChange() {
+  if (packagingBarcodeRequiredYesClient.checked) {
+    // Enable the "Barcode Number (if applicable)" input field
+    packagingBarcodeDetailsInput.disabled = false;
+    // Make it required when enabled
+    packagingBarcodeDetailsInput.required = true;
+    // Change label color to black (not greyed out)
+    packagingBarcodeDetailsLabel.style.color = "black";
+  } else {
+    // Disable and clear the input field
+    packagingBarcodeDetailsInput.disabled = true;
+    // Make it not required when disabled
+    packagingBarcodeDetailsInput.required = false;
+    // Change label color to grey
+    packagingBarcodeDetailsLabel.style.color = "#CCCCCC";
+  }
+}
+
+// Add event listeners to all three radio buttons
+packagingBarcodeRequiredNo.addEventListener("change", handleBarcodeRadioChange);
+packagingBarcodeRequiredYesEcofffeeCup.addEventListener(
+  "change",
+  handleBarcodeRadioChange
+);
+packagingBarcodeRequiredYesClient.addEventListener(
+  "change",
+  handleBarcodeRadioChange
+);
+
+// Initialize the state based on the initial selection
+handleBarcodeRadioChange();
+
+// Function to enable/disable the "Sleeve Overprint details" input based on the selected option
+// Get references to the elements
+var sleeveOverprintNo = document.getElementById("sleeveOverprintNo");
+var sleeveOverprintYes = document.getElementById("sleeveOverprintYes");
+var sleeveOverprintDetailsInput = document.getElementById(
+  "sleeveOverprintDetails"
+);
+var sleeveOverprintDetailsLabel = document.querySelector(
+  'label[for="sleeveOverprintDetails"]'
+);
+
+// Function to enable or disable the input field based on the selected radio button
+function handleSleeveOverprintRadioChange() {
+  if (sleeveOverprintYes.checked) {
+    // Enable the "Overprint Details" input field
+    sleeveOverprintDetailsInput.disabled = false;
+    // Make it required when enabled
+    sleeveOverprintDetailsInput.required = true;
+    // Change label color to black (not greyed out)
+    sleeveOverprintDetailsLabel.style.color = "black";
+  } else {
+    // Disable and clear the input field
+    sleeveOverprintDetailsInput.disabled = true;
+    // Make it not required when disabled
+    sleeveOverprintDetailsInput.required = false;
+    // Change label color to grey
+    sleeveOverprintDetailsLabel.style.color = "#CCCCCC";
+  }
+}
+
+// Add event listeners to the radio buttons
+sleeveOverprintNo.addEventListener("change", handleSleeveOverprintRadioChange);
+sleeveOverprintYes.addEventListener("change", handleSleeveOverprintRadioChange);
+
+// Initialize the state based on the initial selection
+handleSleeveOverprintRadioChange();
+
+// Function to enable/disable the "Cup Base Colour details" input and radio options based on the selected option
+var cupBaseColourDropdown = document.getElementById("cupBaseColour");
+var cupPantoneReferenceInput = document.getElementById("cupPantoneReference");
+var cupPantoneReferenceLabel = document.querySelector(
+  'label[for="cupPantoneReference"]'
+);
+var cupCoatedRadio = document.getElementById("cupCoated");
+var cupUncoatedRadio = document.getElementById("cupUncoated");
+var cupCoatedLabel = document.querySelector('label[for="cupCoated"]');
+var cupUncoatedLabel = document.querySelector('label[for="cupUncoated"]');
+
+// Add event listener to the Cup Base Colour dropdown
+cupBaseColourDropdown.addEventListener("change", function () {
+  // Check if the selected option is "Other (Pantone Matched)"
+  if (cupBaseColourDropdown.value === "Other (Pantone Matched)") {
+    // Enable the "Other (Pantone Matched)" input field
+    cupPantoneReferenceInput.disabled = false;
+    // Enable the radio options
+    cupCoatedRadio.disabled = false;
+    cupUncoatedRadio.disabled = false;
+    // Make the input and radio options required when enabled
+    cupPantoneReferenceInput.required = true;
+    cupCoatedRadio.required = true;
+    cupUncoatedRadio.required = true;
+    // Change label colors to black (not greyed out)
+    cupPantoneReferenceLabel.style.color = "black";
+    cupCoatedLabel.style.color = "black";
+    cupUncoatedLabel.style.color = "black";
+  } else {
+    // Disable and clear the "Other (Pantone Matched)" input field
+    cupPantoneReferenceInput.disabled = true;
+    // Disable the radio options
+    cupCoatedRadio.disabled = true;
+    cupUncoatedRadio.disabled = true;
+    // Make the input and radio options not required when disabled
+    cupPantoneReferenceInput.required = false;
+    cupCoatedRadio.required = false;
+    cupUncoatedRadio.required = false;
+    // Change label colors to grey
+    cupPantoneReferenceLabel.style.color = "#CCCCCC";
+    cupCoatedLabel.style.color = "#CCCCCC";
+    cupUncoatedLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+cupBaseColourDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Sleeve Base Colour details" input and radio options based on the selected option
+var sleeveBaseColourDropdown = document.getElementById("sleeveBaseColour");
+var sleevePantoneReferenceInput = document.getElementById(
+  "sleevePantoneReference"
+);
+var sleevePantoneReferenceLabel = document.querySelector(
+  'label[for="sleevePantoneReference"]'
+);
+var sleeveCoatedRadio = document.getElementById("sleeveCoated");
+var sleeveUncoatedRadio = document.getElementById("sleeveUncoated");
+var sleeveCoatedLabel = document.querySelector('label[for="sleeveCoated"]');
+var sleeveUncoatedLabel = document.querySelector('label[for="sleeveUncoated"]');
+
+// Add event listener to the Sleeve Base Colour dropdown
+sleeveBaseColourDropdown.addEventListener("change", function () {
+  // Check if the selected option is "Other (Pantone Matched)"
+  if (sleeveBaseColourDropdown.value === "Other (Pantone Matched)") {
+    // Enable the "Other (Pantone Matched)" input field
+    sleevePantoneReferenceInput.disabled = false;
+    // Enable the radio options
+    sleeveCoatedRadio.disabled = false;
+    sleeveUncoatedRadio.disabled = false;
+    // Make the input and radio options required when enabled
+    sleevePantoneReferenceInput.required = true;
+    sleeveCoatedRadio.required = true;
+    sleeveUncoatedRadio.required = true;
+    // Change label colors to black (not greyed out)
+    sleevePantoneReferenceLabel.style.color = "black";
+    sleeveCoatedLabel.style.color = "black";
+    sleeveUncoatedLabel.style.color = "black";
+  } else {
+    // Disable and clear the "Other (Pantone Matched)" input field
+    sleevePantoneReferenceInput.disabled = true;
+    // Disable the radio options
+    sleeveCoatedRadio.disabled = true;
+    sleeveUncoatedRadio.disabled = true;
+    // Make the input and radio options not required when disabled
+    sleevePantoneReferenceInput.required = false;
+    sleeveCoatedRadio.required = false;
+    sleeveUncoatedRadio.required = false;
+    // Change label colors to grey
+    sleevePantoneReferenceLabel.style.color = "#CCCCCC";
+    sleeveCoatedLabel.style.color = "#CCCCCC";
+    sleeveUncoatedLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+sleeveBaseColourDropdown.dispatchEvent(new Event("change"));
+
+// function to enable/disable the "Packaging Paper Stock details" input and radio options based on the selected option
+var packagingPaperStockDropdown = document.getElementById(
+  "packagingPaperStock"
+);
+
+var packagingPaperStockOtherInput = document.getElementById(
+  "packagingPaperStockOther"
+);
+
+var packagingPaperStockLabel = document.querySelector(
+  'label[for="packagingPaperStockOther"]'
+);
+
+// add event listener to the Packaging Paper Stock dropdown
+packagingPaperStockDropdown.addEventListener("change", function () {
+  // check if the selected option is "other (please specify)"
+  if (packagingPaperStockDropdown.value === "3. other (please specify)") {
+    // enable the "If Other, please specify" input field
+    packagingPaperStockOtherInput.disabled = false;
+    // make it required when enabled
+    packagingPaperStockOtherInput.required = true;
+    // change label color to black (not greyed out)
+    packagingPaperStockLabel.style.color = "black";
+  } else {
+    // disable and clear the "If Other, please specify" input field
+    packagingPaperStockOtherInput.disabled = true;
+    // make it not required when disabled
+    packagingPaperStockOtherInput.required = false;
+    // change label color to grey
+    packagingPaperStockLabel.style.color = "#CCCCCC";
+  }
+});
+
+// initialize the state based on the initial selection
+packagingPaperStockDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Lid Base Colour details" input and radio options based on the selected option
+var lidBaseColourDropdown = document.getElementById("lidBaseColour");
+var lidPantoneReferenceInput = document.getElementById("lidPantoneReference");
+var lidBaseColourLabel = document.querySelector('label[for="lidBaseColour"]');
+var lidCoatedRadio = document.getElementById("lidCoated");
+var lidUncoatedRadio = document.getElementById("lidUncoated");
+var lidCoatedLabel = document.querySelector('label[for="lidCoated"]');
+var lidUncoatedLabel = document.querySelector('label[for="lidUncoated"]');
+
+// Add event listener to the Lid Base Colour dropdown
+lidBaseColourDropdown.addEventListener("change", function () {
+  // Check if the selected option is "Other (Pantone Matched)"
+  if (lidBaseColourDropdown.value === "Other (Pantone Matched)") {
+    // Enable the "Other (Pantone Matched)" input field
+    lidPantoneReferenceInput.disabled = false;
+    // Enable the radio options
+    lidCoatedRadio.disabled = false;
+    lidUncoatedRadio.disabled = false;
+    // Make the input and radio options required when enabled
+    lidPantoneReferenceInput.required = true;
+    lidCoatedRadio.required = true;
+    lidUncoatedRadio.required = true;
+    // Change label colors to black (not greyed out)
+    lidBaseColourLabel.style.color = "black";
+    lidCoatedLabel.style.color = "black";
+    lidUncoatedLabel.style.color = "black";
+  } else {
+    // Disable and clear the "Other (Pantone Matched)" input field
+    lidPantoneReferenceInput.disabled = true;
+    // Disable the radio options
+    lidCoatedRadio.disabled = true;
+    lidUncoatedRadio.disabled = true;
+    // Make the input and radio options not required when disabled
+    lidPantoneReferenceInput.required = false;
+    lidCoatedRadio.required = false;
+    lidUncoatedRadio.required = false;
+    // Change label colors to grey
+    lidBaseColourLabel.style.color = "#CCCCCC";
+    lidCoatedLabel.style.color = "#CCCCCC";
+    lidUncoatedLabel.style.color = "#CCCCCC";
+  }
+});
+
+// Initialize the state based on the initial selection
+lidBaseColourDropdown.dispatchEvent(new Event("change"));
+
+// Function to enable/disable the "Packaging Print Type details" input and radio options based on the selected option
+var packagingPrintType = document.getElementById("packagingPrintType");
+var packagingPrintTypeDetails = document.getElementById(
+  "packagingPrintTypeDetails"
+);
+var packagingPrintTypeDetailsLabel = document.querySelector(
+  'label[for="packagingPrintTypeDetails"]'
+);
+
+var packagingPantone = document.getElementById("pantone");
+var packagingFourColour = document.getElementById("fourColour");
+
+var packagingCoated = document.getElementById("packagingCoated");
+var packagingUncoated = document.getElementById("packagingUncoated");
+var packagingCoatedLabel = document.querySelector(
+  'label[for="packagingCoated"]'
+);
+var packagingUncoatedLabel = document.querySelector(
+  'label[for="packagingUncoated"]'
+);
+
+// Function to enable/disable the "Paackaging Print Type" input and radio options based on the selected option
+function handlePackagingPrintTypeRadioChange() {
+  if (packagingPantone.checked) {
+    // Enable the radio options
+    packagingCoated.disabled = false;
+    packagingUncoated.disabled = false;
+
+    // Make the input and radio options required when enabled
+    packagingPrintTypeDetails.required = true;
+    packagingCoated.required = true;
+
+    // Change label colors to black (not greyed out)
+    packagingPrintTypeDetailsLabel.style.color = "black";
+    packagingCoatedLabel.style.color = "black";
+    packagingUncoatedLabel.style.color = "black";
+  } else {
+    // Disable the radio options
+    packagingCoated.disabled = true;
+    packagingUncoated.disabled = true;
+
+    // Make the input and radio options not required when disabled
+    packagingPrintTypeDetails.required = false;
+    packagingCoated.required = false;
+
+    // Change label colors to grey
+    packagingPrintTypeDetailsLabel.style.color = "#CCCCCC";
+    packagingCoatedLabel.style.color = "#CCCCCC";
+    packagingUncoatedLabel.style.color = "#CCCCCC";
+  }
+}
+
+// Add event listeners to the radio buttons
+packagingFourColour.addEventListener(
+  "change",
+  handlePackagingPrintTypeRadioChange
+);
+packagingPantone.addEventListener(
+  "change",
+  handlePackagingPrintTypeRadioChange
+);
+
+// Initialize the state based on the initial selection
+handlePackagingPrintTypeRadioChange();
+
+// Function to validate the form
+function validateForm() {
+  const requiredFields = document.querySelectorAll("[required]");
+  let hasEmptyFields = false;
+
+  requiredFields.forEach((field) => {
+    if (!field.value) {
+      field.style.borderColor = "red"; // Highlight empty fields in red
+      hasEmptyFields = true;
+    } else {
+      field.style.borderColor = ""; // Reset the border color
+    }
+  });
+
+  if (hasEmptyFields) {
+    const confirmation = confirm(
+      "WARNING: Some fields are still empty! It is strongly advised that you cancel and go back to fill out all required fields (empty fields Highlighted in RED) before proceeding!!!"
+    );
+    if (!confirmation) {
+      return false; // Cancel the operation if the user chooses not to proceed
+    }
+  }
+
+  return true; // Continue with the operation if all required fields are filled out
+}
