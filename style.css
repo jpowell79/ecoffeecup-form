@@ -1,5 +1,8 @@
 /* style.css */
 
+
+
+
 /* Body styles */
 body {
   font-family: Arial, sans-serif;
@@ -23,7 +26,10 @@ body {
   margin-top: 20px;
   margin-left: 80px;
   margin-bottom: 20px;
+}
 
+.extraNotes .wider-textarea {
+  width: 75%; /* Adjust the width as needed */
 }
 
 .button-section {
@@ -54,6 +60,10 @@ h1 {
   padding: 0px;
   margin-top: 0px;
   position: relative; /* Enable positioning of child elements */
+}
+
+h4 {
+  color: black; /* White text color */
 }
 
 .search-header {
