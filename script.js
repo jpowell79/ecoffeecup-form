@@ -31,6 +31,430 @@ const db = getDatabase();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// // declare all HTML elements as variables
+
+// // Job ID
+// const jobId = document.getElementById("jobId");
+// const jobIdLabel = document.querySelector('label[for="jobId"]');
+
+// // Todays date
+// const todaysDate = document.getElementById("todaysDate");
+// const todaysDateLabel = document.querySelector('label[for="todaysDate"]');
+
+// // Project details
+// const customerName = document.getElementById("customerName");
+// const customerNameLabel = document.querySelector(
+//   'label[for="customerName"]'
+// );
+
+// const projectProduct = document.getElementById("projectProduct");
+// const projectProductLabel = document.querySelector(
+//   'label[for="projectProduct"]'
+// );
+
+// const projectProductOther = document.getElementById("projectProductOther");
+// const projectProductOtherLabel = document.querySelector(
+//   'label[for="projectProductOther"]'
+// );
+
+// const projectName = document.getElementById("projectName");
+// const projectNameLabel = document.querySelector('label[for="projectName"]');
+
+// const newOrRepeat = document.getElementById("newOrRepeat");
+// const newOrRepeatLabel = document.querySelector('label[for="newOrRepeat"]');
+// const newOrRepeatYes = document.getElementById("newOrRepeatYes");
+// const newOrRepeatNo = document.getElementById("newOrRepeatNo");
+// const newOrRepeatYesLabel = document.querySelector(
+//   'label[for="newOrRepeatYes"]'
+// );
+// const newOrRepeatNoLabel = document.querySelector('label[for="newOrRepeatNo"]');
+
+// const productCode = document.getElementById("productCode");
+// const productCodeLabel = document.querySelector('label[for="productCode"]');
+
+// const samplesRequired = document.getElementById("samplesRequired");
+// const samplesRequiredLabel = document.querySelector(
+//   'label[for="samplesRequired"]'
+// );
+
+// const sampleRequiredDate = document.getElementById("sampleRequiredDate");
+// const sampleRequiredDateLabel = document.querySelector(
+//   'label[for="sampleRequiredDate"]'
+// );
+
+// // Product details
+
+// // Cup details
+// const cupSize = document.getElementById("cupSize");
+// const cupSizeLabel = document.querySelector('label[for="cupSize"]');
+
+// const cupSizeOptions = document.getElementById("cupSizeOptions");
+// const cupSizeOptionsLabel = document.querySelector(
+//   'label[for="cupSizeOptions"]'
+// );
+
+// const cupBaseColour = document.getElementById("cupBaseColour");
+// const cupBaseColourLabel = document.querySelector(
+//   'label[for="cupBaseColour"]'
+// );
+
+// const cupPantoneReference = document.getElementById("cupPantoneReference");
+// const cupPantoneReferenceLabel = document.querySelector(
+//   'label[for="cupPantoneReference"]'
+// );
+
+// const cupCoatedOrUncoated = document.getElementById("cupCoatedOrUncoated");
+// const cupCoatedOrUncoatedLabel = document.querySelector(
+//   'label[for="cupCoatedOrUncoated"]'
+// );
+// const cupCoated = document.getElementById("cupCoated");
+// const cupCoatedLabel = document.querySelector('label[for="cupCoated"]');
+// const cupUncoated = document.getElementById("cupUncoated");
+// const cupUncoatedLabel = document.querySelector('label[for="cupUncoated"]');
+
+// const cupDecorationOptions = document.getElementById("cupDecorationOptions");
+// const cupDecorationOptionsLabel = document.querySelector(
+//   'label[for="cupDecorationOptions"]'
+// );
+
+// const cupDecoration = document.getElementById("cupDecoration");
+// const cupDecorationLabel = document.querySelector(
+//   'label[for="cupDecoration"]'
+// );
+
+// const cupArtworkCompletedBy = document.getElementById("cupArtworkCompletedBy");
+// const cupArtworkCompletedByLabel = document.querySelector(
+//   'label[for="cupArtworkCompletedBy"]'
+// );
+
+// const cupMouldBaseOptions = document.getElementById("cupMouldBaseOptions");
+// const cupMouldBaseOptionsLabel = document.querySelector(
+//   'label[for="cupMouldBaseOptions"]'
+// );
+
+// const cupMouldBaseOther = document.getElementById("cupMouldBaseOther");
+// const cupMouldBaseOtherLabel = document.querySelector(
+//   'label[for="cupMouldBaseOther"]'
+// );
+
+// // Sleeve details
+// const sleeveRequired = document.getElementById("sleeveRequired");
+// const sleeveRequiredLabel = document.querySelector(
+//   'label[for="sleeveRequired"]'
+// );
+// const sleeveRequiredYes = document.getElementById("sleeveRequiredYes");
+// const sleeveRequiredNo = document.getElementById("sleeveRequiredNo");
+// const sleeveRequiredYesLabel = document.querySelector(
+//   'label[for="sleeveRequiredYes"]'
+// );
+// const sleeveRequiredNoLabel = document.querySelector(
+//   'label[for="sleeveRequiredNo"]'
+// );
+
+// const sleeveSize = document.getElementById("sleeveSize");
+// const sleeveSizeLabel = document.querySelector('label[for="sleeveSize"]');
+// const sleeveSizeOptions = document.getElementById("sleeveSizeOptions");
+// const sleeveSizeOptionsLabel = document.querySelector(
+//   'label[for="sleeveSizeOptions"]'
+// );
+
+// const sleeveBaseColour = document.getElementById("sleeveBaseColour");
+// const sleeveBaseColourLabel = document.querySelector(
+//   'label[for="sleeveBaseColour"]'
+// );
+
+// const sleevePantoneReference = document.getElementById(
+//   "sleevePantoneReference"
+// );
+// const sleevePantoneReferenceLabel = document.querySelector(
+//   'label[for="sleevePantoneReference"]'
+// );
+
+// const sleeveCoatedOrUncoated = document.getElementById(
+//   "sleeveCoatedOrUncoated"
+// );
+// const sleeveCoatedOrUncoatedLabel = document.querySelector(
+//   'label[for="sleeveCoatedOrUncoated"]'
+// );
+// const sleeveCoated = document.getElementById("sleeveCoated");
+// const sleeveCoatedLabel = document.querySelector('label[for="sleeveCoated"]');
+// const sleeveUncoated = document.getElementById("sleeveUncoated");
+// const sleeveUncoatedLabel = document.querySelector(
+//   'label[for="sleeveUncoated"]'
+// );
+
+// const sleeveArtworkCompletedBy = document.getElementById(
+//   "sleeveArtworkCompletedBy"
+// );
+// const sleeveArtworkCompletedByLabel = document.querySelector(
+//   'label[for="sleeveArtworkCompletedBy"]'
+// );
+
+// const sleeveMouldOptions = document.getElementById("sleeveMouldOptions");
+// const sleeveMouldOptionsLabel = document.querySelector(
+//   'label[for="sleeveMouldOptions"]'
+// );
+
+// const sleeveMouldOther = document.getElementById("sleeveMouldOther");
+// const sleeveMouldOtherLabel = document.querySelector(
+//   'label[for="sleeveMouldOther"]'
+// );
+
+// const sleeveEmbossing = document.getElementById("sleeveEmbossing");
+// const sleeveEmbossingLabel = document.querySelector(
+//   'label[for="sleeveEmbossing"]'
+// );
+// const sleeveEmbossingYes = document.getElementById("sleeveEmbossingYes");
+// const sleeveEmbossingNo = document.getElementById("sleeveEmbossingNo");
+// const sleeveEmbossingYesLabel = document.querySelector(
+//   'label[for="sleeveEmbossingYes"]'
+// );
+// const sleeveEmbossingNoLabel = document.querySelector(
+//   'label[for="sleeveEmbossingNo"]'
+// );
+
+// const sleeveOverprint = document.getElementById("sleeveOverprint");
+// const sleeveOverprintLabel = document.querySelector(
+//   'label[for="sleeveOverprint"]'
+// );
+// const sleeveOverprintYes = document.getElementById("sleeveOverprintYes");
+// const sleeveOverprintNo = document.getElementById("sleeveOverprintNo");
+// const sleeveOverprintYesLabel = document.querySelector(
+//   'label[for="sleeveOverprintYes"]'
+// );
+// const sleeveOverprintNoLabel = document.querySelector(
+//   'label[for="sleeveOverprintNo"]'
+// );
+
+// const sleeveOverprintDetails = document.getElementById(
+//   "sleeveOverprintDetails"
+// );
+// const sleeveOverprintDetailsLabel = document.querySelector(
+//   'label[for="sleeveOverprintDetails"]'
+// );
+
+// // Lid details
+// const lidRequired = document.getElementById("lidRequired");
+// const lidRequiredLabel = document.querySelector('label[for="lidRequired"]');
+// const lidRequiredYes = document.getElementById("lidRequiredYes");
+// const lidRequiredNo = document.getElementById("lidRequiredNo");
+// const lidRequiredYesLabel = document.querySelector(
+//   'label[for="lidRequiredYes"]'
+// );
+// const lidRequiredNoLabel = document.querySelector('label[for="lidRequiredNo"]');
+// const lidSize = document.getElementById("lidSize");
+// const lidSizeLabel = document.querySelector('label[for="lidSize"]');
+// const lidSizeOptions = document.getElementById("lidSizeOptions");
+// const lidSizeOptionsLabel = document.querySelector(
+//   'label[for="lidSizeOptions"]'
+// );
+
+// const lidBaseColour = document.getElementById("lidBaseColour");
+// const lidBaseColourLabel = document.querySelector(
+//   'label[for="lidBaseColour"]'
+// );
+
+// const lidPantoneReference = document.getElementById("lidPantoneReference");
+// const lidPantoneReferenceLabel = document.querySelector(
+//   'label[for="lidPantoneReference"]'
+// );
+
+// const lidCoatedOrUncoated = document.getElementById("lidCoatedOrUncoated");
+// const lidCoatedOrUncoatedLabel = document.querySelector(
+//   'label[for="lidCoatedOrUncoated"]'
+// );
+// const lidCoated = document.getElementById("lidCoated");
+// const lidCoatedLabel = document.querySelector('label[for="lidCoated"]');
+// const lidUncoated = document.getElementById("lidUncoated");
+// const lidUncoatedLabel = document.querySelector('label[for="lidUncoated"]');
+// const lidMouldOptions = document.getElementById("lidMouldOptions");
+// const lidMouldOptionsLabel = document.querySelector(
+//   'label[for="lidMouldOptions"]'
+// );
+
+// const lidMouldOther = document.getElementById("lidMouldOther");
+// const lidMouldOtherLabel = document.querySelector(
+//   'label[for="lidMouldOther"]'
+// );
+
+// // Packaging details
+// const packagingRequired = document.getElementById("packagingRequired");
+// const packagingRequiredLabel = document.querySelector(
+//   'label[for="packagingRequired"]'
+// );
+// const packagingRequiredYes = document.getElementById("packagingRequiredYes");
+// const packagingRequiredNo = document.getElementById("packagingRequiredNo");
+// const packagingRequiredYesLabel = document.querySelector(
+//   'label[for="packagingRequiredYes"]'
+// );
+// const packagingRequiredNoLabel = document.querySelector(
+//   'label[for="packagingRequiredNo"]'
+// );
+
+// const packagingTypeOptions = document.getElementById("packagingTypeOptions");
+// const packagingTypeOptionsLabel = document.querySelector(
+//   'label[for="packagingTypeOptions"]'
+// );
+
+// const packagingTypeOther = document.getElementById("packagingTypeOther");
+// const packagingTypeOtherLabel = document.querySelector(
+//   'label[for="packagingTypeOther"]'
+// );
+
+// const packagingCutterGuide = document.getElementById("packagingCutterGuide");
+// const packagingCutterGuideLabel = document.querySelector(
+//   'label[for="packagingCutterGuide"]'
+// );
+// const packagingCutterGuideYes = document.getElementById(
+//   "packagingCutterGuideYes"
+// );
+// const packagingCutterGuideNo = document.getElementById(
+//   "packagingCutterGuideNo"
+// );
+// const packagingCutterGuideYesLabel = document.querySelector(
+//   'label[for="packagingCutterGuideYes"]'
+// );
+// const packagingCutterGuideNoLabel = document.querySelector(
+//   'label[for="packagingCutterGuideNo"]'
+// );
+
+// const packagingCutterGuideOther = document.getElementById(
+//   "packagingCutterGuideOther"
+// );
+// const packagingCutterGuideOtherLabel = document.querySelector(
+//   'label[for="packagingCutterGuideOther"]'
+// );
+
+// const packagingPrintType = document.getElementById("packagingPrintType");
+// const packagingPrintTypeLabel = document.querySelector(
+//   'label[for="packagingPrintType"]'
+// );
+// const packagingPrintTypeYes = document.getElementById("packagingPrintTypeYes");
+// const packagingPrintTypeNo = document.getElementById("packagingPrintTypeNo");
+// const packagingPrintTypeYesLabel = document.querySelector(
+//   'label[for="packagingPrintTypeYes"]'
+// );
+// const packagingPrintTypeNoLabel = document.querySelector(
+//   'label[for="packagingPrintTypeNo"]'
+// );
+
+// const packagingPrintTypeDetails = document.getElementById(
+//   "packagingPrintTypeDetails"
+// );
+// const packagingPrintTypeDetailsLabel = document.querySelector(
+//   'label[for="packagingPrintTypeDetails"]'
+// );
+
+// const packagingPrintTypeCoatedOrUncoated = document.getElementById(
+//   "packagingPrintTypeCoatedOrUncoated"
+// );
+// const packagingPrintTypeCoatedOrUncoatedLabel = document.querySelector(
+//   'label[for="packagingPrintTypeCoatedOrUncoated"]'
+// );
+// const packagingPrintTypeCoated = document.getElementById(
+//   "packagingPrintTypeCoated"
+// );
+// const packagingPrintTypeCoatedLabel = document.querySelector(
+//   'label[for="packagingPrintTypeCoated"]'
+// );
+// const packagingPrintTypeUncoated = document.getElementById(
+//   "packagingPrintTypeUncoated"
+// );
+// const packagingPrintTypeUncoatedLabel = document.querySelector(
+//   'label[for="packagingPrintTypeUncoated"]'
+// );
+
+// const packagingPaperStock = document.getElementById("packagingPaperStock");
+// const packagingPaperStockLabel = document.querySelector(
+//   'label[for="packagingPaperStock"]'
+// );
+
+// const packagingPaperStockOther = document.getElementById(
+//   "packagingPaperStockOther"
+// );
+// const packagingPaperStockOtherLabel = document.querySelector(
+//   'label[for="packagingPaperStockOther"]'
+// );
+
+// const packagingArtworkCompletedBy = document.getElementById(
+//   "packagingArtworkCompletedBy"
+// );
+// const packagingArtworkCompletedByLabel = document.querySelector(
+//   'label[for="packagingArtworkCompletedBy"]'
+// );
+
+// const packagingOuterCartonMarkings = document.getElementById(
+//   "packagingOuterCartonMarkings"
+// );
+// const packagingOuterCartonMarkingsLabel = document.querySelector(
+//   'label[for="packagingOuterCartonMarkings"]'
+// );
+
+// const packagingOuterCartonMarkingsOther = document.getElementById(
+//   "packagingOuterCartonMarkingsOther"
+// );
+
+// const packagingOuterCartonMarkingsOtherLabel = document.querySelector(
+//   'label[for="packagingOuterCartonMarkingsOther"]'
+// );
+
+// const packagingBarcodeRequired = document.getElementById(
+//   "packagingBarcodeRequired"
+// );
+// const packagingBarcodeRequiredLabel = document.querySelector(
+//   'label[for="packagingBarcodeRequired"]'
+// );
+// const packagingBarcodeRequiredYes = document.getElementById(
+//   "packagingBarcodeRequiredYes"
+// );
+// const packagingBarcodeRequiredNo = document.getElementById(
+//   "packagingBarcodeRequiredNo"
+// );
+// const packagingBarcodeRequiredYesLabel = document.querySelector(
+//   'label[for="packagingBarcodeRequiredYes"]'
+// );
+// const packagingBarcodeRequiredNoLabel = document.querySelector(
+//   'label[for="packagingBarcodeRequiredNo"]'
+// );
+
+// const packagingBarcodeDetails = document.getElementById(
+//   "packagingBarcodeDetails"
+// );
+// const packagingBarcodeDetailsLabel = document.querySelector(
+//   'label[for="packagingBarcodeDetails"]'
+// );
+
+// // Extra notes (optional)
+// const extraNotes = document.getElementById("extraNotes");
+// const extraNotesLabel = document.querySelector('label[for="extraNotes"]');
+// const extraNotesYes = document.getElementById("extraNotesYes");
+// const extraNotesNo = document.getElementById("extraNotesNo");
+// const extraNotesYesLabel = document.querySelector('label[for="extraNotesYes"]');
+// const extraNotesNoLabel = document.querySelector('label[for="extraNotesNo"]');
+// const extraNotesDetails = document.getElementById("extraNotesDetails");
+// const extraNotesDetailsLabel = document.querySelector(
+//   'label[for="extraNotesDetails"]'
+// );
+
+// // Buttons
+// const saveToDatabase = document.getElementById("saveToDatabase");
+// const updateDatabase = document.getElementById("updateDatabase");
+// const deleteFromDatabase = document.getElementById("deleteFromDatabase");
+// const searchDatabase = document.getElementById("searchDatabase");
+// const prevForm = document.getElementById("prevForm");
+// const nextForm = document.getElementById("nextForm");
+
+// // search buttons
+// const searchJobId = document.getElementById("searchJobId");
+// const searchJobIdLabel = document.querySelector('label[for="searchJobId"]');
+// const searchDatabaseButton = document.getElementById("searchDatabase");
+// const searchDatabaseButtonLabel = document.querySelector(
+//   'label[for="searchDatabase"]'
+// );
+// const prevButton = document.getElementById("prevForm");
+// const prevButtonLabel = document.querySelector('label[for="prevForm"]');
+// const nextButton = document.getElementById("nextForm");
+
 // function to save form data to database ///////////////////////////////////////
 
 function createForm() {
@@ -856,6 +1280,8 @@ async function readForm() {
         console.log("Job Id exists");
         // Call toggleButtons to enable/disable buttons based on form existence
         // toggleButtons(true);
+
+        resetFieldBorders();
       } else {
         alert(`Job Id ${idToSearch} does not exist`);
         console.log("Job Id does not exist");
@@ -940,6 +1366,8 @@ async function prevForm() {
 
     // Enable the "Next" button
     document.getElementById("nextForm").disabled = false;
+
+    resetFieldBorders();
 
     // if job id is 1, then disable the "Previous" button
     if (idToSearch == 1) {
@@ -1885,6 +2313,8 @@ async function nextForm() {
     console.log("Job Id exists");
     // Call toggleButtons to enable/disable buttons based on form existence
     // toggleButtons(true);
+
+    resetFieldBorders();
   } else {
     // alert(`Job Id ${idToSearch} does not exist`);
     console.log("Job Id does not exist");
@@ -3240,100 +3670,162 @@ sleeveOverprintYes.addEventListener("change", handleSleeveOverprintRadioChange);
 // Initialize the state based on the initial selection
 handleSleeveOverprintRadioChange();
 
-// Function to enable/disable the "Cup Base Colour details" input and radio options based on the selected option
-var cupBaseColourDropdown = document.getElementById("cupBaseColour");
-var cupPantoneReferenceInput = document.getElementById("cupPantoneReference");
-var cupPantoneReferenceLabel = document.querySelector(
-  'label[for="cupPantoneReference"]'
-);
+// // Function to enable/disable input fields and radio options based on the selected option
+// function handleDropdownChange(
+//   dropdown,
+//   input,
+//   radio1,
+//   radio2,
+//   labelInput,
+//   labelRadio1,
+//   labelRadio2
+// ) {
+//   if (dropdown.value === "Other (Pantone Matched)") {
+//     input.disabled = false;
+//     radio1.disabled = false;
+//     radio2.disabled = false;
+//     input.required = true;
+//     radio1.required = true;
+//     radio2.required = true;
+//     labelInput.style.color = "black";
+//     labelRadio1.style.color = "black";
+//     labelRadio2.style.color = "black";
+//   } else {
+//     input.disabled = true;
+//     input.required = false;
+//     radio1.disabled = true;
+//     radio2.disabled = true;
+//     radio1.required = false;
+//     radio2.required = false;
+//     labelInput.style.color = "#CCCCCC";
+//     labelRadio1.style.color = "#CCCCCC";
+//     labelRadio2.style.color = "#CCCCCC";
+//   }
+// }
+
+// // Add event listeners for Cup Base Colour and Sleeve Base Colour dropdowns
+// cupBaseColourDropdown.addEventListener("change", function () {
+//   handleDropdownChange(
+//     cupBaseColourDropdown,
+//     cupPantoneReferenceInput,
+//     cupCoatedRadio,
+//     cupUncoatedRadio,
+//     cupPantoneReferenceLabel,
+//     cupCoatedLabel,
+//     cupUncoatedLabel
+//   );
+// });
+
+// sleeveBaseColourDropdown.addEventListener("change", function () {
+//   handleDropdownChange(
+//     sleeveBaseColourDropdown,
+//     sleevePantoneReferenceInput,
+//     sleeveCoatedRadio,
+//     sleeveUncoatedRadio,
+//     sleevePantoneReferenceLabel,
+//     sleeveCoatedLabel,
+//     sleeveUncoatedLabel
+//   );
+// });
+
+// // Initialize the state based on the initial selection for both dropdowns
+// cupBaseColourDropdown.dispatchEvent(new Event("change"));
+// sleeveBaseColourDropdown.dispatchEvent(new Event("change"));
+
+// // Function to enable/disable the "Cup Base Colour details" input and radio options based on the selected option
+// var cupBaseColourDropdown = document.getElementById("cupBaseColour");
+// var cupPantoneReferenceInput = document.getElementById("cupPantoneReference");
+// var cupPantoneReferenceLabel = document.querySelector(
+//   'label[for="cupPantoneReference"]'
+// );
 var cupCoatedRadio = document.getElementById("cupCoated");
 var cupUncoatedRadio = document.getElementById("cupUncoated");
 var cupCoatedLabel = document.querySelector('label[for="cupCoated"]');
 var cupUncoatedLabel = document.querySelector('label[for="cupUncoated"]');
 
-// Add event listener to the Cup Base Colour dropdown
-cupBaseColourDropdown.addEventListener("change", function () {
-  // Check if the selected option is "Other (Pantone Matched)"
-  if (cupBaseColourDropdown.value === "Other (Pantone Matched)") {
-    // Enable the "Other (Pantone Matched)" input field
-    cupPantoneReferenceInput.disabled = false;
-    // Enable the radio options
-    cupCoatedRadio.disabled = false;
-    cupUncoatedRadio.disabled = false;
-    // Make the input and radio options required when enabled
-    cupPantoneReferenceInput.required = true;
-    cupCoatedRadio.required = true;
-    cupUncoatedRadio.required = true;
-    // Change label colors to black (not greyed out)
-    cupPantoneReferenceLabel.style.color = "black";
-    cupCoatedLabel.style.color = "black";
-    cupUncoatedLabel.style.color = "black";
-  } else {
-    // Disable and clear the "Other (Pantone Matched)" input field
-    cupPantoneReferenceInput.disabled = true;
-    // Disable the radio options
-    cupCoatedRadio.disabled = true;
-    cupUncoatedRadio.disabled = true;
-    // Make the input and radio options not required when disabled
-    cupPantoneReferenceInput.required = false;
-    cupCoatedRadio.required = false;
-    cupUncoatedRadio.required = false;
-    // Change label colors to grey
-    cupPantoneReferenceLabel.style.color = "#CCCCCC";
-    cupCoatedLabel.style.color = "#CCCCCC";
-    cupUncoatedLabel.style.color = "#CCCCCC";
-  }
-});
+// // Add event listener to the Cup Base Colour dropdown
+// cupBaseColourDropdown.addEventListener("change", function () {
+//   // Check if the selected option is "Other (Pantone Matched)"
+//   if (cupBaseColourDropdown.value === "Other (Pantone Matched)") {
+//     // Enable the "Other (Pantone Matched)" input field
+//     cupPantoneReferenceInput.disabled = false;
+//     // Enable the radio options
+//     cupCoatedRadio.disabled = false;
+//     cupUncoatedRadio.disabled = false;
+//     // Make the input and radio options required when enabled
+//     cupPantoneReferenceInput.required = true;
+//     cupCoatedRadio.required = true;
+//     cupUncoatedRadio.required = true;
+//     // Change label colors to black (not greyed out)
+//     cupPantoneReferenceLabel.style.color = "black";
+//     cupCoatedLabel.style.color = "black";
+//     cupUncoatedLabel.style.color = "black";
+//   } else {
+//     // Disable and clear the "Other (Pantone Matched)" input field
+//     cupPantoneReferenceInput.disabled = true;
+//     // Disable the radio options
+//     cupCoatedRadio.disabled = true;
+//     cupUncoatedRadio.disabled = true;
+//     // Make the input and radio options not required when disabled
+//     cupPantoneReferenceInput.required = false;
+//     cupCoatedRadio.required = false;
+//     cupUncoatedRadio.required = false;
+//     // Change label colors to grey
+//     cupPantoneReferenceLabel.style.color = "#CCCCCC";
+//     cupCoatedLabel.style.color = "#CCCCCC";
+//     cupUncoatedLabel.style.color = "#CCCCCC";
+//   }
+// });
 
-// Initialize the state based on the initial selection
-cupBaseColourDropdown.dispatchEvent(new Event("change"));
+// // Initialize the state based on the initial selection
+// cupBaseColourDropdown.dispatchEvent(new Event("change"));
 
-// Function to enable/disable the "Sleeve Base Colour details" input and radio options based on the selected option
-var sleeveBaseColourDropdown = document.getElementById("sleeveBaseColour");
-var sleevePantoneReferenceInput = document.getElementById(
-  "sleevePantoneReference"
-);
-var sleevePantoneReferenceLabel = document.querySelector(
-  'label[for="sleevePantoneReference"]'
-);
+// // Function to enable/disable the "Sleeve Base Colour details" input and radio options based on the selected option
+// var sleeveBaseColourDropdown = document.getElementById("sleeveBaseColour");
+// var sleevePantoneReferenceInput = document.getElementById(
+//   "sleevePantoneReference"
+// );
+// var sleevePantoneReferenceLabel = document.querySelector(
+//   'label[for="sleevePantoneReference"]'
+// );
 var sleeveCoatedRadio = document.getElementById("sleeveCoated");
 var sleeveUncoatedRadio = document.getElementById("sleeveUncoated");
 var sleeveCoatedLabel = document.querySelector('label[for="sleeveCoated"]');
 var sleeveUncoatedLabel = document.querySelector('label[for="sleeveUncoated"]');
 
-// Add event listener to the Sleeve Base Colour dropdown
-sleeveBaseColourDropdown.addEventListener("change", function () {
-  // Check if the selected option is "Other (Pantone Matched)"
-  if (sleeveBaseColourDropdown.value === "Other (Pantone Matched)") {
-    // Enable the "Other (Pantone Matched)" input field
-    sleevePantoneReferenceInput.disabled = false;
-    // Enable the radio options
-    sleeveCoatedRadio.disabled = false;
-    sleeveUncoatedRadio.disabled = false;
-    // Make the input and radio options required when enabled
-    sleevePantoneReferenceInput.required = true;
-    sleeveCoatedRadio.required = true;
-    sleeveUncoatedRadio.required = true;
-    // Change label colors to black (not greyed out)
-    sleevePantoneReferenceLabel.style.color = "black";
-    sleeveCoatedLabel.style.color = "black";
-    sleeveUncoatedLabel.style.color = "black";
-  } else {
-    // Disable and clear the "Other (Pantone Matched)" input field
-    sleevePantoneReferenceInput.disabled = true;
-    // Disable the radio options
-    sleeveCoatedRadio.disabled = true;
-    sleeveUncoatedRadio.disabled = true;
-    // Make the input and radio options not required when disabled
-    sleevePantoneReferenceInput.required = false;
-    sleeveCoatedRadio.required = false;
-    sleeveUncoatedRadio.required = false;
-    // Change label colors to grey
-    sleevePantoneReferenceLabel.style.color = "#CCCCCC";
-    sleeveCoatedLabel.style.color = "#CCCCCC";
-    sleeveUncoatedLabel.style.color = "#CCCCCC";
-  }
-});
+// // Add event listener to the Sleeve Base Colour dropdown
+// sleeveBaseColourDropdown.addEventListener("change", function () {
+//   // Check if the selected option is "Other (Pantone Matched)"
+//   if (sleeveBaseColourDropdown.value === "Other (Pantone Matched)") {
+//     // Enable the "Other (Pantone Matched)" input field
+//     sleevePantoneReferenceInput.disabled = false;
+//     // Enable the radio options
+//     sleeveCoatedRadio.disabled = false;
+//     sleeveUncoatedRadio.disabled = false;
+//     // Make the input and radio options required when enabled
+//     sleevePantoneReferenceInput.required = true;
+//     sleeveCoatedRadio.required = true;
+//     sleeveUncoatedRadio.required = true;
+//     // Change label colors to black (not greyed out)
+//     sleevePantoneReferenceLabel.style.color = "black";
+//     sleeveCoatedLabel.style.color = "black";
+//     sleeveUncoatedLabel.style.color = "black";
+//   } else {
+//     // Disable and clear the "Other (Pantone Matched)" input field
+//     sleevePantoneReferenceInput.disabled = true;
+//     // Disable the radio options
+//     sleeveCoatedRadio.disabled = true;
+//     sleeveUncoatedRadio.disabled = true;
+//     // Make the input and radio options not required when disabled
+//     sleevePantoneReferenceInput.required = false;
+//     sleeveCoatedRadio.required = false;
+//     sleeveUncoatedRadio.required = false;
+//     // Change label colors to grey
+//     sleevePantoneReferenceLabel.style.color = "#CCCCCC";
+//     sleeveCoatedLabel.style.color = "#CCCCCC";
+//     sleeveUncoatedLabel.style.color = "#CCCCCC";
+//   }
+// });
 
 // Initialize the state based on the initial selection
 sleeveBaseColourDropdown.dispatchEvent(new Event("change"));
@@ -3509,4 +4001,12 @@ function validateForm() {
   }
 
   return true; // Continue with the operation if all required fields are filled out
+}
+
+// Function to reset the border color of required fields
+function resetFieldBorders() {
+  const requiredFields = document.querySelectorAll("[required]");
+  requiredFields.forEach((field) => {
+    field.style.borderColor = ""; // Reset the border color
+  });
 }
