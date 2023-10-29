@@ -112,19 +112,17 @@ h2 {
   transform: translateY(-50%); /* Vertically center the logo */
   right: 10px; /* Adjust the distance from the right side */
 
-  /* when pade width is 768px or less
- set top to 60% and set max width to 50px */
+  /* When page width is 768px or less, set top to 60% and set max width to 80px */
   @media (max-width: 980px) {
     top: 60%;
     width: 80px;
   } 
 
-  /* when pade width is 650px or less
-  remove image */
+  /* When page width is 650px or less, remove image */
   @media (max-width: 650px) {
-    width: 0px;
+    width: 0;
+    display: none; /* Optionally add display: none; to hide the logo completely */
   }
-
 }
 
 /* Label styles */
