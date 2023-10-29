@@ -1,5 +1,11 @@
 // connecting to firebase DB
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+import {
+  getAuth,
+  signOut,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -15,6 +21,50 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth();
+
+// Listen for the DOM to be loaded, then add a click event listener to the login button
+document.addEventListener("DOMContentLoaded", () => {
+  const loginButton = document.getElementById("login");
+
+  loginButton.addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Sign in with email and password function
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in successfully
+        const user = userCredential.user;
+        // Show the form page and hide the login page
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("formPage").style.display = "block";
+      })
+      .catch((error) => {
+        // Handle login error here
+        console.error(error);
+        // Handle login error here
+        console.error("Firebase Authentication Error:", error);
+        alert("Login failed. Please check your email and password.");
+      });
+  });
+});
+
+// Listen for authentication state changes
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, display authenticated content
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("formPage").style.display = "block";
+  } else {
+    // User is signed out, display login page or other content
+    document.getElementById("loginPage").style.display = "block";
+    document.getElementById("formPage").style.display = "none";
+  }
+});
+
+console.log("Script loaded.");
 
 // Import functions required from the SDKs
 import {
@@ -28,6 +78,30 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 
 const db = getDatabase();
+
+// Listen for the DOM to be loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Your existing code
+
+  // Add a click event listener to the "Sign Out" button
+  const signOutButton = document.getElementById("signOut");
+
+  signOutButton.addEventListener("click", () => {
+    // Sign out the user
+    signOut(auth)
+      .then(() => {
+        // User signed out successfully
+        // You can redirect to a sign-in page or update your UI as needed
+        console.log("User signed out");
+      })
+      .catch((error) => {
+        // Handle sign-out error here
+        console.error("Sign Out Error:", error);
+      });
+  });
+
+  // ...
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2354,8 +2428,6 @@ nextFormBtn.addEventListener("click", nextForm);
 document.getElementById("saveAsPDF").addEventListener("click", function () {
   if (validateForm()) {
     console.log("save as PDF button clicked");
-
-    console.log("save as PDF button clicked");
     console.log(document.getElementById("jobId"));
     console.log(document.getElementById("customerName").value);
     const jobIdElement = document.getElementById("jobId");
@@ -4049,20 +4121,22 @@ function validateForm() {
 
   if (hasEmptyFields) {
     const confirmation = confirm(
-      "WARNING: Some fields are still empty! It is strongly advised that you cancel and go back to fill out all required fields (empty fields Highlighted in RED) before proceeding!!!"
+      "WARNING: Some fields are still empty! It is strongly advised that you CANCEL and go back to fill out all required fields (empty fields will be Highlighted in RED) before proceeding!!!"
     );
     if (!confirmation) {
       return false; // Cancel the operation if the user chooses not to proceed
     }
   }
 
+  // field.style.borderColor = ""; // Reset the border color
   return true; // Continue with the operation if all required fields are filled out
 }
 
-// Function to reset the border color of required fields
+// Function to reset the border color of required fields and fieldsets based on the selected option
 function resetFieldBorders() {
   const requiredFields = document.querySelectorAll("[required]");
   requiredFields.forEach((field) => {
     field.style.borderColor = ""; // Reset the border color
+    handleDropdownSelection(field); // Reset the border color of the fieldset
   });
 }
