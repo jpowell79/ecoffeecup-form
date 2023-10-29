@@ -235,8 +235,18 @@ fieldset:disabled {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  /* move the button to the centre */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .login-button:hover {
   background-color: #0056b3;
 }
+
+/* Style for the centered input container */
+.centered-input {
+  text-align: center; /* Center the content horizontally within the container */
+}
+
