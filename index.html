@@ -11,29 +11,55 @@
 
   <body>
 
-    <h1>     
-      <div class="search-header">
-        <div class="centered-text">
-          Ecoffee Cup Project Request Form
-        </div>
 
-        <!-- Search Database Section -->
-        <div class="navButtons">
-          <!-- Search for Job Number-->
-          <label for="searchJobId">Search for Job Number:</label>
-          <input type="number" id="searchJobId" name="searchJobId" min="1" step="1">
-          <button type="button" id="searchDatabase">Search Database</button>
-          <!-- Previous/Next Navigation buttons -->
-          <br>
-          <button type="button" id="prevForm" class="nav-button">Previous</button>
-          <button type="button" id="nextForm" class="nav-button">Next</button>
-          <br>
-          <span class="small-text">You can alway press F5 or refresh the page for a new job</span>
-        </div>
-      </div>
 
-      <img src="logo.png" alt="Logo" id="logo">
-    </h1>
+
+
+
+
+
+<!-- Login Page -->
+<div id="loginPage" class="login-container">
+  <img src="logo.png" alt="Logo" class="loginLogo">
+  <h1 class="login-header">Ecoffee Cup Project Request Form</h1>
+  <input type="email" id="email" placeholder="Email" class="input-field" autocomplete="email">
+  <input type="password" id="password" placeholder="Password" class="input-field">
+  <button id="login" onclick="login" class="login-button">Login</button>
+</div>
+
+
+    <div id="formPage" style="display: none;">
+
+
+      <!-- disable this opening div when using the login page above-->
+      <div>
+
+
+        <div class="header-container">
+          <h1>
+            <div class="search-header">
+              <div class="centered-text">
+                Ecoffee Cup Project Request Form
+              </div>
+        
+              <!-- Search Database Section -->
+              <div class="navButtons">
+                <!-- Search for Job Number-->
+                <label for="searchJobId">Search for Job Number:</label>
+                <input type="number" id="searchJobId" name="searchJobId" min="1" step="1">
+                <button type="button" id="searchDatabase">Search Database</button>
+                <!-- Previous/Next Navigation buttons -->
+                <br>
+                <button type="button" id="prevForm" class="nav-button">Previous</button>
+                <button type="button" id="nextForm" class="nav-button">Next</button>
+                <br>
+                <span class="small-text">You can always press F5 or refresh the page for a new job</span>
+              </div>
+            </div>
+        
+            <img src="logo.png" alt="Logo" id="logo">
+          </h1>
+        </div>
 
 
     <!-- Project Details Section -->
@@ -51,7 +77,7 @@
 
           <!-- Job Number Field -->
           <label for="jobId">Job Number:</label>
-          <input type="number" id="jobId" name="jobId" min=1 step=1 required><br><br>
+          <input type="number" id="jobId" name="jobId" min=1 step=1 required readonly><br><br>
 
           <!-- Date Selector -->
           <label for="todaysDate">Date of Brief:</label>
@@ -346,7 +372,7 @@
 
         <!-- Sleeve Overprint details (if applicable) -->
         <label for="sleeveOverprintDetails">Overprint Details:</label><br>
-        <input type="text" id="sleeveOverprintDetails" name="sleeveOverprintDetails"><br><br>
+        <input type="text" id="sleeveOverprintDetails" name="sleeveOverprintDetails" style="margin-bottom: 64px"><br><br>
 
       <!-- End of enclosing fieldset -->
       </fieldset>
@@ -589,8 +615,7 @@
 
       <!-- End of Form -->
 
-      <br><br>   
-      <br><br>
+      <br>
 
       <!-- Section to Save Form and update Database--> 
 
@@ -614,8 +639,13 @@
         <br><br><br>
       <div>
 
+        <!-- "Sign Out" button -->
+<button type="button" id="signOut">Sign Out</button>
+
     <!-- End of Form -->
     </form>
+
+    </div>
 
     <!--use script.js file-->  
     <script type="module" src="script.js"></script>
