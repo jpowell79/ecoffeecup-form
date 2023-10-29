@@ -107,9 +107,18 @@ h2 {
 #logo {
   position: absolute;
   top: 50%;
-  right: 20px; /* Adjust the distance from the right side */
+  /* logo size */
+  width: 150px;
   transform: translateY(-50%); /* Vertically center the logo */
-  max-width: 100px; /* Limit the maximum width of the logo */
+  right: 10px; /* Adjust the distance from the right side */
+
+  /* when pade width is 768px or less
+ set top to 60% and set max width to 50px */
+  @media (max-width: 980px) {
+    top: 60%;
+    max-width: 80px;
+  } 
+
 }
 
 /* Label styles */
@@ -157,9 +166,19 @@ fieldset:disabled {
 }
 
 .centered-text {
+  /* make logo flex */
+  display: flex;
   margin-top: 0px; /* Adjust the negative margin to move the text up */
   padding-top: 35px; /* Adjust the padding to move the text down */
-  text-align: center; /* Center-align the text */
+  padding-bottom: 55px;
+  /* align to centre of page */
+  justify-content: center;
+  /* make text a little bit smaller */
+  font-size: 24px;
+  /* make font size 40px when page is 768px or more */
+  @media (min-width: 768px) {
+    font-size: 40px;
+  }
 }
 
 /* CSS */
@@ -168,4 +187,56 @@ fieldset:disabled {
   margin-bottom: 30px; /* Adjust the negative margin to move the text up */ 
   padding-bottom: 15px; /* Adjust the padding to move the text down */
   text-align: left; /* Center-align the text */
+}
+
+
+
+/* Center the login container vertically and horizontally */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* 100% of the viewport height */
+}
+
+/* Style for the logo */
+.loginLogo {
+  width: 200px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Add margin below the logo */
+  /* make logo centre */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+/* Style for the input fields */
+.input-field {
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* move the field to the centre */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Style for the login button */
+.login-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
 }
