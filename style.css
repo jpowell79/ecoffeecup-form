@@ -119,7 +119,7 @@ h2 {
   } 
 
   /* When page width is 650px or less, remove image */
-  @media (max-width: 650px) {
+   @media only screen and (max-width: 650px) {
     top: 60%;
     width: 0;
     display: none; /* Optionally add display: none; to hide the logo completely */
