@@ -119,6 +119,12 @@ h2 {
     max-width: 80px;
   } 
 
+  /* when pade width is 650px or less
+  remove image */
+  @media (max-width: 650px) {
+    display: none;
+  }
+
 }
 
 /* Label styles */
