@@ -105,594 +105,205 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// // declare all HTML elements as variables
-
-// // Job ID
-// const jobId = document.getElementById("jobId");
-// const jobIdLabel = document.querySelector('label[for="jobId"]');
-
-// // Todays date
-// const todaysDate = document.getElementById("todaysDate");
-// const todaysDateLabel = document.querySelector('label[for="todaysDate"]');
-
-// // Project details
-// const customerName = document.getElementById("customerName");
-// const customerNameLabel = document.querySelector(
-//   'label[for="customerName"]'
-// );
-
-// const projectProduct = document.getElementById("projectProduct");
-// const projectProductLabel = document.querySelector(
-//   'label[for="projectProduct"]'
-// );
-
-// const projectProductOther = document.getElementById("projectProductOther");
-// const projectProductOtherLabel = document.querySelector(
-//   'label[for="projectProductOther"]'
-// );
-
-// const projectName = document.getElementById("projectName");
-// const projectNameLabel = document.querySelector('label[for="projectName"]');
-
-// const newOrRepeat = document.getElementById("newOrRepeat");
-// const newOrRepeatLabel = document.querySelector('label[for="newOrRepeat"]');
-// const newOrRepeatYes = document.getElementById("newOrRepeatYes");
-// const newOrRepeatNo = document.getElementById("newOrRepeatNo");
-// const newOrRepeatYesLabel = document.querySelector(
-//   'label[for="newOrRepeatYes"]'
-// );
-// const newOrRepeatNoLabel = document.querySelector('label[for="newOrRepeatNo"]');
-
-// const productCode = document.getElementById("productCode");
-// const productCodeLabel = document.querySelector('label[for="productCode"]');
-
-// const samplesRequired = document.getElementById("samplesRequired");
-// const samplesRequiredLabel = document.querySelector(
-//   'label[for="samplesRequired"]'
-// );
-
-// const sampleRequiredDate = document.getElementById("sampleRequiredDate");
-// const sampleRequiredDateLabel = document.querySelector(
-//   'label[for="sampleRequiredDate"]'
-// );
-
-// // Product details
-
-// // Cup details
-// const cupSize = document.getElementById("cupSize");
-// const cupSizeLabel = document.querySelector('label[for="cupSize"]');
-
-// const cupSizeOptions = document.getElementById("cupSizeOptions");
-// const cupSizeOptionsLabel = document.querySelector(
-//   'label[for="cupSizeOptions"]'
-// );
-
-// const cupBaseColour = document.getElementById("cupBaseColour");
-// const cupBaseColourLabel = document.querySelector(
-//   'label[for="cupBaseColour"]'
-// );
-
-// const cupPantoneReference = document.getElementById("cupPantoneReference");
-// const cupPantoneReferenceLabel = document.querySelector(
-//   'label[for="cupPantoneReference"]'
-// );
-
-// const cupCoatedOrUncoated = document.getElementById("cupCoatedOrUncoated");
-// const cupCoatedOrUncoatedLabel = document.querySelector(
-//   'label[for="cupCoatedOrUncoated"]'
-// );
-// const cupCoated = document.getElementById("cupCoated");
-// const cupCoatedLabel = document.querySelector('label[for="cupCoated"]');
-// const cupUncoated = document.getElementById("cupUncoated");
-// const cupUncoatedLabel = document.querySelector('label[for="cupUncoated"]');
-
-// const cupDecorationOptions = document.getElementById("cupDecorationOptions");
-// const cupDecorationOptionsLabel = document.querySelector(
-//   'label[for="cupDecorationOptions"]'
-// );
-
-// const cupDecoration = document.getElementById("cupDecoration");
-// const cupDecorationLabel = document.querySelector(
-//   'label[for="cupDecoration"]'
-// );
-
-// const cupArtworkCompletedBy = document.getElementById("cupArtworkCompletedBy");
-// const cupArtworkCompletedByLabel = document.querySelector(
-//   'label[for="cupArtworkCompletedBy"]'
-// );
-
-// const cupMouldBaseOptions = document.getElementById("cupMouldBaseOptions");
-// const cupMouldBaseOptionsLabel = document.querySelector(
-//   'label[for="cupMouldBaseOptions"]'
-// );
-
-// const cupMouldBaseOther = document.getElementById("cupMouldBaseOther");
-// const cupMouldBaseOtherLabel = document.querySelector(
-//   'label[for="cupMouldBaseOther"]'
-// );
-
-// // Sleeve details
-// const sleeveRequired = document.getElementById("sleeveRequired");
-// const sleeveRequiredLabel = document.querySelector(
-//   'label[for="sleeveRequired"]'
-// );
-// const sleeveRequiredYes = document.getElementById("sleeveRequiredYes");
-// const sleeveRequiredNo = document.getElementById("sleeveRequiredNo");
-// const sleeveRequiredYesLabel = document.querySelector(
-//   'label[for="sleeveRequiredYes"]'
-// );
-// const sleeveRequiredNoLabel = document.querySelector(
-//   'label[for="sleeveRequiredNo"]'
-// );
-
-// const sleeveSize = document.getElementById("sleeveSize");
-// const sleeveSizeLabel = document.querySelector('label[for="sleeveSize"]');
-// const sleeveSizeOptions = document.getElementById("sleeveSizeOptions");
-// const sleeveSizeOptionsLabel = document.querySelector(
-//   'label[for="sleeveSizeOptions"]'
-// );
-
-// const sleeveBaseColour = document.getElementById("sleeveBaseColour");
-// const sleeveBaseColourLabel = document.querySelector(
-//   'label[for="sleeveBaseColour"]'
-// );
-
-// const sleevePantoneReference = document.getElementById(
-//   "sleevePantoneReference"
-// );
-// const sleevePantoneReferenceLabel = document.querySelector(
-//   'label[for="sleevePantoneReference"]'
-// );
-
-// const sleeveCoatedOrUncoated = document.getElementById(
-//   "sleeveCoatedOrUncoated"
-// );
-// const sleeveCoatedOrUncoatedLabel = document.querySelector(
-//   'label[for="sleeveCoatedOrUncoated"]'
-// );
-// const sleeveCoated = document.getElementById("sleeveCoated");
-// const sleeveCoatedLabel = document.querySelector('label[for="sleeveCoated"]');
-// const sleeveUncoated = document.getElementById("sleeveUncoated");
-// const sleeveUncoatedLabel = document.querySelector(
-//   'label[for="sleeveUncoated"]'
-// );
-
-// const sleeveArtworkCompletedBy = document.getElementById(
-//   "sleeveArtworkCompletedBy"
-// );
-// const sleeveArtworkCompletedByLabel = document.querySelector(
-//   'label[for="sleeveArtworkCompletedBy"]'
-// );
-
-// const sleeveMouldOptions = document.getElementById("sleeveMouldOptions");
-// const sleeveMouldOptionsLabel = document.querySelector(
-//   'label[for="sleeveMouldOptions"]'
-// );
-
-// const sleeveMouldOther = document.getElementById("sleeveMouldOther");
-// const sleeveMouldOtherLabel = document.querySelector(
-//   'label[for="sleeveMouldOther"]'
-// );
-
-// const sleeveEmbossing = document.getElementById("sleeveEmbossing");
-// const sleeveEmbossingLabel = document.querySelector(
-//   'label[for="sleeveEmbossing"]'
-// );
-// const sleeveEmbossingYes = document.getElementById("sleeveEmbossingYes");
-// const sleeveEmbossingNo = document.getElementById("sleeveEmbossingNo");
-// const sleeveEmbossingYesLabel = document.querySelector(
-//   'label[for="sleeveEmbossingYes"]'
-// );
-// const sleeveEmbossingNoLabel = document.querySelector(
-//   'label[for="sleeveEmbossingNo"]'
-// );
-
-// const sleeveOverprint = document.getElementById("sleeveOverprint");
-// const sleeveOverprintLabel = document.querySelector(
-//   'label[for="sleeveOverprint"]'
-// );
-// const sleeveOverprintYes = document.getElementById("sleeveOverprintYes");
-// const sleeveOverprintNo = document.getElementById("sleeveOverprintNo");
-// const sleeveOverprintYesLabel = document.querySelector(
-//   'label[for="sleeveOverprintYes"]'
-// );
-// const sleeveOverprintNoLabel = document.querySelector(
-//   'label[for="sleeveOverprintNo"]'
-// );
-
-// const sleeveOverprintDetails = document.getElementById(
-//   "sleeveOverprintDetails"
-// );
-// const sleeveOverprintDetailsLabel = document.querySelector(
-//   'label[for="sleeveOverprintDetails"]'
-// );
-
-// // Lid details
-// const lidRequired = document.getElementById("lidRequired");
-// const lidRequiredLabel = document.querySelector('label[for="lidRequired"]');
-// const lidRequiredYes = document.getElementById("lidRequiredYes");
-// const lidRequiredNo = document.getElementById("lidRequiredNo");
-// const lidRequiredYesLabel = document.querySelector(
-//   'label[for="lidRequiredYes"]'
-// );
-// const lidRequiredNoLabel = document.querySelector('label[for="lidRequiredNo"]');
-// const lidSize = document.getElementById("lidSize");
-// const lidSizeLabel = document.querySelector('label[for="lidSize"]');
-// const lidSizeOptions = document.getElementById("lidSizeOptions");
-// const lidSizeOptionsLabel = document.querySelector(
-//   'label[for="lidSizeOptions"]'
-// );
-
-// const lidBaseColour = document.getElementById("lidBaseColour");
-// const lidBaseColourLabel = document.querySelector(
-//   'label[for="lidBaseColour"]'
-// );
-
-// const lidPantoneReference = document.getElementById("lidPantoneReference");
-// const lidPantoneReferenceLabel = document.querySelector(
-//   'label[for="lidPantoneReference"]'
-// );
-
-// const lidCoatedOrUncoated = document.getElementById("lidCoatedOrUncoated");
-// const lidCoatedOrUncoatedLabel = document.querySelector(
-//   'label[for="lidCoatedOrUncoated"]'
-// );
-// const lidCoated = document.getElementById("lidCoated");
-// const lidCoatedLabel = document.querySelector('label[for="lidCoated"]');
-// const lidUncoated = document.getElementById("lidUncoated");
-// const lidUncoatedLabel = document.querySelector('label[for="lidUncoated"]');
-// const lidMouldOptions = document.getElementById("lidMouldOptions");
-// const lidMouldOptionsLabel = document.querySelector(
-//   'label[for="lidMouldOptions"]'
-// );
-
-// const lidMouldOther = document.getElementById("lidMouldOther");
-// const lidMouldOtherLabel = document.querySelector(
-//   'label[for="lidMouldOther"]'
-// );
-
-// // Packaging details
-// const packagingRequired = document.getElementById("packagingRequired");
-// const packagingRequiredLabel = document.querySelector(
-//   'label[for="packagingRequired"]'
-// );
-// const packagingRequiredYes = document.getElementById("packagingRequiredYes");
-// const packagingRequiredNo = document.getElementById("packagingRequiredNo");
-// const packagingRequiredYesLabel = document.querySelector(
-//   'label[for="packagingRequiredYes"]'
-// );
-// const packagingRequiredNoLabel = document.querySelector(
-//   'label[for="packagingRequiredNo"]'
-// );
-
-// const packagingTypeOptions = document.getElementById("packagingTypeOptions");
-// const packagingTypeOptionsLabel = document.querySelector(
-//   'label[for="packagingTypeOptions"]'
-// );
-
-// const packagingTypeOther = document.getElementById("packagingTypeOther");
-// const packagingTypeOtherLabel = document.querySelector(
-//   'label[for="packagingTypeOther"]'
-// );
-
-// const packagingCutterGuide = document.getElementById("packagingCutterGuide");
-// const packagingCutterGuideLabel = document.querySelector(
-//   'label[for="packagingCutterGuide"]'
-// );
-// const packagingCutterGuideYes = document.getElementById(
-//   "packagingCutterGuideYes"
-// );
-// const packagingCutterGuideNo = document.getElementById(
-//   "packagingCutterGuideNo"
-// );
-// const packagingCutterGuideYesLabel = document.querySelector(
-//   'label[for="packagingCutterGuideYes"]'
-// );
-// const packagingCutterGuideNoLabel = document.querySelector(
-//   'label[for="packagingCutterGuideNo"]'
-// );
-
-// const packagingCutterGuideOther = document.getElementById(
-//   "packagingCutterGuideOther"
-// );
-// const packagingCutterGuideOtherLabel = document.querySelector(
-//   'label[for="packagingCutterGuideOther"]'
-// );
-
-// const packagingPrintType = document.getElementById("packagingPrintType");
-// const packagingPrintTypeLabel = document.querySelector(
-//   'label[for="packagingPrintType"]'
-// );
-// const packagingPrintTypeYes = document.getElementById("packagingPrintTypeYes");
-// const packagingPrintTypeNo = document.getElementById("packagingPrintTypeNo");
-// const packagingPrintTypeYesLabel = document.querySelector(
-//   'label[for="packagingPrintTypeYes"]'
-// );
-// const packagingPrintTypeNoLabel = document.querySelector(
-//   'label[for="packagingPrintTypeNo"]'
-// );
-
-// const packagingPrintTypeDetails = document.getElementById(
-//   "packagingPrintTypeDetails"
-// );
-// const packagingPrintTypeDetailsLabel = document.querySelector(
-//   'label[for="packagingPrintTypeDetails"]'
-// );
-
-// const packagingPrintTypeCoatedOrUncoated = document.getElementById(
-//   "packagingPrintTypeCoatedOrUncoated"
-// );
-// const packagingPrintTypeCoatedOrUncoatedLabel = document.querySelector(
-//   'label[for="packagingPrintTypeCoatedOrUncoated"]'
-// );
-// const packagingPrintTypeCoated = document.getElementById(
-//   "packagingPrintTypeCoated"
-// );
-// const packagingPrintTypeCoatedLabel = document.querySelector(
-//   'label[for="packagingPrintTypeCoated"]'
-// );
-// const packagingPrintTypeUncoated = document.getElementById(
-//   "packagingPrintTypeUncoated"
-// );
-// const packagingPrintTypeUncoatedLabel = document.querySelector(
-//   'label[for="packagingPrintTypeUncoated"]'
-// );
-
-// const packagingPaperStock = document.getElementById("packagingPaperStock");
-// const packagingPaperStockLabel = document.querySelector(
-//   'label[for="packagingPaperStock"]'
-// );
-
-// const packagingPaperStockOther = document.getElementById(
-//   "packagingPaperStockOther"
-// );
-// const packagingPaperStockOtherLabel = document.querySelector(
-//   'label[for="packagingPaperStockOther"]'
-// );
-
-// const packagingArtworkCompletedBy = document.getElementById(
-//   "packagingArtworkCompletedBy"
-// );
-// const packagingArtworkCompletedByLabel = document.querySelector(
-//   'label[for="packagingArtworkCompletedBy"]'
-// );
-
-// const packagingOuterCartonMarkings = document.getElementById(
-//   "packagingOuterCartonMarkings"
-// );
-// const packagingOuterCartonMarkingsLabel = document.querySelector(
-//   'label[for="packagingOuterCartonMarkings"]'
-// );
-
-// const packagingOuterCartonMarkingsOther = document.getElementById(
-//   "packagingOuterCartonMarkingsOther"
-// );
-
-// const packagingOuterCartonMarkingsOtherLabel = document.querySelector(
-//   'label[for="packagingOuterCartonMarkingsOther"]'
-// );
-
-// const packagingBarcodeRequired = document.getElementById(
-//   "packagingBarcodeRequired"
-// );
-// const packagingBarcodeRequiredLabel = document.querySelector(
-//   'label[for="packagingBarcodeRequired"]'
-// );
-// const packagingBarcodeRequiredYes = document.getElementById(
-//   "packagingBarcodeRequiredYes"
-// );
-// const packagingBarcodeRequiredNo = document.getElementById(
-//   "packagingBarcodeRequiredNo"
-// );
-// const packagingBarcodeRequiredYesLabel = document.querySelector(
-//   'label[for="packagingBarcodeRequiredYes"]'
-// );
-// const packagingBarcodeRequiredNoLabel = document.querySelector(
-//   'label[for="packagingBarcodeRequiredNo"]'
-// );
-
-// const packagingBarcodeDetails = document.getElementById(
-//   "packagingBarcodeDetails"
-// );
-// const packagingBarcodeDetailsLabel = document.querySelector(
-//   'label[for="packagingBarcodeDetails"]'
-// );
-
-// // Extra notes (optional)
-// const extraNotes = document.getElementById("extraNotes");
-// const extraNotesLabel = document.querySelector('label[for="extraNotes"]');
-// const extraNotesYes = document.getElementById("extraNotesYes");
-// const extraNotesNo = document.getElementById("extraNotesNo");
-// const extraNotesYesLabel = document.querySelector('label[for="extraNotesYes"]');
-// const extraNotesNoLabel = document.querySelector('label[for="extraNotesNo"]');
-// const extraNotesDetails = document.getElementById("extraNotesDetails");
-// const extraNotesDetailsLabel = document.querySelector(
-//   'label[for="extraNotesDetails"]'
-// );
-
-// // Buttons
-// const saveToDatabase = document.getElementById("saveToDatabase");
-// const updateDatabase = document.getElementById("updateDatabase");
-// const deleteFromDatabase = document.getElementById("deleteFromDatabase");
-// const searchDatabase = document.getElementById("searchDatabase");
-// const prevForm = document.getElementById("prevForm");
-// const nextForm = document.getElementById("nextForm");
-
-// // search buttons
-// const searchJobId = document.getElementById("searchJobId");
-// const searchJobIdLabel = document.querySelector('label[for="searchJobId"]');
-// const searchDatabaseButton = document.getElementById("searchDatabase");
-// const searchDatabaseButtonLabel = document.querySelector(
-//   'label[for="searchDatabase"]'
-// );
-// const prevButton = document.getElementById("prevForm");
-// const prevButtonLabel = document.querySelector('label[for="prevForm"]');
-// const nextButton = document.getElementById("nextForm");
-
 // function to save form data to database ///////////////////////////////////////
 
 function createForm() {
   if (validateForm()) {
-    console.log("save to database button clicked");
+    let highestDbId;
 
-    console.log("Initial jobId value: " + jobId.value);
-    set(ref(db, "Jobs/" + jobId.value), {
-      // Job ID
-      JobId: jobId.value,
-      TodaysDate: todaysDate.value,
+    // call async function anbd assign result to highestDbId
+    fetchLatestJobId().then((result) => {
+      highestDbId = result;
+      console.log("highestDbId in fetchLatestJobId: " + highestDbId);
 
-      // Project details
+      console.log("save to database button clicked");
 
-      CustomerName: customerName.value,
-      ProjectName: projectName.value,
-      ProjectProduct: projectProduct.value,
-      ProjectProductOther: projectProductOther.value,
-      ProjectName: projectName.value,
-      NewOrRepeat: document.querySelector('input[name="newOrRepeat"]:checked')
-        .value,
-      ProductCode: productCode.value,
-      SamplesRequired: samplesRequired.value,
-      SampleRequiredDate: sampleRequiredDate.value,
+      set(ref(db, "Jobs/" + highestDbId), {
+        // Job ID
+        JobId: highestDbId,
+        TodaysDate: todaysDate.value,
 
-      // Product details
+        // Project details
 
-      // Cup details
-      CupSize: cupSize.value,
-      CupSizeOptions: cupSizeOptions.value,
-      CupBaseColour: cupBaseColour.value,
-      CupPantoneReference: cupPantoneReference.value,
-      CupCoatedOrUncoated: document.querySelector(
-        'input[name="cupCoatedOrUncoated"]:checked'
-      ).value,
-      CupDecorationOptions: cupDecorationOptions.value,
-      CupDecoration: cupDecoration.value,
-      CupArtworkCompletedBy: document.querySelector(
-        'input[name="cupArtworkCompletedBy"]:checked'
-      ).value,
-      CupMouldBaseOptions: cupMouldBaseOptions.value,
-      CupMouldBaseOther: cupMouldBaseOther.value,
+        CustomerName: customerName.value,
+        ProjectName: projectName.value,
+        ProjectProduct: projectProduct.value,
+        ProjectProductOther: projectProductOther.value,
+        ProjectName: projectName.value,
+        NewOrRepeat: document.querySelector('input[name="newOrRepeat"]:checked')
+          .value,
+        ProductCode: productCode.value,
+        SamplesRequired: samplesRequired.value,
+        SampleRequiredDate: sampleRequiredDate.value,
 
-      // Sleeve details
-      SleeveRequired: document.querySelector(
-        'input[name="sleeveRequired"]:checked'
-      ).value,
-      // SleeveSize: document.querySelector('input[name="sleeveSize"]:checked')
-      //   .value,
-      SleeveSize: sleeveSize.value,
-      SleeveBaseColour: sleeveBaseColour.value,
-      SleevePantoneReference: sleevePantoneReference.value,
-      SleeveCoatedOrUncoated: document.querySelector(
-        'input[name="sleeveCoatedOrUncoated"]:checked'
-      ).value,
-      SleeveArtworkCompletedBy: document.querySelector(
-        'input[name="sleeveArtworkCompletedBy"]:checked'
-      ).value,
-      SleeveMouldOptions: sleeveMouldOptions.value,
-      // SleeveMouldOther: sleeveMouldOther.value,
-      SleeveEmbossing: document.querySelector(
-        'input[name="sleeveEmbossing"]:checked'
-      ).value,
-      SleeveOverprint: document.querySelector(
-        'input[name="sleeveOverprint"]:checked'
-      ).value,
-      SleeveOverprintDetails: sleeveOverprintDetails.value,
+        // Product details
 
-      // Lid details
-      LidRequired: document.querySelector('input[name="lidRequired"]:checked')
-        .value,
-      // LidSize: document.querySelector('input[name="lidSize"]:checked').value,
-      LidSizeOptions: lidSizeOptions.value,
-      LidBaseColour: lidBaseColour.value,
-      LidPantoneReference: lidPantoneReference.value,
-      LidCoatedOrUncoated: document.querySelector(
-        'input[name="lidCoatedOrUncoated"]:checked'
-      ).value,
-      LidMouldOptions: lidMouldOptions.value,
-      LidMouldOther: lidMouldOther.value,
+        // Cup details
+        CupSize: cupSize.value,
+        CupSizeOptions: cupSizeOptions.value,
+        CupBaseColour: cupBaseColour.value,
+        CupPantoneReference: cupPantoneReference.value,
+        CupCoatedOrUncoated: document.querySelector(
+          'input[name="cupCoatedOrUncoated"]:checked'
+        ).value,
+        CupDecorationOptions: cupDecorationOptions.value,
+        CupDecoration: cupDecoration.value,
+        CupArtworkCompletedBy: document.querySelector(
+          'input[name="cupArtworkCompletedBy"]:checked'
+        ).value,
+        CupMouldBaseOptions: cupMouldBaseOptions.value,
+        CupMouldBaseOther: cupMouldBaseOther.value,
 
-      // Packaging details
-      PackagingRequired: document.querySelector(
-        'input[name="packagingRequired"]:checked'
-      ).value,
-      PackagingTypeOptions: packagingTypeOptions.value,
-      PackagingTypeOther: packagingTypeOther.value,
-      PackagingCutterGuide: document.querySelector(
-        'input[name="packagingCutterGuide"]:checked'
-      ).value,
-      PackagingCutterGuideOther: packagingCutterGuideOther.value,
-      PackagingPrintType: document.querySelector(
-        'input[name="packagingPrintType"]:checked'
-      ).value,
-      PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
+        // Sleeve details
+        SleeveRequired: document.querySelector(
+          'input[name="sleeveRequired"]:checked'
+        ).value,
+        // SleeveSize: document.querySelector('input[name="sleeveSize"]:checked')
+        //   .value,
+        SleeveSize: sleeveSize.value,
+        SleeveBaseColour: sleeveBaseColour.value,
+        SleevePantoneReference: sleevePantoneReference.value,
+        SleeveCoatedOrUncoated: document.querySelector(
+          'input[name="sleeveCoatedOrUncoated"]:checked'
+        ).value,
+        SleeveArtworkCompletedBy: document.querySelector(
+          'input[name="sleeveArtworkCompletedBy"]:checked'
+        ).value,
+        SleeveMouldOptions: sleeveMouldOptions.value,
+        // SleeveMouldOther: sleeveMouldOther.value,
+        SleeveEmbossing: document.querySelector(
+          'input[name="sleeveEmbossing"]:checked'
+        ).value,
+        SleeveOverprint: document.querySelector(
+          'input[name="sleeveOverprint"]:checked'
+        ).value,
+        SleeveOverprintDetails: sleeveOverprintDetails.value,
 
-      PackagingPrintTypeCoatedOrUncoated: document.querySelector(
-        'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
-      ).value,
+        // Lid details
+        LidRequired: document.querySelector('input[name="lidRequired"]:checked')
+          .value,
+        // LidSize: document.querySelector('input[name="lidSize"]:checked').value,
+        LidSizeOptions: lidSizeOptions.value,
+        LidBaseColour: lidBaseColour.value,
+        LidPantoneReference: lidPantoneReference.value,
+        LidCoatedOrUncoated: document.querySelector(
+          'input[name="lidCoatedOrUncoated"]:checked'
+        ).value,
+        LidMouldOptions: lidMouldOptions.value,
+        LidMouldOther: lidMouldOther.value,
 
-      PackagingPaperStock: packagingPaperStock.value,
-      PackagingPaperStockOther: packagingPaperStockOther.value,
-      PackagingArtworkCompletedBy: document.querySelector(
-        'input[name="packagingArtworkCompletedBy"]:checked'
-      ).value,
-      PackagingOuterCartonMarkings: packagingOuterCartonMarkings.value,
-      PackagingOuterCartonMarkingsOther:
-        packagingOuterCartonMarkingsOther.value,
-      PackagingBarcodeRequired: document.querySelector(
-        'input[name="packagingBarcodeRequired"]:checked'
-      ).value,
-      PackagingBarcodeDetails: packagingBarcodeDetails.value,
+        // Packaging details
+        PackagingRequired: document.querySelector(
+          'input[name="packagingRequired"]:checked'
+        ).value,
+        PackagingTypeOptions: packagingTypeOptions.value,
+        PackagingTypeOther: packagingTypeOther.value,
+        PackagingCutterGuide: document.querySelector(
+          'input[name="packagingCutterGuide"]:checked'
+        ).value,
+        PackagingCutterGuideOther: packagingCutterGuideOther.value,
+        PackagingPrintType: document.querySelector(
+          'input[name="packagingPrintType"]:checked'
+        ).value,
+        PackagingPrintTypeDetails: packagingPrintTypeDetails.value,
 
-      // Extra notes (optional)
-      ExtraNotes: extraNotes.value,
-    })
-      .then(() => {
-        alert("Form successfully saved to the database");
+        PackagingPrintTypeCoatedOrUncoated: document.querySelector(
+          'input[name="packagingPrintTypeCoatedOrUncoated"]:checked'
+        ).value,
 
-        // Increment the jobId
+        PackagingPaperStock: packagingPaperStock.value,
+        PackagingPaperStockOther: packagingPaperStockOther.value,
+        PackagingArtworkCompletedBy: document.querySelector(
+          'input[name="packagingArtworkCompletedBy"]:checked'
+        ).value,
+        PackagingOuterCartonMarkings: packagingOuterCartonMarkings.value,
+        PackagingOuterCartonMarkingsOther:
+          packagingOuterCartonMarkingsOther.value,
+        PackagingBarcodeRequired: document.querySelector(
+          'input[name="packagingBarcodeRequired"]:checked'
+        ).value,
+        PackagingBarcodeDetails: packagingBarcodeDetails.value,
 
-        jobId.value = Number(jobId.value) + 1;
-        console.log("Job ID incremented to " + jobId.value);
-        let latestValue = jobId.value;
-
-        // Reset the form fields to their default/blank values
-        document.getElementById("productRequestForm").reset();
-        console.log("Form reset");
-
-        // Populate the jobId input field with the incremented value
-        document.getElementById("jobId").value = Number(latestValue);
-        console.log("New value on form is " + Number(latestValue));
-
-        // Disable the delete button
-        document.getElementById("deleteFromDatabase").disabled = true;
-
-        // update the dates
-        // script to make the date field auto-populate with today's date
-        const currentDate1 = new Date();
-        const year1 = currentDate1.getFullYear();
-        const month1 = String(currentDate1.getMonth() + 1).padStart(2, "0");
-        const day1 = String(currentDate1.getDate()).padStart(2, "0");
-        const formattedDate1 = `${year1}-${month1}-${day1}`;
-        document.getElementById("todaysDate").value = formattedDate1;
-
-        // script to make the "request date" field populate with the date in two weeks from today
-        const currentDate2 = new Date();
-        currentDate2.setDate(currentDate2.getDate() + 14);
-
-        // Format the date as "YYYY-MM-DD" for the input field
-        const year2 = currentDate2.getFullYear();
-        const month2 = String(currentDate2.getMonth() + 1).padStart(2, "0");
-        const day2 = String(currentDate2.getDate()).padStart(2, "0");
-        const formattedDate2 = `${year2}-${month2}-${day2}`;
-
-        // Set the default value of the date picker to 14 days from today
-        document.getElementById("sampleRequiredDate").value = formattedDate2;
-
-        // Move focus back to the top of the page
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // Extra notes (optional)
+        ExtraNotes: extraNotes.value,
       })
-      .catch((error) => {
-        alert(error);
-      });
+        .then(() => {
+          // Declare highestDbId outside of the fetchLatestJobId promise scope
+
+          // Now that you have the value of highestDbId, you can use it
+          alert(
+            `Form successfully saved to the database with Job number PR${highestDbId}`
+          );
+
+          // Increment the jobId
+
+          // save the form as a PDF
+          saveAsPDF();
+
+          jobId.value = Number(highestDbId) + 1;
+          console.log("Job ID incremented to " + highestDbId);
+          let latestValue = highestDbId;
+
+          // Reset the form fields to their default/blank values
+          document.getElementById("productRequestForm").reset();
+          console.log("Form reset");
+          resetFieldBorders();
+
+          // Populate the jobId input field with the incremented value
+          // document.getElementById("jobId").value = Number(latestValue);
+          document.getElementById("jobId").value = "NEW";
+          console.log("New value on form is " + Number(latestValue));
+
+          // Disable the delete button
+          document.getElementById("deleteFromDatabase").disabled = true;
+
+          // update the dates
+          // script to make the date field auto-populate with today's date
+          const currentDate1 = new Date();
+          const year1 = currentDate1.getFullYear();
+          const month1 = String(currentDate1.getMonth() + 1).padStart(2, "0");
+          const day1 = String(currentDate1.getDate()).padStart(2, "0");
+          const formattedDate1 = `${year1}-${month1}-${day1}`;
+          document.getElementById("todaysDate").value = formattedDate1;
+
+          // script to make the "request date" field populate with the date in two weeks from today
+          const currentDate2 = new Date();
+          currentDate2.setDate(currentDate2.getDate() + 14);
+
+          // Format the date as "YYYY-MM-DD" for the input field
+          const year2 = currentDate2.getFullYear();
+          const month2 = String(currentDate2.getMonth() + 1).padStart(2, "0");
+          const day2 = String(currentDate2.getDate()).padStart(2, "0");
+          const formattedDate2 = `${year2}-${month2}-${day2}`;
+
+          // Set the default value of the date picker to 14 days from today
+          document.getElementById("sampleRequiredDate").value = formattedDate2;
+
+          console.log("before scroll");
+
+          //reset field borders
+          resetFieldBorders();
+
+          const lidMouldInput = document.getElementById("lidMouldOther");
+          const lidMouldLabel = document.querySelector(
+            'label[for="lidMouldOther"]'
+          );
+
+          lidMouldInput.style.color = "black";
+          lidMouldLabel.style.color = "black";
+
+          // // save form as PDF and download
+          // saveAsPDF();
+
+          // Move focus back to the top of the page
+          window.scrollTo({ top: 0, behavior: "smooth" });
+
+          console.log("after scroll");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    });
   }
 }
 
@@ -854,7 +465,8 @@ function populateJobIdField() {
       console.log("Latest New (Blank) Job ID on screen: " + latestJobId); // Debug statement
 
       // Populate the jobId input field with the latest jobId
-      document.getElementById("jobId").value = latestJobId;
+      // document.getElementById("jobId").value = latestJobId;
+      document.getElementById("jobId").value = "NEW";
 
       // Disable the "Update" and "Delete" buttons
       document.getElementById("updateDatabase").disabled = true;
@@ -939,6 +551,11 @@ async function readForm() {
 
         // Disable the "Save" button
         document.getElementById("saveToDatabase").disabled = true;
+
+        // enable the saveAsPDF button
+        document.getElementById("saveAsPDF").disabled = false;
+        // change the background color of the button to green
+        document.getElementById("saveAsPDF").style.backgroundColor = "green";
 
         jobId.value = snapshot.val().JobId;
         todaysDate.value = snapshot.val().TodaysDate;
@@ -1214,7 +831,7 @@ async function readForm() {
         // Packaging details
 
         // Get all radio buttons with the name "packagingRequired"
-        const packagingRequiredValue = snapshot.val().packagingRequired;
+        const packagingRequiredValue = snapshot.val().PackagingRequired;
 
         // Get all radio buttons with the name "packagingRequired"
         const packagingRequiredRadioButtons = document.querySelectorAll(
@@ -1408,7 +1025,45 @@ function deleteForm() {
 // function to retrieve form data from database //////////////////////////////////
 async function prevForm() {
   const dbRef = ref(db);
-  let idToSearch = Number(jobId.value) - 1;
+
+  // Function to fetch the latest jobId from your Firebase database
+  async function latestJobId() {
+    const dbRef = ref(db);
+
+    return await get(child(dbRef, "Jobs")) // Use await here
+      .then((snapshot) => {
+        // Initialize jobIdPlusOne to 1 if no data exists in the "Jobs" node
+        if (!snapshot.exists()) {
+          return 1;
+        }
+
+        // Find the maximum jobId in the database and increment it by 1
+        let maxJobId = 0;
+        snapshot.forEach((childSnapshot) => {
+          const jobId = parseInt(childSnapshot.val().JobId);
+          if (jobId > maxJobId) {
+            maxJobId = jobId;
+          }
+        });
+
+        console.log("Max Job ID in the database: " + maxJobId); // Debug statement
+
+        return Number(maxJobId);
+      });
+  }
+
+  // Use await when calling latestJobId to get the resolved value
+  let highestDbId = String(await latestJobId());
+
+  let idToSearch;
+
+  if (jobId.value === "NEW") {
+    // idToSearch will be one less than the highest DB entry
+    idToSearch = highestDbId;
+  } else {
+    // idToSearch will be one less than the current job id
+    idToSearch = Number(jobId.value) - 1;
+  }
 
   let currentJobId = Number(jobId.value);
 
@@ -1437,6 +1092,11 @@ async function prevForm() {
 
     // Disable the "Save" button
     document.getElementById("saveToDatabase").disabled = true;
+
+    // enable the saveAsPDF button
+    document.getElementById("saveAsPDF").disabled = false;
+    // change the background color of the button to green
+    document.getElementById("saveAsPDF").style.backgroundColor = "green";
 
     // Enable the "Next" button
     document.getElementById("nextForm").disabled = false;
@@ -1719,7 +1379,7 @@ async function prevForm() {
     // Packaging details
 
     // Get all radio buttons with the name "packagingRequired"
-    const packagingRequiredValue = snapshot.val().packagingRequired;
+    const packagingRequiredValue = snapshot.val().PackagingRequired;
 
     // Get all radio buttons with the name "packagingRequired"
     const packagingRequiredRadioButtons = document.querySelectorAll(
@@ -1933,6 +1593,11 @@ async function nextForm() {
     // Disable the "Next" button
     document.getElementById("nextForm").disabled = true;
 
+    // disable the saveAsPDF button
+    document.getElementById("saveAsPDF").disabled = true;
+    // change the background color of the button to grey
+    document.getElementById("saveAsPDF").style.backgroundColor = "#d9d9d9";
+
     // change the job id to the next available job id
     populateJobIdField();
 
@@ -1971,6 +1636,11 @@ async function nextForm() {
   console.log("highest DB entry is " + highestDbId); // Debug statement
 
   if (snapshot.exists()) {
+    // enable the saveAsPDF button
+    document.getElementById("saveAsPDF").disabled = false;
+    // change the background color of the button to green
+    document.getElementById("saveAsPDF").style.backgroundColor = "green";
+
     if (jobId.value === "1") {
       document.getElementById("prevForm").disabled = false;
       console.log("prevForm button enabled");
@@ -2260,7 +1930,7 @@ async function nextForm() {
     // Packaging details
 
     // Get all radio buttons with the name "packagingRequired"
-    const packagingRequiredValue = snapshot.val().packagingRequired;
+    const packagingRequiredValue = snapshot.val().PackagingRequired;
 
     // Get all radio buttons with the name "packagingRequired"
     const packagingRequiredRadioButtons = document.querySelectorAll(
@@ -2411,6 +2081,8 @@ const searchDatabaseBtn = document.getElementById("searchDatabase");
 const prevFormBtn = document.getElementById("prevForm");
 // button to go to next form ////////////////////////////////////////////////////
 const nextFormBtn = document.getElementById("nextForm");
+// button to save form as PDF ///////////////////////////////////////////////////
+const saveAsPDFBtn = document.getElementById("saveAsPDF");
 
 // function to save form data to database ///////////////////////////////////////
 
@@ -2419,20 +2091,55 @@ saveToDatabaseBtn.addEventListener("click", createForm);
 updateDatabaseBtn.addEventListener("click", updateForm);
 deleteFromDatabaseBtn.addEventListener("click", deleteForm);
 searchDatabaseBtn.addEventListener("click", readForm);
+saveAsPDFBtn.addEventListener("click", saveAsPDF);
 
 prevFormBtn.addEventListener("click", prevForm);
 nextFormBtn.addEventListener("click", nextForm);
 
 // script to save web form as PDF ///////////////////////////////////////////////
 
-document.getElementById("saveAsPDF").addEventListener("click", function () {
+// function to save form as PDF
+
+async function saveAsPDF() {
   if (validateForm()) {
     console.log("save as PDF button clicked");
     console.log(document.getElementById("jobId"));
     console.log(document.getElementById("customerName").value);
+
+    // Function to fetch the latest jobId from your Firebase database
+    async function latestJobId() {
+      const dbRef = ref(db);
+
+      return await get(child(dbRef, "Jobs"))
+        .then((snapshot) => {
+          if (!snapshot.exists()) {
+            return 1;
+          }
+
+          let maxJobId = 0;
+          snapshot.forEach((childSnapshot) => {
+            const jobId = parseInt(childSnapshot.val().JobId);
+            if (jobId > maxJobId) {
+              maxJobId = jobId;
+            }
+          });
+
+          console.log("Max Job ID in the database: " + maxJobId);
+
+          return Number(maxJobId);
+        });
+    }
+    
+      // // Use await when calling latestJobId to get the resolved value
+      let maxJobId = await latestJobId();
+
+
+
     const jobIdElement = document.getElementById("jobId");
+
     if (jobIdElement) {
-      const jobId = jobIdElement.value;
+      const jobId =
+      jobIdElement.value === "NEW" ? maxJobId : jobIdElement.value;
 
       // Create a new jsPDF instance
       const doc = new jsPDF();
@@ -2452,7 +2159,6 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       const projectProductOther = document.getElementById(
         "projectProductOther"
       ).value;
-      // const jobNumber = document.getElementById("jobNumber").value;
       const newOrRepeat = document.querySelector(
         'input[name="newOrRepeat"]:checked'
       ).value;
@@ -2677,7 +2383,11 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       doc.setFontStyle("bold");
 
       // Job Number
-      doc.text(`Job Number: ${jobId}`, column4X, startY + lineHeight * 1);
+      doc.text(
+        `Job Number:     PR ${jobId}`,
+        column4X,
+        startY + lineHeight * 1
+      );
 
       doc.setFontSize(14);
       doc.setFontStyle("bold");
@@ -2716,7 +2426,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       );
 
       doc.text(
-        `Project Name: ${projectName}`,
+        `Project Name (PF Number to be included): ${projectName}`,
         column2X,
         startY + lineHeight * 9
       );
@@ -2743,12 +2453,6 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
         const formattedDate = `${sampleDateParts[2]}-${sampleDateParts[1]}-${sampleDateParts[0]}`;
         doc.text(`Date: ${formattedDate}`, column3X, startY + lineHeight * 8);
       }
-
-      // doc.text(
-      //   `Sample Required Date: ${sampleRequiredDate}`,
-      //   column3X,
-      //   startY + lineHeight * 8
-      // );
 
       // Product Details
 
@@ -2830,7 +2534,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       );
 
       doc.text(
-        `Silk Screen Provided By: ${silkScreenProvidedBy}`,
+        `Print artwork provided by: ${silkScreenProvidedBy}`,
         column2X,
         startY + lineHeight * 24
       );
@@ -2908,7 +2612,7 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
         startY + lineHeight * 38
       );
       doc.text(
-        `Sleeve Overprint Details: ${sleeveOverprintDetails}`,
+        `Print Position: ${sleeveOverprintDetails}`,
         column2X,
         startY + lineHeight * 39
       );
@@ -3073,12 +2777,23 @@ document.getElementById("saveAsPDF").addEventListener("click", function () {
       // Extra Notes (optional)
       doc.text(`Notes: ${extraNotes}`, column2X, startY + lineHeight * 47);
 
+      let fileName;
+
+      // Assuming todaysDate is in the "YYYY-MM-DD" format
+      const dateSections = todaysDate.split("-"); // Split the date into parts
+      if (dateSections.length === 3) {
+        const formattedDate = `${dateSections[2]}-${dateSections[1]}-${dateSections[0]}`;
+
+        // Create the file name with the date component
+        fileName = `PR${jobId}___${formattedDate}.pdf`;
+      }
+
       // Save the PDF
-      doc.save("productRequestForm.pdf");
+      doc.save(fileName);
       console.log("PDF saved");
     }
   }
-});
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -3293,6 +3008,8 @@ productDropdown.addEventListener("change", function () {
     productOtherInput.disabled = true;
     productOtherInput.required = false; // Make it not required when disabled
     productLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    productOtherInput.style.borderColor = "";
   }
 });
 
@@ -3319,6 +3036,8 @@ cupSizeDropdown.addEventListener("change", function () {
     cupSizeOptionsInput.disabled = true;
     cupSizeOptionsInput.required = false; // Make it not required when disabled
     cupSizeLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    cupSizeOptionsInput.style.borderColor = "";
   }
 });
 
@@ -3350,6 +3069,8 @@ cupBaseColourDropdown.addEventListener("change", function () {
     cupPantoneReferenceInput.required = false;
     // Change label color to grey
     cupPantoneReferenceLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    cupPantoneReferenceInput.style.borderColor = "";
   }
 });
 
@@ -3379,6 +3100,8 @@ cupDecorationDropdown.addEventListener("change", function () {
     cupDecorationInput.required = false;
     // Change label color to grey
     cupDecorationLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    cupDecorationInput.style.borderColor = "";
   }
 });
 
@@ -3502,13 +3225,15 @@ sleeveBaseColourDropdown.addEventListener("change", function () {
     sleevePantoneReferenceInput.required = false;
     // Change label color to grey
     sleevePantoneReferenceLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    sleevePantoneReferenceInput.style.borderColor = "";
   }
 });
 
 // Initialize the state based on the initial selection
 sleeveBaseColourDropdown.dispatchEvent(new Event("change"));
 
-// Function to enable/disable the "Lid Size details" input based on the selected option
+// Function to enable/disable the "other" input based on the selected option
 // Get references to the elements
 var lidMouldDropdown = document.getElementById("lidMouldOptions");
 var lidMouldInput = document.getElementById("lidMouldOther");
@@ -3531,6 +3256,8 @@ lidMouldDropdown.addEventListener("change", function () {
     lidMouldInput.required = false;
     // Change label color to grey
     lidMouldLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    lidMouldInput.style.borderColor = "";
   }
 });
 
@@ -3560,6 +3287,8 @@ lidBaseColourDropdown.addEventListener("change", function () {
     lidPantoneReferenceInput.required = false;
     // Change label color to grey
     lidBaseColourLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    lidPantoneReferenceInput.style.borderColor = "";
   }
 });
 
@@ -3589,6 +3318,8 @@ packagingTypeDropdown.addEventListener("change", function () {
     packagingTypeOtherInput.required = false; // Make it not required when disabled
     // Change label color to grey
     packagingTypeLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    packagingTypeOtherInput.style.borderColor = "";
   }
 });
 
@@ -3624,6 +3355,8 @@ packagingOuterCartonMarkingsDropdown.addEventListener("change", function () {
     packagingOuterCartonMarkingsOtherInput.required = false;
     // Change label color to grey
     packagingOuterCartonMarkingsLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    packagingOuterCartonMarkingsOtherInput.style.borderColor = "";
   }
 });
 
@@ -3659,6 +3392,8 @@ packagingOuterCartonMarkingsDropdown.addEventListener("change", function () {
     packagingOuterCartonMarkingsOtherInput.required = false;
     // Change label color to grey
     packagingOuterCartonMarkingsLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    packagingOuterCartonMarkingsOtherInput.style.borderColor = "";
   }
 });
 
@@ -3694,6 +3429,8 @@ function handlePackagingCutterGuideRadioChange() {
     packagingCutterGuideOtherInput.required = false;
     // Change label color to grey
     packagingCutterGuideLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    packagingCutterGuideOtherInput.style.borderColor = "";
   }
 }
 
@@ -3744,6 +3481,8 @@ function handleBarcodeRadioChange() {
     packagingBarcodeDetailsInput.required = false;
     // Change label color to grey
     packagingBarcodeDetailsLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    packagingBarcodeDetailsInput.style.borderColor = "";
   }
 }
 
@@ -3788,6 +3527,8 @@ function handleSleeveOverprintRadioChange() {
     sleeveOverprintDetailsInput.required = false;
     // Change label color to grey
     sleeveOverprintDetailsLabel.style.color = "#CCCCCC";
+    // reset the form field border color
+    sleeveOverprintDetailsInput.style.borderColor = "";
   }
 }
 
@@ -3798,162 +3539,15 @@ sleeveOverprintYes.addEventListener("change", handleSleeveOverprintRadioChange);
 // Initialize the state based on the initial selection
 handleSleeveOverprintRadioChange();
 
-// // Function to enable/disable input fields and radio options based on the selected option
-// function handleDropdownChange(
-//   dropdown,
-//   input,
-//   radio1,
-//   radio2,
-//   labelInput,
-//   labelRadio1,
-//   labelRadio2
-// ) {
-//   if (dropdown.value === "Other (Pantone Matched)") {
-//     input.disabled = false;
-//     radio1.disabled = false;
-//     radio2.disabled = false;
-//     input.required = true;
-//     radio1.required = true;
-//     radio2.required = true;
-//     labelInput.style.color = "black";
-//     labelRadio1.style.color = "black";
-//     labelRadio2.style.color = "black";
-//   } else {
-//     input.disabled = true;
-//     input.required = false;
-//     radio1.disabled = true;
-//     radio2.disabled = true;
-//     radio1.required = false;
-//     radio2.required = false;
-//     labelInput.style.color = "#CCCCCC";
-//     labelRadio1.style.color = "#CCCCCC";
-//     labelRadio2.style.color = "#CCCCCC";
-//   }
-// }
-
-// // Add event listeners for Cup Base Colour and Sleeve Base Colour dropdowns
-// cupBaseColourDropdown.addEventListener("change", function () {
-//   handleDropdownChange(
-//     cupBaseColourDropdown,
-//     cupPantoneReferenceInput,
-//     cupCoatedRadio,
-//     cupUncoatedRadio,
-//     cupPantoneReferenceLabel,
-//     cupCoatedLabel,
-//     cupUncoatedLabel
-//   );
-// });
-
-// sleeveBaseColourDropdown.addEventListener("change", function () {
-//   handleDropdownChange(
-//     sleeveBaseColourDropdown,
-//     sleevePantoneReferenceInput,
-//     sleeveCoatedRadio,
-//     sleeveUncoatedRadio,
-//     sleevePantoneReferenceLabel,
-//     sleeveCoatedLabel,
-//     sleeveUncoatedLabel
-//   );
-// });
-
-// // Initialize the state based on the initial selection for both dropdowns
-// cupBaseColourDropdown.dispatchEvent(new Event("change"));
-// sleeveBaseColourDropdown.dispatchEvent(new Event("change"));
-
-// // Function to enable/disable the "Cup Base Colour details" input and radio options based on the selected option
-// var cupBaseColourDropdown = document.getElementById("cupBaseColour");
-// var cupPantoneReferenceInput = document.getElementById("cupPantoneReference");
-// var cupPantoneReferenceLabel = document.querySelector(
-//   'label[for="cupPantoneReference"]'
-// );
 var cupCoatedRadio = document.getElementById("cupCoated");
 var cupUncoatedRadio = document.getElementById("cupUncoated");
 var cupCoatedLabel = document.querySelector('label[for="cupCoated"]');
 var cupUncoatedLabel = document.querySelector('label[for="cupUncoated"]');
 
-// // Add event listener to the Cup Base Colour dropdown
-// cupBaseColourDropdown.addEventListener("change", function () {
-//   // Check if the selected option is "Other (Pantone Matched)"
-//   if (cupBaseColourDropdown.value === "Other (Pantone Matched)") {
-//     // Enable the "Other (Pantone Matched)" input field
-//     cupPantoneReferenceInput.disabled = false;
-//     // Enable the radio options
-//     cupCoatedRadio.disabled = false;
-//     cupUncoatedRadio.disabled = false;
-//     // Make the input and radio options required when enabled
-//     cupPantoneReferenceInput.required = true;
-//     cupCoatedRadio.required = true;
-//     cupUncoatedRadio.required = true;
-//     // Change label colors to black (not greyed out)
-//     cupPantoneReferenceLabel.style.color = "black";
-//     cupCoatedLabel.style.color = "black";
-//     cupUncoatedLabel.style.color = "black";
-//   } else {
-//     // Disable and clear the "Other (Pantone Matched)" input field
-//     cupPantoneReferenceInput.disabled = true;
-//     // Disable the radio options
-//     cupCoatedRadio.disabled = true;
-//     cupUncoatedRadio.disabled = true;
-//     // Make the input and radio options not required when disabled
-//     cupPantoneReferenceInput.required = false;
-//     cupCoatedRadio.required = false;
-//     cupUncoatedRadio.required = false;
-//     // Change label colors to grey
-//     cupPantoneReferenceLabel.style.color = "#CCCCCC";
-//     cupCoatedLabel.style.color = "#CCCCCC";
-//     cupUncoatedLabel.style.color = "#CCCCCC";
-//   }
-// });
-
-// // Initialize the state based on the initial selection
-// cupBaseColourDropdown.dispatchEvent(new Event("change"));
-
-// // Function to enable/disable the "Sleeve Base Colour details" input and radio options based on the selected option
-// var sleeveBaseColourDropdown = document.getElementById("sleeveBaseColour");
-// var sleevePantoneReferenceInput = document.getElementById(
-//   "sleevePantoneReference"
-// );
-// var sleevePantoneReferenceLabel = document.querySelector(
-//   'label[for="sleevePantoneReference"]'
-// );
 var sleeveCoatedRadio = document.getElementById("sleeveCoated");
 var sleeveUncoatedRadio = document.getElementById("sleeveUncoated");
 var sleeveCoatedLabel = document.querySelector('label[for="sleeveCoated"]');
 var sleeveUncoatedLabel = document.querySelector('label[for="sleeveUncoated"]');
-
-// // Add event listener to the Sleeve Base Colour dropdown
-// sleeveBaseColourDropdown.addEventListener("change", function () {
-//   // Check if the selected option is "Other (Pantone Matched)"
-//   if (sleeveBaseColourDropdown.value === "Other (Pantone Matched)") {
-//     // Enable the "Other (Pantone Matched)" input field
-//     sleevePantoneReferenceInput.disabled = false;
-//     // Enable the radio options
-//     sleeveCoatedRadio.disabled = false;
-//     sleeveUncoatedRadio.disabled = false;
-//     // Make the input and radio options required when enabled
-//     sleevePantoneReferenceInput.required = true;
-//     sleeveCoatedRadio.required = true;
-//     sleeveUncoatedRadio.required = true;
-//     // Change label colors to black (not greyed out)
-//     sleevePantoneReferenceLabel.style.color = "black";
-//     sleeveCoatedLabel.style.color = "black";
-//     sleeveUncoatedLabel.style.color = "black";
-//   } else {
-//     // Disable and clear the "Other (Pantone Matched)" input field
-//     sleevePantoneReferenceInput.disabled = true;
-//     // Disable the radio options
-//     sleeveCoatedRadio.disabled = true;
-//     sleeveUncoatedRadio.disabled = true;
-//     // Make the input and radio options not required when disabled
-//     sleevePantoneReferenceInput.required = false;
-//     sleeveCoatedRadio.required = false;
-//     sleeveUncoatedRadio.required = false;
-//     // Change label colors to grey
-//     sleevePantoneReferenceLabel.style.color = "#CCCCCC";
-//     sleeveCoatedLabel.style.color = "#CCCCCC";
-//     sleeveUncoatedLabel.style.color = "#CCCCCC";
-//   }
-// });
 
 // Initialize the state based on the initial selection
 sleeveBaseColourDropdown.dispatchEvent(new Event("change"));
@@ -3988,6 +3582,9 @@ packagingPaperStockDropdown.addEventListener("change", function () {
     packagingPaperStockOtherInput.required = false;
     // change label color to grey
     packagingPaperStockLabel.style.color = "#CCCCCC";
+
+    // reset the form field border color
+    packagingPaperStockOtherInput.style.borderColor = "";
   }
 });
 
@@ -4034,6 +3631,9 @@ lidBaseColourDropdown.addEventListener("change", function () {
     lidBaseColourLabel.style.color = "#CCCCCC";
     lidCoatedLabel.style.color = "#CCCCCC";
     lidUncoatedLabel.style.color = "#CCCCCC";
+
+    // reset the form field border color
+    lidPantoneReferenceInput.style.borderColor = "";
   }
 });
 
@@ -4089,6 +3689,9 @@ function handlePackagingPrintTypeRadioChange() {
     packagingPrintTypeDetailsLabel.style.color = "#CCCCCC";
     packagingCoatedLabel.style.color = "#CCCCCC";
     packagingUncoatedLabel.style.color = "#CCCCCC";
+
+    // reset the form field border color
+    packagingPrintTypeDetails.style.borderColor = "";
   }
 }
 
@@ -4105,12 +3708,18 @@ packagingPantone.addEventListener(
 // Initialize the state based on the initial selection
 handlePackagingPrintTypeRadioChange();
 
-// Function to validate the form
+// Function to validate the form and highlight empty fields in red
 function validateForm() {
   const requiredFields = document.querySelectorAll("[required]");
   let hasEmptyFields = false;
 
   requiredFields.forEach((field) => {
+    field.addEventListener("input", () => {
+      if (field.value) {
+        field.style.borderColor = ""; // Reset the border color when text is entered
+      }
+    });
+
     if (!field.value) {
       field.style.borderColor = "red"; // Highlight empty fields in red
       hasEmptyFields = true;
@@ -4120,22 +3729,20 @@ function validateForm() {
   });
 
   if (hasEmptyFields) {
-    const confirmation = confirm(
-      "WARNING: Some fields are still empty! It is strongly advised that you CANCEL and go back to fill out all required fields (empty fields will be Highlighted in RED) before proceeding!!!"
+    alert(
+      "WARNING: Some fields are still empty! You MUST fill out all required fields (highlighted in RED) before proceeding."
     );
-    if (!confirmation) {
-      return false; // Cancel the operation if the user chooses not to proceed
-    }
+    return false; // Cancel the operation and force the user to fill out required fields
   }
 
-  // field.style.borderColor = ""; // Reset the border color
   return true; // Continue with the operation if all required fields are filled out
 }
 
-// Function to reset the border color of required fields and fieldsets based on the selected option
+// Function to reset the border color of all required fields
 function resetFieldBorders() {
   const requiredFields = document.querySelectorAll("[required]");
   requiredFields.forEach((field) => {
+    console.log("Resetting border for field:", field);
     field.style.borderColor = ""; // Reset the border color
     handleDropdownSelection(field); // Reset the border color of the fieldset
   });
