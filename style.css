@@ -1,13 +1,14 @@
 /* style.css */
 
-
-
-
 /* Body styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.job-number-label {
+  margin-right: 20px; /* Adjust the margin as needed */
 }
 
 /* Styles for the details-section container */
@@ -119,7 +120,7 @@ h2 {
   } 
 
   /* When page width is 650px or less, remove image */
-   @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 650px) {
     top: 60%;
     width: 0;
     display: none; /* Optionally add display: none; to hide the logo completely */
@@ -254,4 +255,3 @@ fieldset:disabled {
 .centered-input {
   text-align: center; /* Center the content horizontally within the container */
 }
-
