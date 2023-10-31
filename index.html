@@ -77,8 +77,9 @@
         <div class="column">
 
           <!-- Job Number Field -->
-          <label for="jobId">Job Number:</label>
-          <input type="number" id="jobId" name="jobId" min=1 step=1 required readonly><br><br>
+          <label for="jobId" class="job-number-label">Job Number:</label> PR
+          <!-- <input type="number" id="jobId" name="jobId" min=1 step=1 required readonly><br><br> -->
+          <input type="text" id="jobId" name="jobId" required readonly><br><br>
 
           <!-- Date Selector -->
           <label for="todaysDate">Date of Brief:</label>
@@ -103,7 +104,7 @@
           <input type="text" id="projectProductOther" name="projectProductOther"><br><br>
           
           <!-- Project Name -->
-          <label for="projectName">Project Name:</label>
+          <label for="projectName">Project Name (PF Number to be included):</label>
           <input type="text" id="projectName" name="projectName" required><br><br>     
 
         </div>
@@ -246,7 +247,7 @@
       <!-- Silk Screen radio option-->
       <!-- Includes options of "Yes" or "No" -->
       <!-- value of "No" will be the default -->
-      <h4>Silk Screen Provided By:</h4>
+      <h4>Print artwork provided by:</h4>
       <input type="radio" id="silkScreenProvidedByClient" name="silkScreenProvidedBy" value="CLIENT" checked>
       <label for="silkScreenProvidedByClient">CLIENT</label><br>
       <input type="radio" id="silkScreenProvidedByEcoffeeCup" name="silkScreenProvidedBy" value="Ecoffee Cup">
@@ -372,7 +373,7 @@
         <label for="sleeveOverprintYes">Yes</label><br><br>
 
         <!-- Sleeve Overprint details (if applicable) -->
-        <label for="sleeveOverprintDetails">Overprint Details:</label><br>
+        <label for="sleeveOverprintDetails">Print Position:</label><br>
         <input type="text" id="sleeveOverprintDetails" name="sleeveOverprintDetails" style="margin-bottom: 64px"><br><br>
 
       <!-- End of enclosing fieldset -->
@@ -636,7 +637,7 @@
         <br><br>
 
 
-        <button type="button" id="saveAsPDF" style="background-color: green; color: white;">Generate a PDF of the current Form</button>
+        <button type="button" disabled id="saveAsPDF" style="background-color: #d9d9d9; color: white;">Generate a PDF of the current Form</button>
         <br><br><br>
       <div>
 
