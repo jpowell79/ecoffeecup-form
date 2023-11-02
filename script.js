@@ -3798,37 +3798,37 @@ function resetFieldBorders() {
 
 //testing
 
-// Listen for the DOM to be loaded
-document.addEventListener("DOMContentLoaded", () => {
-  // Add a click event listener to the export button
-  const exportButton = document.getElementById("exportData");
+// // Listen for the DOM to be loaded
+// document.addEventListener("DOMContentLoaded", () => {
+//   // Add a click event listener to the export button
+//   const exportButton = document.getElementById("exportData");
 
-  exportButton.addEventListener("click", () => {
-    // Reference to the root of your Firebase database
-    const rootRef = ref(db);
+//   exportButton.addEventListener("click", () => {
+//     // Reference to the root of your Firebase database
+//     const rootRef = ref(db);
 
-    // Fetch the data from your Firebase database
-    get(rootRef)
-      .then((snapshot) => {
-        const data = snapshot.val();
-        if (data) {
-          // Convert the data to JSON
-          const jsonData = JSON.stringify(data, null, 2);
+//     // Fetch the data from your Firebase database
+//     get(rootRef)
+//       .then((snapshot) => {
+//         const data = snapshot.val();
+//         if (data) {
+//           // Convert the data to JSON
+//           const jsonData = JSON.stringify(data, null, 2);
 
-          // Create a Blob containing the JSON data
-          const blob = new Blob([jsonData], { type: "application/json" });
+//           // Create a Blob containing the JSON data
+//           const blob = new Blob([jsonData], { type: "application/json" });
 
-          // Create a download link and trigger the download
-          const downloadLink = document.createElement("a");
-          downloadLink.href = URL.createObjectURL(blob);
-          downloadLink.download = "firebase_data.json";
-          downloadLink.click();
-        } else {
-          console.error("No data found in the database.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data from Firebase:", error);
-      });
-  });
-});
+//           // Create a download link and trigger the download
+//           const downloadLink = document.createElement("a");
+//           downloadLink.href = URL.createObjectURL(blob);
+//           downloadLink.download = "firebase_data.json";
+//           downloadLink.click();
+//         } else {
+//           console.error("No data found in the database.");
+//         }
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching data from Firebase:", error);
+//       });
+//   });
+// });
