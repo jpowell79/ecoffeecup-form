@@ -1601,6 +1601,9 @@ async function nextForm() {
     // change the job id to the next available job id
     populateJobIdField();
 
+    // reset lid, sleeve and packaging sections
+    handleDropdownSelection();
+
     // // set searchJobId to the next available job id minus 1
     // searchJobId.value = Number(jobId.value) - 1;
 
