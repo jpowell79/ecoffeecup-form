@@ -240,6 +240,38 @@ function createForm() {
           // save the form as a PDF
           saveAsPDF();
 
+          // Reference to the root of your Firebase database
+          const rootRef = ref(db);
+
+          // Fetch the data from your Firebase database
+          get(rootRef)
+            .then((snapshot) => {
+              const data = snapshot.val();
+              if (data) {
+                // Convert the data to JSON
+                const jsonData = JSON.stringify(data, null, 2);
+
+                // Create a Blob containing the JSON data
+                const blob = new Blob([jsonData], { type: "application/json" });
+
+                // Create a download link and trigger the download
+                const downloadLink = document.createElement("a");
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = "db.json"; // Set the filename to "db.json"
+
+                // Force the download by revoking any existing object URLs
+                URL.revokeObjectURL(downloadLink.href);
+
+                // Trigger the download
+                downloadLink.click();
+              } else {
+                console.error("No data found in the database.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching data from Firebase:", error);
+            });
+
           jobId.value = Number(highestDbId) + 1;
           console.log("Job ID incremented to " + highestDbId);
           let latestValue = highestDbId;
@@ -474,6 +506,9 @@ function populateJobIdField() {
 
       // disable the next button
       document.getElementById("nextForm").disabled = true;
+
+      // set lid, sleeve and packaging sections to enabled
+      // handleDropdownSelection();
     })
     .catch((error) => {
       console.error("Error fetching latest Job Id: " + error);
@@ -616,7 +651,7 @@ async function readForm() {
         cupDecorationOptions.value = snapshot.val().CupDecorationOptions;
         cupDecoration.value = snapshot.val().CupDecoration;
 
-        // Get all radio buttons with the name "cupArtworkCompletedBy"
+        // Get from DB
         const cupArtworkCompletedByValue = snapshot.val().CupArtworkCompletedBy;
 
         // Get all radio buttons with the name "cupArtworkCompletedBy"
@@ -1638,6 +1673,8 @@ async function nextForm() {
 
   console.log("highest DB entry is " + highestDbId); // Debug statement
 
+  // if the job does exist
+
   if (snapshot.exists()) {
     // enable the saveAsPDF button
     document.getElementById("saveAsPDF").disabled = false;
@@ -1657,6 +1694,7 @@ async function nextForm() {
       Number(jobId.value) < Number(highestDbId)
     ) {
       // Enable the "previous" and "next" buttons
+      console.log("number is between first and NEW!");
       document.getElementById("prevForm").disabled = false;
       document.getElementById("nextForm").disabled = false;
       console.log("previous and next button enabled");
@@ -1949,6 +1987,13 @@ async function nextForm() {
       }
     });
 
+    // If packagingRequired is "No", disable the Packaging section
+    if (packagingRequiredValue === "No") {
+      packagingSection.disabled = true;
+    } else {
+      packagingSection.disabled = false;
+    }
+
     packagingTypeOptions.value = snapshot.val().PackagingTypeOptions;
     packagingTypeOther.value = snapshot.val().PackagingTypeOther;
 
@@ -2113,36 +2158,33 @@ async function saveAsPDF() {
     async function latestJobId() {
       const dbRef = ref(db);
 
-      return await get(child(dbRef, "Jobs"))
-        .then((snapshot) => {
-          if (!snapshot.exists()) {
-            return 1;
+      return await get(child(dbRef, "Jobs")).then((snapshot) => {
+        if (!snapshot.exists()) {
+          return 1;
+        }
+
+        let maxJobId = 0;
+        snapshot.forEach((childSnapshot) => {
+          const jobId = parseInt(childSnapshot.val().JobId);
+          if (jobId > maxJobId) {
+            maxJobId = jobId;
           }
-
-          let maxJobId = 0;
-          snapshot.forEach((childSnapshot) => {
-            const jobId = parseInt(childSnapshot.val().JobId);
-            if (jobId > maxJobId) {
-              maxJobId = jobId;
-            }
-          });
-
-          console.log("Max Job ID in the database: " + maxJobId);
-
-          return Number(maxJobId);
         });
+
+        console.log("Max Job ID in the database: " + maxJobId);
+
+        return Number(maxJobId);
+      });
     }
-    
-      // // Use await when calling latestJobId to get the resolved value
-      let maxJobId = await latestJobId();
 
-
+    // // Use await when calling latestJobId to get the resolved value
+    let maxJobId = await latestJobId();
 
     const jobIdElement = document.getElementById("jobId");
 
     if (jobIdElement) {
       const jobId =
-      jobIdElement.value === "NEW" ? maxJobId : jobIdElement.value;
+        jobIdElement.value === "NEW" ? maxJobId : jobIdElement.value;
 
       // Create a new jsPDF instance
       const doc = new jsPDF();
@@ -2821,7 +2863,7 @@ const formattedDate2 = `${year2}-${month2}-${day2}`;
 // Set the default value of the date picker to 14 days from today
 document.getElementById("sampleRequiredDate").value = formattedDate2;
 
-// script to disable the sleeve/lid/packaaging sections if they are not required
+// script to disable the sleeve/lid/packaging sections if they are not required
 
 // Sleeve Required radio button
 var sleeveRequiredYes = document.getElementById("sleeveRequiredYes");
@@ -3664,7 +3706,7 @@ var packagingUncoatedLabel = document.querySelector(
   'label[for="packagingUncoated"]'
 );
 
-// Function to enable/disable the "Paackaging Print Type" input and radio options based on the selected option
+// Function to enable/disable the "Packaging Print Type" input and radio options based on the selected option
 function handlePackagingPrintTypeRadioChange() {
   if (packagingPantone.checked) {
     // Enable the radio options
@@ -3747,6 +3789,46 @@ function resetFieldBorders() {
   requiredFields.forEach((field) => {
     console.log("Resetting border for field:", field);
     field.style.borderColor = ""; // Reset the border color
+    // if this is a NEW form, reset the radio buttons
+    if (jobId.value === "NEW") {
     handleDropdownSelection(field); // Reset the border color of the fieldset
+    }
   });
 }
+
+//testing
+
+// Listen for the DOM to be loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Add a click event listener to the export button
+  const exportButton = document.getElementById("exportData");
+
+  exportButton.addEventListener("click", () => {
+    // Reference to the root of your Firebase database
+    const rootRef = ref(db);
+
+    // Fetch the data from your Firebase database
+    get(rootRef)
+      .then((snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          // Convert the data to JSON
+          const jsonData = JSON.stringify(data, null, 2);
+
+          // Create a Blob containing the JSON data
+          const blob = new Blob([jsonData], { type: "application/json" });
+
+          // Create a download link and trigger the download
+          const downloadLink = document.createElement("a");
+          downloadLink.href = URL.createObjectURL(blob);
+          downloadLink.download = "firebase_data.json";
+          downloadLink.click();
+        } else {
+          console.error("No data found in the database.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data from Firebase:", error);
+      });
+  });
+});
