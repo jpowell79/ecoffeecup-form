@@ -255,3 +255,20 @@ fieldset:disabled {
 .centered-input {
   text-align: center; /* Center the content horizontally within the container */
 }
+
+
+.no-spinners {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Removes the spinner */
+}
+
+
+
+
+
+
