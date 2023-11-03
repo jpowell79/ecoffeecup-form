@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js"></script> <!-- cdn for jsPDF -->
     <link rel="stylesheet" href="style.css"> <!-- Link to style.css file -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <title>Ecoffee Cup Project Request Form</title>
   </head>
@@ -121,14 +122,14 @@
           <input type="radio" id="repeatProject" name="newOrRepeat" value="Repeat">
           <label for="repeatProject">Repeat</label><br><br>
 
-          <!-- Product Code -->
           <label for="productCode">Product Code:</label>
-          <input type="text" id="productCode" name="productCode" required maxlength="6" style="width: 60px;"><br><br>
+          <input type="number" id="productCode" name="productCode" style="width: 90px;" class="no-spinners"><br><br>
+          
+
 
          <!-- Number of Samples Required -->
         <label for="samplesRequired">Number of Samples Required:</label>
-        <input type="number" id="samplesRequired" name="samplesRequired" 
-        required minlength="1" maxlength="4" style="width: 70px;"><br><br>
+        <input type="number" id="samplesRequired" name="samplesRequired" style="width: 90px;" class="no-spinners"><br><br>
 
           <!-- Sample Required Date -->
           <label for="sampleRequiredDate">Sample Required Date:</label>
@@ -552,11 +553,11 @@
 
       <!-- Packaging Colour Coated (C) or Uncoated (U) radio button options -->
       <!-- value of "coated" will be the default -->
-      <h4>If Pantone, then Coated (C) or Uncoated (U) ?:</h4>
+      <!-- <h4>If Pantone, then Coated (C) or Uncoated (U) ?:</h4>
       <input type="radio" id="packagingCoated" name="packagingPrintTypeCoatedOrUncoated" value="Coated (C)" checked>
       <label for="packagingCoated">Coated (C)</label><br>
       <input type="radio" id="packagingUncoated" name="packagingPrintTypeCoatedOrUncoated" value="Uncoated (U)">
-      <label for="packagingUncoated">Uncoated (U)</label><br><br>
+      <label for="packagingUncoated">Uncoated (U)</label><br><br> -->
   
 
 
@@ -644,10 +645,20 @@
         <!-- "Sign Out" button -->
 <button type="button" id="signOut">Sign Out</button>
 
+
+
+      </div>
+
+
+
+      <br><br><br>
+
     <!-- End of Form -->
     </form>
 
-    </div>
+    <!-- <button type="button" id="exportData">Experimental - export entire DB as JSON</button>
+    <br>
+    <button type="button" id="exportCSV">Experimental - export entire DB as CSV</button> -->
 
     <!--use script.js file-->  
     <script type="module" src="script.js"></script>
