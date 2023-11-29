@@ -128,11 +128,11 @@ function createForm() {
         CustomerName: customerName.value,
         ProjectName: projectName.value,
         ProjectProduct: projectProduct.value,
-        ProjectProductOther: projectProductOther.value,
+        // ProjectProductOther: projectProductOther.value,
         ProjectName: projectName.value,
         NewOrRepeat: document.querySelector('input[name="newOrRepeat"]:checked')
           .value,
-        ProductCode: productCode.value,
+        // ProductCode: productCode.value,
         SamplesRequired: samplesRequired.value,
         SampleRequiredDate: sampleRequiredDate.value,
 
@@ -385,11 +385,11 @@ function updateForm() {
       CustomerName: customerName.value,
       ProjectName: projectName.value,
       ProjectProduct: projectProduct.value,
-      ProjectProductOther: projectProductOther.value,
+      // ProjectProductOther: projectProductOther.value,
       ProjectName: projectName.value,
       NewOrRepeat: document.querySelector('input[name="newOrRepeat"]:checked')
         .value,
-      ProductCode: productCode.value,
+      // ProductCode: productCode.value,
       SamplesRequired: samplesRequired.value,
       SampleRequiredDate: sampleRequiredDate.value,
 
@@ -626,7 +626,7 @@ async function readForm() {
         customerName.value = snapshot.val().CustomerName;
         projectProduct.value = snapshot.val().ProjectProduct;
         projectName.value = snapshot.val().ProjectName;
-        projectProductOther.value = snapshot.val().ProjectProductOther;
+        // projectProductOther.value = snapshot.val().ProjectProductOther;
         projectName.value = snapshot.val().ProjectName;
 
         // Get all radio buttons with the name "newOrRepeat"
@@ -646,7 +646,7 @@ async function readForm() {
           }
         });
 
-        productCode.value = snapshot.val().ProductCode;
+        // productCode.value = snapshot.val().ProductCode;
         samplesRequired.value = snapshot.val().SamplesRequired;
         sampleRequiredDate.value = snapshot.val().SampleRequiredDate;
 
@@ -1177,7 +1177,7 @@ async function prevForm() {
     customerName.value = snapshot.val().CustomerName;
     projectProduct.value = snapshot.val().ProjectProduct;
     projectName.value = snapshot.val().ProjectName;
-    projectProductOther.value = snapshot.val().ProjectProductOther;
+    // projectProductOther.value = snapshot.val().ProjectProductOther;
     projectName.value = snapshot.val().ProjectName;
 
     // Get all radio buttons with the name "newOrRepeat"
@@ -1195,7 +1195,7 @@ async function prevForm() {
       }
     });
 
-    productCode.value = snapshot.val().ProductCode;
+    // productCode.value = snapshot.val().ProductCode;
     samplesRequired.value = snapshot.val().SamplesRequired;
     sampleRequiredDate.value = snapshot.val().SampleRequiredDate;
 
@@ -1736,7 +1736,7 @@ async function nextForm() {
     customerName.value = snapshot.val().CustomerName;
     projectProduct.value = snapshot.val().ProjectProduct;
     projectName.value = snapshot.val().ProjectName;
-    projectProductOther.value = snapshot.val().ProjectProductOther;
+    // projectProductOther.value = snapshot.val().ProjectProductOther;
     projectName.value = snapshot.val().ProjectName;
 
     // Get all radio buttons with the name "newOrRepeat"
@@ -1754,7 +1754,7 @@ async function nextForm() {
       }
     });
 
-    productCode.value = snapshot.val().ProductCode;
+    // productCode.value = snapshot.val().ProductCode;
     samplesRequired.value = snapshot.val().SamplesRequired;
     sampleRequiredDate.value = snapshot.val().SampleRequiredDate;
 
@@ -2230,14 +2230,14 @@ async function saveAsPDF() {
           document.getElementById("projectProduct").selectedIndex
         ].text;
 
-      const projectProductOther = document.getElementById(
-        "projectProductOther"
-      ).value;
+      // const projectProductOther = document.getElementById(
+      //   "projectProductOther"
+      // ).value;
       const newOrRepeat = document.querySelector(
         'input[name="newOrRepeat"]:checked'
       ).value;
 
-      const productCode = document.getElementById("productCode").value;
+      // const productCode = document.getElementById("productCode").value;
 
       const samplesRequired = document.getElementById("samplesRequired").value;
 
@@ -2493,11 +2493,11 @@ async function saveAsPDF() {
 
       doc.text(`Product: ${projectProduct}`, column2X, startY + lineHeight * 7);
 
-      doc.text(
-        `If Other, please specify: ${projectProductOther}`,
-        column2X,
-        startY + lineHeight * 8
-      );
+      // doc.text(
+      //   `If Other, please specify: ${projectProductOther}`,
+      //   column2X,
+      //   startY + lineHeight * 8
+      // );
 
       doc.text(
         `Project Name (PF Number to be included): ${projectName}`,
@@ -2510,11 +2510,11 @@ async function saveAsPDF() {
         column3X,
         startY + lineHeight * 5
       );
-      doc.text(
-        `Product Code: ${productCode}`,
-        column3X,
-        startY + lineHeight * 6
-      );
+      // doc.text(
+      //   `Product Code: ${productCode}`,
+      //   column3X,
+      //   startY + lineHeight * 6
+      // );
       doc.text(
         `Samples Required: ${samplesRequired}`,
         column3X,
@@ -3000,26 +3000,20 @@ packagingRequiredYes.addEventListener("change", function () {
     // Check the selected product
     var selectedProduct = document.getElementById("projectProduct").value;
 
-
     // re-enable packaging field section
     packagingSection.disabled = false;
 
-              // // packaging details
-              // var packagingTypeLabel = document.querySelector(
-              //   'label[for="packagingTypeOther"]');
-              // packagingTypeLabel.style.color = "black";
+    // // packaging details
+    // var packagingTypeLabel = document.querySelector(
+    //   'label[for="packagingTypeOther"]');
+    // packagingTypeLabel.style.color = "black";
 
-              
+    // handlePackagingCutterGuideRadioChange();
+    // handlePackagingPaperStock();
+    // handlePackagingPrintTypeRadioChange();
 
-
-
-
-              // handlePackagingCutterGuideRadioChange();
-              // handlePackagingPaperStock();
-              // handlePackagingPrintTypeRadioChange();
-    
-              // handleBarcodeRadioChange();
-              // handlePackagingOuterCartonMarkings();
+    // handleBarcodeRadioChange();
+    // handlePackagingOuterCartonMarkings();
 
     // // Check if the selected product requires Packaging to be "No"
     // if (selectedProduct === "2. Kora") {
@@ -3046,7 +3040,7 @@ packagingRequiredYes.addEventListener("change", function () {
     //   packagingSection.disabled = false;
     //   // Show a confirm dialog
     //   // If the user confirms, enable the Packaging section
-    // } 
+    // }
   }
 });
 
@@ -3192,23 +3186,23 @@ setInitialFieldState();
 function handleProjectProduct() {
   // Get references to the elements
   var productDropdown = document.getElementById("projectProduct");
-  var productOtherInput = document.getElementById("projectProductOther");
-  var productLabel = document.querySelector('label[for="projectProductOther"]');
+  // var productOtherInput = document.getElementById("projectProductOther");
+  // var productLabel = document.querySelector('label[for="projectProductOther"]');
 
   // Check if the selected option is "other (please specify)"
-  if (productDropdown.value === "5. other (please specify)") {
-    // Enable the "If Other, please specify" input field
-    productOtherInput.disabled = false;
-    productOtherInput.required = true; // Make it required when enabled
-    productLabel.style.color = "black"; // Change label color to black (not greyed out)
-  } else {
-    // Disable and clear the "If Other, please specify" input field
-    productOtherInput.disabled = true;
-    productOtherInput.required = false; // Make it not required when disabled
-    productLabel.style.color = "#CCCCCC";
-    // Reset the form field border color
-    productOtherInput.style.borderColor = "";
-  }
+  // if (productDropdown.value === "5. other (please specify)") {
+  //   // Enable the "If Other, please specify" input field
+  //   productOtherInput.disabled = false;
+  //   productOtherInput.required = true; // Make it required when enabled
+  //   productLabel.style.color = "black"; // Change label color to black (not greyed out)
+  // } else {
+  //   // Disable and clear the "If Other, please specify" input field
+  //   productOtherInput.disabled = true;
+  //   productOtherInput.required = false; // Make it not required when disabled
+  //   productLabel.style.color = "#CCCCCC";
+  //   // Reset the form field border color
+  //   productOtherInput.style.borderColor = "";
+  // }
 }
 
 // Add event listener to the Product dropdown
@@ -4332,7 +4326,10 @@ var packagingBarcodeDetailsLabel = document.querySelector(
 
 // Function to enable or disable the input field based on the selected radio button
 function handleBarcodeRadioChange() {
-  if (packagingBarcodeRequiredYesClient.checked) {
+  if (
+    packagingBarcodeRequiredYesClient.checked ||
+    packagingBarcodeRequiredYesEcofffeeCup.checked
+  ) {
     // Enable the "Barcode Number (if applicable)" input field
     packagingBarcodeDetailsInput.disabled = false;
     // Make it required when enabled
@@ -4883,20 +4880,20 @@ function resetFieldBorders() {
 // });
 
 // Function to limit the input to six digits (for productCode)
-function limitToSixDigits(input) {
-  const value = input.value;
-  if (value.length > 6) {
-    input.value = value.slice(0, 6); // Truncate to 6 digits
-  }
-}
+// function limitToSixDigits(input) {
+//   const value = input.value;
+//   if (value.length > 6) {
+//     input.value = value.slice(0, 6); // Truncate to 6 digits
+//   }
+// }
 
 // Get a reference to the productCode input element
-const productCodeInput = document.getElementById("productCode");
+// const productCodeInput = document.getElementById("productCode");
 
 // Add an event listener for the "input" event
-productCodeInput.addEventListener("input", function () {
-  limitToSixDigits(productCodeInput);
-});
+// productCodeInput.addEventListener("input", function () {
+//   limitToSixDigits(productCodeInput);
+// });
 
 // Function to limit the input to three digits (for samplesRequired)
 function limitToThreeDigits(input) {
