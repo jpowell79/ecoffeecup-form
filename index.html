@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -98,11 +99,26 @@
             <option value="4. HCV">4. HCV</option>      
             <option value="5. other (please specify)">5. other (please specify)</option> 
           </select><br><br>
+
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              // Find the select element
+              var selectElement = document.getElementById("projectProduct");
+              
+              // Find the option to hide
+              var optionToHide = selectElement.querySelector('option[value="5. other (please specify)"]');
+              
+              // Remove the option from the select element
+              if (optionToHide) {
+                selectElement.removeChild(optionToHide);
+              }
+            });
+          </script>
           
 
           <!-- Project Product Other Field -->
-          <label for="projectProductOther">If Other, please specify:</label>
-          <input type="text" id="projectProductOther" name="projectProductOther"><br><br>
+          <!-- <label for="projectProductOther">If Other, please specify:</label>
+          <input type="text" id="projectProductOther" name="projectProductOther"><br><br> -->
           
           <!-- Project Name -->
           <label for="projectName">Project Name (PF Number to be included):</label>
@@ -122,8 +138,8 @@
           <input type="radio" id="repeatProject" name="newOrRepeat" value="Repeat">
           <label for="repeatProject">Repeat</label><br><br>
 
-          <label for="productCode">Product Code:</label>
-          <input type="number" id="productCode" name="productCode" style="width: 90px;" class="no-spinners"><br><br>
+          <!-- <label for="productCode">Product Code:</label>
+          <input type="number" id="productCode" name="productCode" style="width: 90px;" class="no-spinners"><br><br> -->
           
 
 
